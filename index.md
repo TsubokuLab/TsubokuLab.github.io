@@ -1,4 +1,8 @@
-﻿# TsubokuLab Assets
+﻿---
+title: TsubokuLab Assets
+---
+
+# TsubokuLab Assets
 
 作ったソフトウェアやアセットをまとめていく場所。
 
