@@ -1,10 +1,35 @@
-<html>
-  <head><title>{{ page.title }}</title><head>
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>{{ page.title }}</title>
+<meta name="generator" content="Jekyll v3.7.4" />
+<meta property="og:title" content="{{ page.title }}" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://tsubokulab.github.io/" />
+<meta property="og:url" content="https://tsubokulab.github.io/" />
+<meta property="og:site_name" content="TsubokuLab.github.io" />
+<script type="application/ld+json">
+{"@type":"WebSite","url":"https://tsubokulab.github.io/","headline":"{{ page.title }}","name":"TsubokuLab.github.io","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="/assets/css/style.css?v=17ca29a05660a84c72f50a91be2de5c3026f7aec">
+  </head>
   <body>
+    <section class="page-header">
+      <h1 class="project-name">{{ page.title }}</h1>
+      <h2 class="project-tagline"></h2>
+    </section>
+    <section class="main-content">
     {{ content }}
 
       <footer class="site-footer">
         <span class="site-footer-credits">このページは <a href="https://pages.github.com">GitHub Pages</a> で作られています。</span>
       </footer>
+    </section>
   </body>
 </html>
