@@ -1,5 +1,6 @@
 ﻿---
-title: タイトル
+layout: default
+title: TsubokuLab Assets
 ---
 
 # TsubokuLab Assets
