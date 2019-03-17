@@ -1,5 +1,5 @@
 ﻿---
-title: TsubokuLab Assets
+title: タイトル
 ---
 
 # TsubokuLab Assets
