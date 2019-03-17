@@ -1,6 +1,6 @@
 ﻿---
 layout: default
-title: TsubokuLab Assets
+title: トップページ
 ---
 
 # TsubokuLab Assets
