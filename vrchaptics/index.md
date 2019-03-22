@@ -1,15 +1,38 @@
 ---
-layout: default
-title: VRCHaptics
+
+layout: default  
+title: VRCHaptics  
+description: This is just another page
+
 ---
 
 ![vrchaptics_vrchat](images\vrchaptics_vrchat.jpg)
 
-[TOC]
+* [概要](#概要)
+* [仕組み](#仕組み)
+* [使い方](#使い方)
+  * [デバイスの接続](#1-デバイスの接続)
+  * [アプリの起動](#2-アプリの起動)
+  * [キャプチャアプリケーションを選択](#3-キャプチャアプリケーションを選択)
+  * [設定するデバイスの選択](#4-設定するデバイスの選択)
+  * [デバイスの振動を有効にする](#5-デバイスの振動を有効にする)
+  * [振動強度を変更](#6-振動強度を変更)
+  * [アプリのClip位置を調節する](#7-アプリのClip位置を調節する)
+  * [アプリケーションを終了する](#8-アプリケーションを終了する)
+* [内容物](#内容物)
+* [VRChat用UnityPackage](#VRChat用UnityPackage)
+* [デモワールド](#デモワールド)
+* [推奨動作環境](#推奨動作環境)
+* [使用前の注意事項](#使用前の注意事項)
+* [利用規約](#利用規約)
+* [クレジット](#クレジット)
 
-## ソフトウェア概要
+------
 
-bHaptics社の販売する触覚スーツ(https://www.bhaptics.com/)をVRChat等のソフトと連動して動作させるためのソフトウェア、及びVRChatアバターに設定するためのPrefabとUnityエディター拡張機能。
+## 概要
+
+bHaptics社の販売する触覚スーツ(https://www.bhaptics.com/)をVRChat等のソフトと連動して動作させるためのソフトウェアです。  
+VRChatアバターに設定するための各種PrefabとUnityエディター拡張スクリプトの専用アセット(UnityPackage)と共に使用します。
 
 `※使用するにはVRChatSDK及びUnityを使ったVRChatのアバターアップロードについての知識が必要です。`
 
@@ -31,8 +54,9 @@ bHaptics社の販売する触覚スーツ(https://www.bhaptics.com/)をVRChat等
 の2種類はまだデバイスを入手出来ていないので対応未定。
 
 ## 仕組み
-1. 触覚ベストやアームデバイスに接近したオブジェクトをアバターのカメラで撮影し、RenderTextureを画面上の固定位置に表示。
-2. そのRenderTextureをVRCHapticsアプリで画面キャプチャーし、色情報→デバイスの振動に変換しています。
+1. 触覚ベストやアームデバイスに接近したオブジェクトをVRChat上のアバターカメラで撮影し、RenderTextureを画面上の固定位置に表示
+2. そのRenderTextureをVRCHapticsアプリで画面キャプチャー
+3. 色情報→振動に変換してbHapticsデバイスを制御
 
 ## 使い方
 
@@ -40,52 +64,52 @@ bHaptics社の販売する触覚スーツ(https://www.bhaptics.com/)をVRChat等
 
 1. **bHaptics公式サイト**から**[bHaptics Player](https://www.bhaptics.com/download)**アプリをインストールし起動
 
-2. **歯車マーク**をクリックして設定画面を表示する
+2. **歯車マーク**をクリックして設定画面を表示する  
 
    ![bHapticsPlayer_04](images\bHapticsPlayer_04.png)
 
-3. デバイスの電源ボタンを押していき、**Scanned Devices**に表示されたら**Pair**ボタンを押下してペアリングを完了させる。
+3. デバイスの電源ボタンを押していき、**Scanned Devices**に表示されたら**Pair**ボタンを押下してペアリングを完了させる。  
 
    ![bHapticsPlayer_01](images\bHapticsPlayer_01.png)
 
-4. ペアリングが完了するとデバイスのアイコンに色が着く
+4. ペアリングが完了するとデバイスのアイコンに色が着く  
 
    ![bHapticsPlayer_03](images\bHapticsPlayer_03.png)
 
-5. もし腕デバイス(Tactosy)が2台とも右手に設定されたりした場合は、下部の**Device Position**で変更する。
+5. もし腕デバイス(Tactosy)が2台とも右手に設定されたりした場合は、下部の**Device Position**で変更する。  
 
    ![bHapticsPlayer_02](images\bHapticsPlayer_02.png)
 
-これでデバイスの準備は完了です。
+これでデバイスの準備は完了です。  
 
 ### 2. アプリの起動
 
-1. **VRCHaptics.exe**を起動
+1. **VRCHaptics.exe**を起動  
    ![VRCHaptics_01](images\VRCHaptics_01.png)
 
    
 
-### 3. キャプチャアプリケーションの変更
+### 3. キャプチャアプリケーションを選択
 
 起動後、場合によってはキャプチャするアプリケーションにVRChatが選択されていない事があります。
 その場合は以下の手順でVRChatを選択して下さい。
 
-1. 上部のマウスカーソルを合わせると「Change Application」と表示される部分でマウスを左クリック
+1. 上部のマウスカーソルを合わせると「Change Application」と表示される部分でマウスを左クリック  
    ![VRCHaptics_02](images\VRCHaptics_02.png)
 
-2. アプリケーション一覧が表示されるのでスクロールして起動中のVRChatを選択する。
+2. アプリケーション一覧が表示されるのでスクロールして起動中のVRChatを選択する。  
    ![VRCHaptics_03](images\VRCHaptics_03.png)
 
-### 4. 設定するデバイスの変更
+### 4. 設定するデバイスの選択
 
-1. Device Typeの右のプルダウンメニューから設定したいデバイスを選択
+1. Device Typeの右のプルダウンメニューから設定したいデバイスを選択  
    ![VRCHaptics_04](images\VRCHaptics_04.png)
 
 ### 5. デバイスの振動を有効にする
 
-1. EnableチェックをクリックしてONにする
+1. EnableチェックをクリックしてONにする  
    ![VRCHaptics_05](images\VRCHaptics_05.png)
-2. Status表記がRunningになれば動作状態
+2. Status表記がRunningになれば動作状態  
    ![VRCHaptics_06](images\VRCHaptics_06.png)
 
 ### 6. 振動強度を変更
@@ -117,30 +141,45 @@ bHaptics社の販売する触覚スーツ(https://www.bhaptics.com/)をVRChat等
 * VRCHaptics_settings.xml --- VRCHapicsの設定ファイル
 * VRCHaptics-VRChat.unitypackage --- VRChat用アセットUnityPackage
 
-## VRChat用アセットUnityPackage
-VRCHaptics-VRChat
+## VRCHaptics対応アバターセットアップ手順
 
-└ Prefabs
+### VRCHaptics-VRChat.unitypackageをインポート
 
-  ├ Hidden
+1. UnityPackageをインポートする  
+   ```
+   VRCHaptics-VRChat
+   └ Prefabs
+     ├ Hidden
+     │ ├ VRCHaptics_Vest_hidden.prefab
+     │ ├ VRCHaptics_LeftArm_hidden.prefab
+     │ ├ VRCHaptics_RightArm_hidden.prefab
+     │ └ VRCHaptics_Head_hidden.prefab
+     └ Visualized
+       ├ VRCHaptics_Vest_visualized.prefab
+       ├ VRCHaptics_LeftArm_visualized.prefab
+       ├ VRCHaptics_RightArm_visualized.prefab
+       └ VRCHaptics_Head_visualized.prefab```
+   ```
 
-  │ ├ VRCHaptics_Vest_hidden.prefab
+2. 触覚スーツ用Prefabをアバターに合わせて配置していく  
+   PrefabにはHidden(可視化モデル無し)とVisualized(可視化モデル有り)の2パターンがあります。
 
-  │ ├ VRCHaptics_LeftArm_hidden.prefab
+   |      |      |
+   | ---- | ---- |
+   |      |      |
+   |      |      |
+   |      |      |
 
-  │ ├ VRCHaptics_RightArm_hidden.prefab
+   
 
-  │ └ VRCHaptics_Head_hidden.prefab
+3. VRCHapticsHelperを使ってアバターをセットアップする
 
-  └ Visualized
+   1. Unityの上部メニューから `Tools/VRCHapticsHelper` を選択
+   2. 表示
 
-​    ├ VRCHaptics_Vest_visualized.prefab
-
-​    ├ VRCHaptics_LeftArm_visualized.prefab
-
-​    ├ VRCHaptics_RightArm_visualized.prefab
-
-​    └ VRCHaptics_Head_visualized.prefab
+   ```
+   
+   ```
 
 ### デモ用ワールド
 URL:
