@@ -12,14 +12,18 @@ bHaptics社の販売する触覚スーツ(https://www.bhaptics.com/)をVRChat等
 
 現在は
 
-* Tactot --- ベスト
-* Tactosy --- 腕
-* Tactal --- 頭
+| 名称    | 説明 |
+| ------- | ---- |
+| Tactot  | 胴体 |
+| Tactosy | 両腕 |
+| Tactal  | 頭   |
 
 の3デバイスに対応。
 
-* Tactosy for Hands --- グローブ
-* Tactosy for Feet --- 足
+| 名称              | 説明           |
+| :---------------- | -------------- |
+| Tactosy for Hands | グローブ(両手) |
+| Tactosy for Feet  | 両足           |
 
 の2種類はまだデバイスを入手出来ていないので対応未定。
 
@@ -34,12 +38,15 @@ bHaptics社の販売する触覚スーツ(https://www.bhaptics.com/)をVRChat等
 1. **bHaptics公式サイト**から**[bHaptics Player](https://www.bhaptics.com/download)**アプリをインストールし起動
 
 2. **歯車マーク**をクリックして設定画面を表示する
+
    ![bHapticsPlayer_04](images\bHapticsPlayer_04.png)
 
 3. デバイスの電源ボタンを押していき、**Scanned Devices**に表示されたら**Pair**ボタンを押下してペアリングを完了させる。
+
    ![bHapticsPlayer_01](images\bHapticsPlayer_01.png)
 
 4. ペアリングが完了するとデバイスのアイコンに色が着く
+
    ![bHapticsPlayer_03](images\bHapticsPlayer_03.png)
 
 5. もし腕デバイス(Tactosy)が2台とも右手に設定されたりした場合は、下部の**Device Position**で変更する。
@@ -51,6 +58,7 @@ bHaptics社の販売する触覚スーツ(https://www.bhaptics.com/)をVRChat等
 ### 2. アプリの起動
 
 1. **VRCHaptics.exe**を起動
+
    ![VRCHaptics_01](images\VRCHaptics_01.png)
 
    
