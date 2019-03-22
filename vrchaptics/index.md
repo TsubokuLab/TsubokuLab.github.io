@@ -5,22 +5,25 @@ title: VRCHaptics
 
 ![vrchaptics_vrchat](images\vrchaptics_vrchat.jpg)
 
+[TOC]
+
 ## ソフトウェア概要
 
 bHaptics社の販売する触覚スーツ(https://www.bhaptics.com/)をVRChat等のソフトと連動して動作させるためのソフトウェア、及びVRChatアバターに設定するためのPrefabとUnityエディター拡張機能。
+
 `※使用するにはVRChatSDK及びUnityを使ったVRChatのアバターアップロードについての知識が必要です。`
 
 現在は
 
-| 名称    | 説明 |
-| ------- | ---- |
-| Tactot  | 胴体 |
-| Tactosy | 両腕 |
-| Tactal  | 頭   |
+| デバイス名称 | 説明 |
+| ------------ | ---- |
+| Tactot       | 胴体 |
+| Tactosy      | 両腕 |
+| Tactal       | 頭   |
 
 の3デバイスに対応。
 
-| 名称              | 説明           |
+| デバイス名称      | 説明           |
 | :---------------- | -------------- |
 | Tactosy for Hands | グローブ(両手) |
 | Tactosy for Feet  | 両足           |
@@ -28,12 +31,12 @@ bHaptics社の販売する触覚スーツ(https://www.bhaptics.com/)をVRChat等
 の2種類はまだデバイスを入手出来ていないので対応未定。
 
 ## 仕組み
-①触覚ベストやアームデバイスに接近したオブジェクトをアバターのカメラで撮影し、RenderTextureを画面上の固定位置に表示。
-②そのRenderTextureをVRCHapticsアプリで画面キャプチャーし、色情報→デバイスの振動に変換しています。
+1. 触覚ベストやアームデバイスに接近したオブジェクトをアバターのカメラで撮影し、RenderTextureを画面上の固定位置に表示。
+2. そのRenderTextureをVRCHapticsアプリで画面キャプチャーし、色情報→デバイスの振動に変換しています。
 
 ## 使い方
 
-## 1. デバイスの接続
+### 1. デバイスの接続
 
 1. **bHaptics公式サイト**から**[bHaptics Player](https://www.bhaptics.com/download)**アプリをインストールし起動
 
@@ -58,7 +61,6 @@ bHaptics社の販売する触覚スーツ(https://www.bhaptics.com/)をVRChat等
 ### 2. アプリの起動
 
 1. **VRCHaptics.exe**を起動
-
    ![VRCHaptics_01](images\VRCHaptics_01.png)
 
    
@@ -69,20 +71,46 @@ bHaptics社の販売する触覚スーツ(https://www.bhaptics.com/)をVRChat等
 その場合は以下の手順でVRChatを選択して下さい。
 
 1. 上部のマウスカーソルを合わせると「Change Application」と表示される部分でマウスを左クリック
-
-![VRCHaptics_02](images\VRCHaptics_02.png)
+   ![VRCHaptics_02](images\VRCHaptics_02.png)
 
 2. アプリケーション一覧が表示されるのでスクロールして起動中のVRChatを選択する。
-
-![VRCHaptics_03](images\VRCHaptics_03.png)
+   ![VRCHaptics_03](images\VRCHaptics_03.png)
 
 ### 4. 設定するデバイスの変更
 
-![VRCHaptics_04](images\VRCHaptics_04.png)
+1. Device Typeの右のプルダウンメニューから設定したいデバイスを選択
+   ![VRCHaptics_04](images\VRCHaptics_04.png)
 
-![VRCHaptics_05](images\VRCHaptics_05.png)
+### 5. デバイスの振動を有効にする
 
-![VRCHaptics_06](images\VRCHaptics_06.png)
+1. EnableチェックをクリックしてONにする
+   ![VRCHaptics_05](images\VRCHaptics_05.png)
+2. Status表記がRunningになれば動作状態
+   ![VRCHaptics_06](images\VRCHaptics_06.png)
+
+### 6. 振動強度を変更
+
+1. Powerスライダーをドラッグして数値を変更する
+
+### 7. アプリのClip位置を調節する
+
+1. Clip PositionのX,Y,W,Hスライダーをドラッグして数値を調整する。
+
+   | パラメーター | 説明                                   |
+   | ------------ | -------------------------------------- |
+   | X            | 切り出し位置のX座標。画面の一番左が0。 |
+   | Y            | 切り出し位置のY座標。画面の一番上が0。 |
+   | W            | 切り出しサイズの横幅pixel数。          |
+   | H            | 切り出しサイズの縦幅pixel数。          |
+
+   なお、右のテキストボックスの数値を直接入力しても変更可能。
+
+2. デフォルトの状態に戻すにはDefaultボタンを押下して下さい。
+
+### 8. アプリケーションを終了する
+
+1. 右上の✕ボタンを押してアプリケーションを閉じる。
+   設定したパラメーターは保存され次回起動時に自動で読み込まれます。
 
 ## 内容物
 * VRCHaptics.exe --- アプリ本体
