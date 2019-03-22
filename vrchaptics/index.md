@@ -2,7 +2,7 @@
 
 layout: default  
 title: VRCHaptics  
-description: This is just another page
+description: 触覚スーツ「bHaptics」をVRChatで動作させるアプリ
 
 ---
 
@@ -11,16 +11,19 @@ description: This is just another page
 * [概要](#概要)
 * [仕組み](#仕組み)
 * [使い方](#使い方)
-  * [デバイスの接続](#1-デバイスの接続)
-  * [アプリの起動](#2-アプリの起動)
-  * [キャプチャアプリケーションを選択](#3-キャプチャアプリケーションを選択)
-  * [設定するデバイスの選択](#4-設定するデバイスの選択)
-  * [デバイスの振動を有効にする](#5-デバイスの振動を有効にする)
-  * [振動強度を変更](#6-振動強度を変更)
-  * [アプリのClip位置を調節する](#7-アプリのClip位置を調節する)
-  * [アプリケーションを終了する](#8-アプリケーションを終了する)
+  * [1. デバイスの接続](#1-デバイスの接続)
+  * [2. アプリの起動](#2-アプリの起動)
+  * [3. キャプチャアプリケーションを選択](#3-キャプチャアプリケーションを選択)
+  * [4. 設定するデバイスの選択](#4-設定するデバイスの選択)
+  * [5. デバイスの振動を有効にする](#5-デバイスの振動を有効にする)
+  * [6. 振動強度を変更](#6-振動強度を変更)
+  * [7. アプリのClip位置を調節する](#7-アプリのClip位置を調節する)
+  * [8. アプリケーションを終了する](#8-アプリケーションを終了する)
 * [内容物](#内容物)
-* [VRChat用UnityPackage](#VRChat用UnityPackage)
+* [VRCHaptics対応アバターセットアップ手順](#VRCHaptics対応アバターセットアップ手順)
+  * [1. VRCHaptics-VRChat.unitypackageをインポートする](#1-VRCHaptics-VRChat.unitypackageをインポートする)
+  * [2. 触覚スーツ用Prefabをアバターに合わせて配置していく](#2-触覚スーツ用Prefabをアバターに合わせて配置していく)
+  * [3. VRCHapticsHelperを使ってアバターをセットアップする](#3-VRCHapticsHelperを使ってアバターをセットアップする)
 * [デモワールド](#デモワールド)
 * [推奨動作環境](#推奨動作環境)
 * [使用前の注意事項](#使用前の注意事項)
@@ -143,45 +146,56 @@ VRChatアバターに設定するための各種PrefabとUnityエディター拡
 
 ## VRCHaptics対応アバターセットアップ手順
 
-### VRCHaptics-VRChat.unitypackageをインポート
+### 1. VRCHaptics-VRChat.unitypackageをインポートする  
 
-1. UnityPackageをインポートする  
-   ```
-   VRCHaptics-VRChat
-   └ Prefabs
-     ├ Hidden
-     │ ├ VRCHaptics_Vest_hidden.prefab
-     │ ├ VRCHaptics_LeftArm_hidden.prefab
-     │ ├ VRCHaptics_RightArm_hidden.prefab
-     │ └ VRCHaptics_Head_hidden.prefab
-     └ Visualized
-       ├ VRCHaptics_Vest_visualized.prefab
-       ├ VRCHaptics_LeftArm_visualized.prefab
-       ├ VRCHaptics_RightArm_visualized.prefab
-       └ VRCHaptics_Head_visualized.prefab```
-   ```
+```
+VRCHaptics-VRChat
+└ Prefabs
+  ├ Hidden
+  │ ├ VRCHaptics_Vest_hidden.prefab
+  │ ├ VRCHaptics_LeftArm_hidden.prefab
+  │ ├ VRCHaptics_RightArm_hidden.prefab
+  │ └ VRCHaptics_Head_hidden.prefab
+  └ Visualized
+    ├ VRCHaptics_Vest_visualized.prefab
+    ├ VRCHaptics_LeftArm_visualized.prefab
+    ├ VRCHaptics_RightArm_visualized.prefab
+    └ VRCHaptics_Head_visualized.prefab```
+```
 
-2. 触覚スーツ用Prefabをアバターに合わせて配置していく  
-   PrefabにはHidden(可視化モデル無し)とVisualized(可視化モデル有り)の2パターンがあります。
+### 2. 触覚スーツ用Prefabをアバターに合わせて配置していく  
+PrefabにはHidden(可視化モデル無し)とVisualized(可視化モデル有り)の2パターンがあります。
 
-   |      |      |
-   | ---- | ---- |
-   |      |      |
-   |      |      |
-   |      |      |
+| 可視化モデル無し                  | 説明                           |
+| --------------------------------- | ------------------------------ |
+| VRCHaptics_Vest_hidden.prefab     | モデル非表示　ベスト用Prefab   |
+| VRCHaptics_LeftArm_hidden.prefab  | モデル非表示　左腕用Prefab     |
+| VRCHaptics_RightArm_hidden.prefab | モデル非表示　右腕用Prefab     |
+| VRCHaptics_Head_hidden.prefab     | モデル非表示　ゴーグル用Prefab |
 
-   
+| 可視化モデル有り                      | 説明                         |
+| ------------------------------------- | ---------------------------- |
+| VRCHaptics_Vest_visualized.prefab     | モデル表示　ベスト用Prefab   |
+| VRCHaptics_LeftArm_visualized.prefab  | モデル表示　左腕用Prefab     |
+| VRCHaptics_RightArm_visualized.prefab | モデル表示　右腕用Prefab     |
+| VRCHaptics_Head_visualized.prefab     | モデル表示　ゴーグル用Prefab |
 
-3. VRCHapticsHelperを使ってアバターをセットアップする
+アバターのそれぞれの部位にPrefabを配置して、位置・角度・スケールを合わせます。
 
-   1. Unityの上部メニューから `Tools/VRCHapticsHelper` を選択
-   2. 表示
+また、モデルのサイズを変更した場合は内包しているカメラのSizeもモデルに合わせて調整して下さい。
 
-   ```
-   
-   ```
+### 3. VRCHapticsHelperを使ってアバターをセットアップする
 
-### デモ用ワールド
+1. Unityの上部メニューから `Tools/VRCHapticsHelper` を選択してウィンドウを開く
+2. セットアップ対象のアバターを「アバター」欄にドラッグ＆ドロップする
+3. 先程シーンに配置したHidden or VisualizedのPrefabを「Vest」「LeftArm」「RightArm」「Head」欄にそれぞれドラッグ＆ドロップする  
+   `※デバイスの無い部分は空白のままでOK`
+4. 「セットアップ」ボタンを押下する
+5. セットアップ完了のポップアップが出れば完了。  
+   `※エラーが出る場合は、エラーメッセージに従って修正後再度セットアップボタンを押す。`
+
+## デモワールド
+
 URL:
 
 ```※ペデスタルやClone Avatar等で同じワールド内に同じアバターが複数存在すると、RenderTextureが共通になってしまい正しく動作しなくなります。１つのペデスタルを利用するのは１人までとして下さい。```
