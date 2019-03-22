@@ -166,19 +166,19 @@ VRCHaptics-VRChat
 ### 2. 触覚スーツ用Prefabをアバターに合わせて配置していく  
 PrefabにはHidden(可視化モデル無し)とVisualized(可視化モデル有り)の2パターンがあります。
 
-| 可視化モデル無し                  | 説明                           |
-| --------------------------------- | ------------------------------ |
-| VRCHaptics_Vest_hidden.prefab     | モデル非表示　ベスト用Prefab   |
-| VRCHaptics_LeftArm_hidden.prefab  | モデル非表示　左腕用Prefab     |
-| VRCHaptics_RightArm_hidden.prefab | モデル非表示　右腕用Prefab     |
-| VRCHaptics_Head_hidden.prefab     | モデル非表示　ゴーグル用Prefab |
+| 名称                              | モデル | 部位         |
+| --------------------------------- | ------ | ------------ |
+| VRCHaptics_Vest_hidden.prefab     | 非表示 | ベスト(胴体) |
+| VRCHaptics_LeftArm_hidden.prefab  | 非表示 | 左腕         |
+| VRCHaptics_RightArm_hidden.prefab | 非表示 | 右腕         |
+| VRCHaptics_Head_hidden.prefab     | 非表示 | ゴーグル(頭) |
 
-| 可視化モデル有り                      | 説明                         |
-| ------------------------------------- | ---------------------------- |
-| VRCHaptics_Vest_visualized.prefab     | モデル表示　ベスト用Prefab   |
-| VRCHaptics_LeftArm_visualized.prefab  | モデル表示　左腕用Prefab     |
-| VRCHaptics_RightArm_visualized.prefab | モデル表示　右腕用Prefab     |
-| VRCHaptics_Head_visualized.prefab     | モデル表示　ゴーグル用Prefab |
+| 名称                                  | モデル | 部位         |
+| ------------------------------------- | ------ | ------------ |
+| VRCHaptics_Vest_visualized.prefab     | 表示   | ベスト(胴体) |
+| VRCHaptics_LeftArm_visualized.prefab  | 表示   | 左腕         |
+| VRCHaptics_RightArm_visualized.prefab | 表示   | 右腕         |
+| VRCHaptics_Head_visualized.prefab     | 表示   | ゴーグル(頭) |
 
 アバターのそれぞれの部位にPrefabを配置して、位置・角度・スケールを合わせます。
 
@@ -209,30 +209,26 @@ URL:
 元々、触覚スーツbHapticsに非対応のVRChat等のアプリケーションを半ば無理やり対応させている為、動作条件にいくつか制限があります。
 以下をご了承の上ご利用下さい。
 
-* ウィンドウキャプチャを使用するためCPUリソースを多く消費します。スペックが不足していたりVRChatの高負荷なワールド・人の多い場所ではVRの動作に影響が出る可能性があります。
+* ウィンドウキャプチャを使用するためCPUリソースを多く消費します。  
+  スペックが不足していたりVRChatの高負荷なワールド・人の多い場所ではVRの動作に影響が出る可能性があります。
 * 画面上にタッチ情報を表示するため、VRChatの**StreamCamera**との併用ができません。(画面が上書きされてしまう為)
 * **PostProcessing（主にBloomやColorGrading)が有効**のワールドでは誤動作する場合があります。（判定用テクスチャの色が変化してしまうため）
-* タッチ位置フィードバック用の触覚デバイスPrefab(Visualized)には、仕様上LocalPlayerレイヤーを描画するカメラを使用しているため、使用者のアバター自身によるタッチ位置も写り込んでしまいます。**アバターに両面描画シェーダーを使用していたり複雑な服装を着ている場合は肌や服もタッチ位置として写り込んでしまう可能性**があるのでご注意下さい。（振動制御には別の判定用カメラを使用しているので、自分のタッチで振動することはありません。Hidden Prefabを使用している場合も同様に影響ありません。）
-* **VRモード&フルスクリーン起動**での動作を想定しています。フルスクリーンでない場合は、Shiftキーを押しながらVRChatを起動し、Windowedのチェックを外して起動して下さい。また、デスクトップモードで使用する場合はClip Positionの範囲を調整してください。
-
-/*
-・判定用カメラの表示レイヤー
-UI/UIMenu/LocalPlayer/MirrorReflectionを外す
-MirrorReflectionを外さないとLocalPlayerを外していても自分の体のメッシュが反応してしまう。
-
-・プレビュー用のカメラの表示レイヤー
-UI/UIMenu/MirrorReflectionを外す
-LocalPlayerを外していても自分の体のメッシュが反応してしまう。
-*/
+* タッチ位置フィードバック用の触覚デバイスPrefab(Visualized)には、仕様上LocalPlayerレイヤーを描画するカメラを使用しているため、使用者のアバター自身によるタッチ位置も写り込んでしまいます。  
+  **アバターに両面描画シェーダーを使用していたり複雑な服装を着ている場合は肌や服もタッチ位置として写り込んでしまう可能性**があるのでご注意下さい。  
+  振動制御には別の判定用カメラを使用しているので、自分のタッチで振動することはありません。  
+  Hidden Prefabを使用している場合も同様に影響ありません。
+* **VRモード&フルスクリーン起動**での動作を想定しています。  
+  フルスクリーンでない場合は、Shiftキーを押しながらVRChatを起動し、Windowedのチェックを外して起動して下さい。  
+  また、デスクトップモードで使用する場合はClip Positionの範囲を調整してください。
 
 
 
 ## 利用規約
 
 * 個人利用に限り商用利用可能（法人利用はお問い合わせ下さい）
-* 中のデータを取り出せる形での再配布は不可(VRChatのアバターペデスタル等は使用可能)
+* 中のデータを取り出せる形での再配布は不可(VRChatのアバターペデスタル等へは使用可能)
 * 改変可能
-* 本データを利用したことによる損害
+* 本データの利用によって生じた損害等の一切の責任を負いかねます
 
 ## クレジット
 
