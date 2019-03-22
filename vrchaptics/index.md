@@ -2,7 +2,7 @@
 
 layout: default  
 title: VRCHaptics  
-description: 触覚スーツ「bHaptics」をVRChatで動作させるアプリ
+tagline: 触覚スーツ「bHaptics」をVRChatで動作させるアプリ
 
 ---
 
