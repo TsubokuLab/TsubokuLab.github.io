@@ -20,10 +20,10 @@ tagline: 触覚スーツ「bHaptics」をVRChatで動作させるアプリ
   * [7. アプリのClip位置を調節する](#7-アプリのClip位置を調節する)
   * [8. アプリケーションを終了する](#8-アプリケーションを終了する)
 * [内容物](#内容物)
-* [VRCHaptics対応アバターセットアップ手順](#VRCHaptics対応アバターセットアップ手順)
-  * [1. VRCHaptics-VRChat.unitypackageをインポートする](#1-VRCHaptics-VRChat.unitypackageをインポートする)
-  * [2. 触覚スーツ用Prefabをアバターに合わせて配置していく](#2-触覚スーツ用Prefabをアバターに合わせて配置していく)
-  * [3. VRCHapticsHelperを使ってアバターをセットアップする](#3-VRCHapticsHelperを使ってアバターをセットアップする)
+* [VRCHaptics対応アバターセットアップ手順](#vrchaptics対応アバターセットアップ手順)
+  * [1. VRCHaptics-VRChat.unitypackageをインポートする](#1-vrchaptics-vrchatunitypackageをインポートする)
+  * [2. 触覚スーツ用Prefabをアバターに合わせて配置していく](#2-触覚スーツ用prefabをアバターに合わせて配置していく)
+  * [3. VRCHapticsHelperを使ってアバターをセットアップする](#3-vrchapticshelperを使ってアバターをセットアップする)
 * [デモワールド](#デモワールド)
 * [推奨動作環境](#推奨動作環境)
 * [使用前の注意事項](#使用前の注意事項)
@@ -139,38 +139,21 @@ Tactosy for Hands及びTactosy for Feetの2種類はまだデバイスを入手�
 * VRCHaptics.exe --- アプリ本体
 * VRCHaptics_settings.xml --- VRCHapicsの設定ファイル
 * VRCHaptics-VRChat.unitypackage --- VRChat用アセットUnityPackage
+* readme.txt --- 説明書
 
 ## VRCHaptics対応アバターセットアップ手順
 
 ### 1. VRCHaptics-VRChat.unitypackageをインポートする  
 
-```
-VRCHaptics-VRChat
-└ Prefabs
-  ├ Hidden
-  │ ├ VRCHaptics_Vest_hidden.prefab
-  │ ├ VRCHaptics_LeftArm_hidden.prefab
-  │ ├ VRCHaptics_RightArm_hidden.prefab
-  │ └ VRCHaptics_Head_hidden.prefab
-  └ Visualized
-    ├ VRCHaptics_Vest_visualized.prefab
-    ├ VRCHaptics_LeftArm_visualized.prefab
-    ├ VRCHaptics_RightArm_visualized.prefab
-    └ VRCHaptics_Head_visualized.prefab```
-```
-
 ### 2. 触覚スーツ用Prefabをアバターに合わせて配置していく  
 PrefabにはHidden(可視化モデル無し)とVisualized(可視化モデル有り)の2パターンがあります。
 
-| 名称                              | モデル | 部位         |
-| --------------------------------- | ------ | ------------ |
-| VRCHaptics_Vest_hidden.prefab     | 非表示 | ベスト(胴体) |
-| VRCHaptics_LeftArm_hidden.prefab  | 非表示 | 左腕         |
-| VRCHaptics_RightArm_hidden.prefab | 非表示 | 右腕         |
-| VRCHaptics_Head_hidden.prefab     | 非表示 | ゴーグル(頭) |
-
 | 名称                                  | モデル | 部位         |
 | ------------------------------------- | ------ | ------------ |
+| VRCHaptics_Vest_hidden.prefab         | 非表示 | ベスト(胴体) |
+| VRCHaptics_LeftArm_hidden.prefab      | 非表示 | 左腕         |
+| VRCHaptics_RightArm_hidden.prefab     | 非表示 | 右腕         |
+| VRCHaptics_Head_hidden.prefab         | 非表示 | ゴーグル(頭) |
 | VRCHaptics_Vest_visualized.prefab     | 表示   | ベスト(胴体) |
 | VRCHaptics_LeftArm_visualized.prefab  | 表示   | 左腕         |
 | VRCHaptics_RightArm_visualized.prefab | 表示   | 右腕         |
@@ -192,9 +175,9 @@ PrefabにはHidden(可視化モデル無し)とVisualized(可視化モデル有�
 
 ## デモワールド
 
-URL:
+[https://www.vrchat.net/home/world/wrld_e8df3120-6ea0-47ab-b30d-00b2a7a6d305](https://www.vrchat.net/home/world/wrld_e8df3120-6ea0-47ab-b30d-00b2a7a6d305)
 
-```※ペデスタルやClone Avatar等で同じワールド内に同じアバターが複数存在すると、RenderTextureが共通になってしまい正しく動作しなくなります。１つのペデスタルを利用するのは１人までとして下さい。```
+```※１つのペデスタルを利用するのは１人までとして下さい。ペデスタルやClone Avatar等で同じワールド内に同じアバターが複数存在すると、RenderTextureが共通になってしまい正しく動作しなくなります。```
 
 ## 推奨動作環境
 * Windows10
