@@ -24,10 +24,10 @@ tagline: 触覚スーツ「bHaptics」をVRChatで動作させるアプリ
   * [1. VRCHaptics-VRChat.unitypackageをインポートする](#1-vrchaptics-vrchatunitypackageをインポートする)
   * [2. 触覚スーツ用Prefabをアバターに合わせて配置していく](#2-触覚スーツ用prefabをアバターに合わせて配置していく)
   * [3. VRCHapticsHelperを使ってアバターをセットアップする](#3-vrchapticshelperを使ってアバターをセットアップする)
-  * [4. アバターをVRChatにアップロードし、動作確認する](#4-アバターをvrchatにアップロードし、動作確認する)
+  * [4. アバターをVRChatにアップロードし、動作確認する](#4-アバターをvrchatにアップロードし動作確認する)
 * [デモワールド](#デモワールド)
 * [推奨動作環境](#推奨動作環境)
-* [【重要】使用前の注意事項](#[重要]使用前の注意事項)
+* [【重要】使用前の注意事項](#重要使用前の注意事項)
 * [利用規約](#利用規約)
 * [クレジット](#クレジット)
 
@@ -121,7 +121,7 @@ Tactosy for Hands及びTactosy for Feetの2種類はまだデバイスを入手�
 
 ### 6. 振動強度を変更
 
-1. Powerスライダーをドラッグして数値を変更する
+1. Powerスライダーをドラッグして数値を変更する  
    ![VRCHaptics_07](images\VRCHaptics_07.png)
 
 ### 7. アプリのClip位置を調節する
@@ -138,12 +138,12 @@ Tactosy for Hands及びTactosy for Feetの2種類はまだデバイスを入手�
 
    なお、右のテキストボックスの数値を直接入力しても変更可能。
 
-2. デフォルトの状態に戻すにはDefaultボタンを押下して下さい。
+2. デフォルトの状態に戻すにはDefaultボタンを押下して下さい。  
    ![VRCHaptics_08](images\VRCHaptics_08.png)
 
 ### 8. アプリケーションを終了する
 
-1. 右上の✕ボタンを押してアプリケーションを閉じる。
+1. 右上の✕ボタンを押してアプリケーションを閉じる。  
    設定したパラメーターは保存され次回起動時に自動で読み込まれます。
 
 ## VRCHaptics対応アバターセットアップ手順
@@ -151,7 +151,7 @@ Tactosy for Hands及びTactosy for Feetの2種類はまだデバイスを入手�
 ### 1. VRCHaptics-VRChat.unitypackageをインポートする  
 
 ### 2. 触覚スーツ用Prefabをアバターに合わせて配置していく  
-PrefabにはHidden(可視化モデル無し)とVisualized(可視化モデル有り)の2パターンがあります。
+PrefabにはHidden(可視化モデル無し)とVisualized(可視化モデル有り)の2パターンがあります。  
 Hidden(可視化モデル無し)の方が触覚スーツの動作は安定しますが、他人から動作状況が見えないので他人にフィードバックを返したい場合にVisuallized(可視化モデル有り)を利用して下さい。
 
 | 名称                                  | モデル | 部位         |
@@ -164,6 +164,8 @@ Hidden(可視化モデル無し)の方が触覚スーツの動作は安定しま
 | VRCHaptics_LeftArm_visualized.prefab  | 表示   | 左腕         |
 | VRCHaptics_RightArm_visualized.prefab | 表示   | 右腕         |
 | VRCHaptics_Head_visualized.prefab     | 表示   | ゴーグル(頭) |
+
+
 
 1. アバターのそれぞれの部位にPrefabを配置し、位置・角度・スケールを合わせます。
 2. モデルのサイズを変更した場合、内包しているカメラのSizeもモデルに合わせて調整します。
