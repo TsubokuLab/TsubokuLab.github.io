@@ -10,6 +10,7 @@ tagline: 触覚スーツ「bHaptics」をVRChatで動作させるアプリ
 
 * [概要](#概要)
 * [仕組み](#仕組み)
+* [内容物](#内容物)
 * [使い方](#使い方)
   * [1. デバイスの接続](#1-デバイスの接続)
   * [2. アプリの起動](#2-アプリの起動)
@@ -19,14 +20,14 @@ tagline: 触覚スーツ「bHaptics」をVRChatで動作させるアプリ
   * [6. 振動強度を変更](#6-振動強度を変更)
   * [7. アプリのClip位置を調節する](#7-アプリのClip位置を調節する)
   * [8. アプリケーションを終了する](#8-アプリケーションを終了する)
-* [内容物](#内容物)
 * [VRCHaptics対応アバターセットアップ手順](#vrchaptics対応アバターセットアップ手順)
   * [1. VRCHaptics-VRChat.unitypackageをインポートする](#1-vrchaptics-vrchatunitypackageをインポートする)
   * [2. 触覚スーツ用Prefabをアバターに合わせて配置していく](#2-触覚スーツ用prefabをアバターに合わせて配置していく)
   * [3. VRCHapticsHelperを使ってアバターをセットアップする](#3-vrchapticshelperを使ってアバターをセットアップする)
+  * [4. アバターをVRChatにアップロードし、動作確認する](#4-アバターをvrchatにアップロードし、動作確認する)
 * [デモワールド](#デモワールド)
 * [推奨動作環境](#推奨動作環境)
-* [使用前の注意事項](#使用前の注意事項)
+* [【重要】使用前の注意事項](#[重要]使用前の注意事項)
 * [利用規約](#利用規約)
 * [クレジット](#クレジット)
 
@@ -44,9 +45,9 @@ VRChatアバターに設定するための各種PrefabとUnityエディター拡
 
 | デバイス名称      | 説明           | 対応／未対応 |
 | ----------------- | -------------- | ------------ |
-| Tactot            | 胴体           | *対応*       |
-| Tactosy           | 両腕           | *対応*       |
-| Tactal            | 頭             | *対応*       |
+| Tactot            | 胴体           | 対応         |
+| Tactosy           | 両腕           | 対応         |
+| Tactal            | 頭             | 対応         |
 | Tactosy for Hands | グローブ(両手) | 未対応       |
 | Tactosy for Feet  | 両足           | 未対応       |
 
@@ -56,6 +57,13 @@ Tactosy for Hands及びTactosy for Feetの2種類はまだデバイスを入手�
 1. 触覚ベストやアームデバイスに接近したオブジェクトをVRChat上のアバターカメラで撮影し、RenderTextureを画面上の固定位置に表示
 2. そのRenderTextureをVRCHapticsアプリで画面キャプチャー
 3. 色情報→振動に変換してbHapticsデバイスを制御
+
+## 内容物
+
+- VRCHaptics.exe --- アプリ本体
+- VRCHaptics_settings.xml --- VRCHapicsの設定ファイル
+- VRCHaptics-VRChat.unitypackage --- VRChat用アセットUnityPackage
+- readme.txt --- 説明書
 
 ## 使い方
 
@@ -93,10 +101,10 @@ Tactosy for Hands及びTactosy for Feetの2種類はまだデバイスを入手�
 起動後、場合によってはキャプチャするアプリケーションにVRChatが選択されていない事があります。
 その場合は以下の手順でVRChatを選択して下さい。
 
-1. 上部のマウスカーソルを合わせると「Change Application」と表示される部分でマウスを左クリック  
+1. 上部のマウスカーソルを合わせると「Change Application」と表示される赤枠の部分でマウスを左クリック  
    ![VRCHaptics_02](images\VRCHaptics_02.png)
 
-2. アプリケーション一覧が表示されるのでスクロールして起動中のVRChatを選択する。  
+2. 起動中のアプリケーション一覧が表示されるので、一覧から起動中のVRChatを選択する。  
    ![VRCHaptics_03](images\VRCHaptics_03.png)
 
 ### 4. 設定するデバイスの選択
@@ -114,10 +122,12 @@ Tactosy for Hands及びTactosy for Feetの2種類はまだデバイスを入手�
 ### 6. 振動強度を変更
 
 1. Powerスライダーをドラッグして数値を変更する
+   ![VRCHaptics_07](images\VRCHaptics_07.png)
 
 ### 7. アプリのClip位置を調節する
 
 1. Clip PositionのX,Y,W,Hスライダーをドラッグして数値を調整する。
+   ※基本的にはデフォルトのままでOK
 
    | パラメーター | 説明                                   |
    | ------------ | -------------------------------------- |
@@ -129,17 +139,12 @@ Tactosy for Hands及びTactosy for Feetの2種類はまだデバイスを入手�
    なお、右のテキストボックスの数値を直接入力しても変更可能。
 
 2. デフォルトの状態に戻すにはDefaultボタンを押下して下さい。
+   ![VRCHaptics_08](images\VRCHaptics_08.png)
 
 ### 8. アプリケーションを終了する
 
 1. 右上の✕ボタンを押してアプリケーションを閉じる。
    設定したパラメーターは保存され次回起動時に自動で読み込まれます。
-
-## 内容物
-* VRCHaptics.exe --- アプリ本体
-* VRCHaptics_settings.xml --- VRCHapicsの設定ファイル
-* VRCHaptics-VRChat.unitypackage --- VRChat用アセットUnityPackage
-* readme.txt --- 説明書
 
 ## VRCHaptics対応アバターセットアップ手順
 
@@ -147,6 +152,7 @@ Tactosy for Hands及びTactosy for Feetの2種類はまだデバイスを入手�
 
 ### 2. 触覚スーツ用Prefabをアバターに合わせて配置していく  
 PrefabにはHidden(可視化モデル無し)とVisualized(可視化モデル有り)の2パターンがあります。
+Hidden(可視化モデル無し)の方が触覚スーツの動作は安定しますが、他人から動作状況が見えないので他人にフィードバックを返したい場合にVisuallized(可視化モデル有り)を利用して下さい。
 
 | 名称                                  | モデル | 部位         |
 | ------------------------------------- | ------ | ------------ |
@@ -159,21 +165,26 @@ PrefabにはHidden(可視化モデル無し)とVisualized(可視化モデル有�
 | VRCHaptics_RightArm_visualized.prefab | 表示   | 右腕         |
 | VRCHaptics_Head_visualized.prefab     | 表示   | ゴーグル(頭) |
 
-アバターのそれぞれの部位にPrefabを配置して、位置・角度・スケールを合わせます。
-
-また、モデルのサイズを変更した場合は内包しているカメラのSizeもモデルに合わせて調整して下さい。
+1. アバターのそれぞれの部位にPrefabを配置し、位置・角度・スケールを合わせます。
+2. モデルのサイズを変更した場合、内包しているカメラのSizeもモデルに合わせて調整します。
 
 ### 3. VRCHapticsHelperを使ってアバターをセットアップする
 
 1. Unityの上部メニューから `Tools/VRCHapticsHelper` を選択してウィンドウを開く
 2. セットアップ対象のアバターを「アバター」欄にドラッグ＆ドロップする
 3. 先程シーンに配置したHidden or VisualizedのPrefabを「Vest」「LeftArm」「RightArm」「Head」欄にそれぞれドラッグ＆ドロップする  
-   `※デバイスの無い部分は空白のままでOK`
+   `※触覚デバイスを持っていない箇所は空白のままでOK`
 4. 「セットアップ」ボタンを押下する
 5. セットアップ完了のポップアップが出れば完了。  
    `※エラーが出る場合は、エラーメッセージに従って修正後再度セットアップボタンを押す。`
 
+### 4. アバターをVRChatにアップロードし、動作確認する
+
+PostProcessing(Bloomエフェクト等)のかかっていないワールドでテストを行って下さい。
+
 ## デモワールド
+
+アバターを作成していなくても、以下のワールドのデモアバターを利用して触覚デバイスの動作を確認できます。
 
 [https://www.vrchat.net/home/world/wrld_e8df3120-6ea0-47ab-b30d-00b2a7a6d305](https://www.vrchat.net/home/world/wrld_e8df3120-6ea0-47ab-b30d-00b2a7a6d305)
 
@@ -184,7 +195,7 @@ PrefabにはHidden(可視化モデル無し)とVisualized(可視化モデル有�
 * GPU: Nvidia GeForce GTX1060 以上
 * CPU: Intel Core i7 以上
 
-## 使用前の注意事項
+## 【重要】使用前の注意事項
 元々、触覚スーツbHapticsに非対応のVRChat等のアプリケーションを半ば無理やり対応させている為、動作条件にいくつか制限があります。
 以下をご了承の上ご利用下さい。
 
@@ -195,11 +206,13 @@ PrefabにはHidden(可視化モデル無し)とVisualized(可視化モデル有�
 
 * **PostProcessing（主にBloomやColorGrading)が有効**のワールドでは誤動作する場合があります。（判定用テクスチャの色が変化してしまうため）
 
-* タッチ位置可視化用のPrefab(Visualized)には、仕様上LocalPlayerレイヤーを描画するカメラを使用しているため、使用者のアバター自身も写り込んでしまいます。  
+* **タッチ位置可視化用Prefab(Visualized)**にはアバターカメラを利用している為、VRChatでフレンドの人以外には正しくタッチ情報が表示されません。
+
+* **タッチ位置可視化用Prefab(Visualized)**には、仕様上LocalPlayerレイヤーを描画するカメラを使用しているため、使用者のアバター自身のタッチも反映されてしまいます。  
 
   **振動制御には別の判定用カメラを使用しているので、自分のタッチで振動することはありませんが、アバターに両面描画シェーダーを使用していたり複雑なアバターの場合は髪や服などがタッチ位置として写り込んでしまう可能性**があるのでその場合はHidden Prefabをご利用下さい。
 
-* **VRモード&フルスクリーン起動**での動作を想定しています。  
+* デフォルト設定では**VRモード&フルスクリーン起動**での動作を想定しています。  
   フルスクリーンでない場合は、Shiftキーを押しながらVRChatを起動し、Windowedのチェックを外して起動して下さい。  
   また、デスクトップモードで使用する場合はClip Positionの範囲を調整してください。
 
