@@ -126,7 +126,7 @@ Tactosy for Hands及びTactosy for Feetの2種類はまだデバイスを入手�
 
 ### 7. アプリのClip位置を調節する
 
-1. Clip PositionのX,Y,W,Hスライダーをドラッグして数値を調整する。
+1. Clip PositionのX,Y,W,Hスライダーをドラッグして数値を調整する。  
    ※基本的にはデフォルトのままでOK
 
    | パラメーター | 説明                                   |
