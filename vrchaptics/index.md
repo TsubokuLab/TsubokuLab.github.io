@@ -6,7 +6,7 @@ tagline: 触覚スーツ「bHaptics」をVRChatで動作させるアプリ
 
 ---
 
-![vrchaptics_vrchat](images\vrchaptics_vrchat.jpg)
+<iframe width="832" height="468" src="https://www.youtube.com/embed/PCnYJPk400I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 * [概要](#概要)
 * [仕組み](#仕組み)
@@ -31,11 +31,7 @@ tagline: 触覚スーツ「bHaptics」をVRChatで動作させるアプリ
 * [利用規約](#利用規約)
 * [クレジット](#クレジット)
 
-------
-
-## 使い方まとめ動画
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PCnYJPk400I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+## 
 
 ## 概要
 
