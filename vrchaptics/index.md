@@ -23,10 +23,11 @@ tagline: 触覚スーツ「bHaptics」をVRChatで動作させるアプリ
   * [7. アプリのClip位置を調節する](#7-アプリのClip位置を調節する)
   * [8. アプリケーションを終了する](#8-アプリケーションを終了する)
 * [VRCHaptics対応アバターセットアップ手順](#vrchaptics対応アバターセットアップ手順)
-  * [1. VRCHaptics-VRChat.unitypackageをインポートする](#1-vrchaptics-vrchatunitypackageをインポートする)
-  * [2. 触覚スーツ用Prefabをアバターに合わせて配置していく](#2-触覚スーツ用prefabをアバターに合わせて配置していく)
-  * [3. VRCHapticsHelperを使ってアバターをセットアップする](#3-vrchapticshelperを使ってアバターをセットアップする)
-  * [4. アバターをVRChatにアップロードし、動作確認する](#4-アバターをvrchatにアップロードし動作確認する)
+  * [1. 通常通りVRChatアバターを用意する](#1-通常通りvrchatアバターを用意する)
+  * [2. VRCHaptics-VRChat.unitypackageをインポートする](#2-vrchaptics-vrchatunitypackageをインポートする)
+  * [3. 触覚スーツ用Prefabをアバターに合わせて配置していく](#3-触覚スーツ用prefabをアバターに合わせて配置していく)
+  * [4. VRCHapticsHelperを使ってアバターをセットアップする](#4-vrchapticshelperを使ってアバターをセットアップする)
+  * [5. アバターをVRChatにアップロードし、動作確認する](#5-アバターをvrchatにアップロードし動作確認する)
 * [デモワールド](#デモワールド)
 * [推奨動作環境](#推奨動作環境)
 * [【重要】使用前の注意事項](#重要使用前の注意事項)
@@ -150,9 +151,13 @@ Tactosy for Hands及びTactosy for Feetの2種類はまだデバイスを入手�
 
 ## VRCHaptics対応アバターセットアップ手順
 
-### 1. VRCHaptics-VRChat.unitypackageをインポートする  
+<iframe width="832" height="468" src="https://www.youtube.com/embed/R5YIj--9lyY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-### 2. 触覚スーツ用Prefabをアバターに合わせて配置していく  
+### 1. 通常通りVRChatアバターを用意する
+
+### 2. VRCHaptics-VRChat.unitypackageをインポートする
+
+### 3. 触覚スーツ用Prefabをアバターに合わせて配置していく  
 PrefabにはHidden(可視化モデル無し)とVisualized(可視化モデル有り)の2パターンがあります。  
 Hidden(可視化モデル無し)の方が触覚スーツの動作は安定しますが、他人から動作状況が見えないので他人にフィードバックを返したい場合にVisuallized(可視化モデル有り)を利用して下さい。
 
@@ -172,7 +177,7 @@ Hidden(可視化モデル無し)の方が触覚スーツの動作は安定しま
 1. アバターのそれぞれの部位にPrefabを配置し、位置・角度・スケールを合わせます。
 2. モデルのサイズを変更した場合、内包しているカメラのSizeもモデルに合わせて調整します。
 
-### 3. VRCHapticsHelperを使ってアバターをセットアップする
+### 4. VRCHapticsHelperを使ってアバターをセットアップする
 
 1. Unityの上部メニューから `Tools/VRCHapticsHelper` を選択してウィンドウを開く
 2. セットアップ対象のアバターを「アバター」欄にドラッグ＆ドロップする
@@ -182,7 +187,7 @@ Hidden(可視化モデル無し)の方が触覚スーツの動作は安定しま
 5. セットアップ完了のポップアップが出れば完了。  
    `※エラーが出る場合は、エラーメッセージに従って修正後再度セットアップボタンを押す。`
 
-### 4. アバターをVRChatにアップロードし、動作確認する
+### 5. アバターをVRChatにアップロードし、動作確認する
 
 PostProcessing(Bloomエフェクト等)のかかっていないワールドでテストを行って下さい。
 
