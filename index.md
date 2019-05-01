@@ -8,7 +8,7 @@ title: TsubokuLab Assets
 # VRCTools
 VRChat関連アセット
 
-## VRCHaptics
+## [VRCHaptics](https://tsubokulab.github.io/vrchaptics/)
 触覚デバイスbHapticsをVRChatで使用するためのアプリ＆UnityAssetsのセット。
 
 ## YTLiveOSC

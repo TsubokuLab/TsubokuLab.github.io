@@ -33,6 +33,10 @@ tagline: 触覚スーツ「bHaptics」をVRChatで動作させるアプリ
 
 ------
 
+## 使い方まとめ動画
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PCnYJPk400I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## 概要
 
 bHaptics社の販売する触覚スーツ([https://www.bhaptics.com/](https://www.bhaptics.com/))をVRChat等のソフトと連動して動作させるためのソフトウェアです。  
@@ -73,7 +77,7 @@ Tactosy for Hands及びTactosy for Feetの2種類はまだデバイスを入手�
 
 2. **歯車マーク**をクリックして設定画面を表示する  
 
-   ![bHapticsPlayer_04](images\bHapticsPlayer_04.png)
+   ![bHapticsPlayer_05](images\bHapticsPlayer_05.png)
 
 3. デバイスの電源ボタンを押していき、**Scanned Devices**に表示されたら**Pair**ボタンを押下してペアリングを完了させる。  
 
@@ -214,9 +218,12 @@ PostProcessing(Bloomエフェクト等)のかかっていないワールドで�
 
   **振動制御には別の判定用カメラを使用しているので、自分のタッチで振動することはありませんが、アバターに両面描画シェーダーを使用していたり複雑なアバターの場合は髪や服などがタッチ位置として写り込んでしまう可能性**があるのでその場合はHidden Prefabをご利用下さい。
 
-* デフォルト設定では**VRモード&フルスクリーン起動**での動作を想定しています。  
+* デフォルト設定では**VRモード&フルスクリーン起動(16:9)**での動作を想定しています。  
   フルスクリーンでない場合は、Shiftキーを押しながらVRChatを起動し、Windowedのチェックを外して起動して下さい。  
   また、デスクトップモードで使用する場合はClip Positionの範囲を調整してください。
+
+* HTC VIVE & SteamVRでのテストしか行えていない為、それ以外の環境では不具合が出る可能性があります。  
+  不具合があった場合はご報告頂けると嬉しいです。
 
 
 
