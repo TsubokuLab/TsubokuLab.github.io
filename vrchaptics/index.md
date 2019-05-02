@@ -10,6 +10,8 @@ tagline: 触覚スーツ「bHaptics」をVRChatで動作させるアプリ
 
 -----
 
+![icon256px.png](images/icon256px.png)
+
 * [概要](#概要)
 * [仕組み](#仕組み)
 * [内容物](#内容物)
@@ -57,6 +59,9 @@ VRChatアバターに設定するための各種PrefabとUnityエディター拡
 Tactosy for Hands及びTactosy for Feetの2種類はまだデバイスを入手出来ていないので  未対応。
 
 ## 仕組み
+
+![VRCHaptics_system.png](images/VRCHaptics_system.png)
+
 1. 触覚ベストやアームデバイスに接近したオブジェクトをVRChat上のアバターカメラで撮影し、RenderTextureを画面上の固定位置に表示
 2. そのRenderTextureをVRCHapticsアプリで画面キャプチャー
 3. 色情報→振動に変換してbHapticsデバイスを制御
@@ -66,7 +71,6 @@ Tactosy for Hands及びTactosy for Feetの2種類はまだデバイスを入手�
 - VRCHaptics.exe --- アプリ本体
 - VRCHaptics_settings.xml --- VRCHapicsの設定ファイル
 - VRCHaptics-VRChat.unitypackage --- VRChat用アセットUnityPackage
-- readme.txt --- 説明書
 
 ## 使い方
 
@@ -75,19 +79,15 @@ Tactosy for Hands及びTactosy for Feetの2種類はまだデバイスを入手�
 1. **bHaptics公式サイト**から**[bHaptics Player](https://www.bhaptics.com/download)**アプリをインストールし起動
 
 2. **歯車マーク**をクリックして設定画面を表示する  
-
    ![bHapticsPlayer_05](images\bHapticsPlayer_05.png)
 
 3. デバイスの電源ボタンを押していき、**Scanned Devices**に表示されたら**Pair**ボタンを押下してペアリングを完了させる。  
-
    ![bHapticsPlayer_01](images\bHapticsPlayer_01.png)
 
 4. ペアリングが完了するとデバイスのアイコンに色が着く  
-
    ![bHapticsPlayer_03](images\bHapticsPlayer_03.png)
 
 5. もし腕デバイス(Tactosy)が2台とも右手に設定されたりした場合は、下部の**Device Position**で変更する。  
-
    ![bHapticsPlayer_02](images\bHapticsPlayer_02.png)
 
 これでデバイスの準備は完了です。  
@@ -157,6 +157,8 @@ Tactosy for Hands及びTactosy for Feetの2種類はまだデバイスを入手�
 
 ### 2. VRCHaptics-VRChat.unitypackageをインポートする
 
+![VRCHaptics_09](images\VRCHaptics_09.png)
+
 ### 3. 触覚スーツ用Prefabをアバターに合わせて配置していく  
 PrefabにはHidden(可視化モデル無し)とVisualized(可視化モデル有り)の2パターンがあります。  
 Hidden(可視化モデル無し)の方が触覚スーツの動作は安定しますが、他人から動作状況が見えないので他人にフィードバックを返したい場合にVisuallized(可視化モデル有り)を利用して下さい。
@@ -174,24 +176,41 @@ Hidden(可視化モデル無し)の方が触覚スーツの動作は安定しま
 
 
 
-1. アバターのそれぞれの部位にPrefabを配置し、位置・角度・スケールを合わせます。
-2. モデルのサイズを変更した場合、内包しているカメラのSizeもモデルに合わせて調整します。
+1. アバターのそれぞれの部位にPrefabを配置し、位置・角度・スケールを合わせます。  
+   ![VRCHaptics_11](images\VRCHaptics_11.png)
+   ![VRCHaptics_12](images\VRCHaptics_12.png)
+
+
+   必要に応じてArmature内のHips/Spine/Chestの位置・角度・スケールも調整する
+   ![VRCHaptics_13](images\VRCHaptics_13.png)
+
+   VestのBlendShape「breast」で胸のサイズを調整可能
+   ![VRCHaptics_14](images\VRCHaptics_14.png)
+   ![VRCHaptics_15](images\VRCHaptics_15.png)
+
+   同様に腕・頭の触覚デバイスも位置・角度・スケールを調整して配置
+   ![VRCHaptics_15-2](images\VRCHaptics_15-2.png)
+2. モデルのサイズを変更した場合、内包しているカメラのSizeもモデルに合わせて調整します。  
 
 ### 4. VRCHapticsHelperを使ってアバターをセットアップする
 
-1. Unityの上部メニューから `Tools/VRCHapticsHelper` を選択してウィンドウを開く
+1. Unityの上部メニューから `Tools/VRCHapticsHelper` を選択してウィンドウを開く  
+   ![VRCHaptics_16](images\VRCHaptics_16.png)
 2. セットアップ対象のアバターを「アバター」欄にドラッグ＆ドロップする
 3. 先程シーンに配置したHidden or VisualizedのPrefabを「Vest」「LeftArm」「RightArm」「Head」欄にそれぞれドラッグ＆ドロップする  
-   `※触覚デバイスを持っていない箇所は空白のままでOK`
+   ![VRCHaptics_17](images\VRCHaptics_17.png)
+   ※触覚デバイスを持っていない箇所は空白のままでOK`
 4. 「セットアップ」ボタンを押下する
 5. セットアップ完了のポップアップが出れば完了。  
-   `※エラーが出る場合は、エラーメッセージに従って修正後再度セットアップボタンを押す。`
+   ![VRCHaptics_19](images\VRCHaptics_19.png)`※エラーが出る場合は、エラーメッセージに従って修正後再度セットアップボタンを押す。`
 
 ### 5. アバターをVRChatにアップロードし、動作確認する
 
 PostProcessing(Bloomエフェクト等)のかかっていないワールドでテストを行って下さい。
 
 ## デモワールド
+
+![DemoWorld_01.png](images/DemoWorld_01.png)
 
 アバターを作成していなくても、以下のワールドのデモアバターを利用して触覚デバイスの動作を確認できます。
 
