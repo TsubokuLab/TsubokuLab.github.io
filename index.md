@@ -2,7 +2,7 @@
 layout: default
 title: TsubokuLab Assets
 subtitle: "メディアアーティスト坪倉輝明のVRChat向け制作物まとめ"
-permalink: /vrchaptics
+permalink: 
 ---
 
 # pixivFANBOX
