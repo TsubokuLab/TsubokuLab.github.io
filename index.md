@@ -1,14 +1,14 @@
 ---
 layout: default
 title: TsubokuLab Assets
+subtitle: "メディアアーティスト坪倉輝明のVRChat向け制作物まとめ"
+permalink: /vrchaptics
 ---
-
-メディアアーティスト坪倉輝明のVRChat向け制作物まとめ
 
 # pixivFANBOX
 
 pixivFANBOXにて、開発中のアプリやVRChat用アセット等を支援者向けに公開しています。
-https://www.pixiv.net/fanbox/creator/5179544
+[https://www.pixiv.net/fanbox/creator/5179544](https://www.pixiv.net/fanbox/creator/5179544)
 
 <img src="images/fanbox.jpg" width="70%">
 
