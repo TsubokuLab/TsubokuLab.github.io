@@ -4,7 +4,7 @@ title: TsubokuLab Assets
 tagline: "メディアアーティスト坪倉輝明のVRChat向け制作物まとめ"
 author: Teruaki Tsubokura
 description: "メディアアーティスト坪倉輝明のVRChat向け制作物まとめ"
-image: images/fanbox.jpg
+image: http://github.teruaki-tsubokura.com/images/fanbox.jpg
 ---
 
 # pixivFANBOX
