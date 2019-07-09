@@ -1,10 +1,10 @@
 ---
 layout: default
 title: TsubokuLab Assets
-subtitle: "メディアアーティスト坪倉輝明のVRChat向け制作物まとめ"
+tagline: "メディアアーティスト坪倉輝明のVRChat向け制作物まとめ"
 author: Teruaki Tsubokura
-simple_search: 坪倉輝明 TeruakiTsubokura VRChat kohack_v
 description: "メディアアーティスト坪倉輝明のVRChat向け制作物まとめ"
+image: images/fanbox.jpg
 ---
 
 # pixivFANBOX
