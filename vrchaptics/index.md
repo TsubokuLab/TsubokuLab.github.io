@@ -6,7 +6,9 @@ tagline: 触覚スーツ「bHaptics」をVRChatで動作させるアプリ
 
 ---
 
-<iframe width="100%" height="auto" src="https://www.youtube.com/embed/PCnYJPk400I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="iframe-responsive">
+<iframe width="832" height="468" src="https://www.youtube.com/embed/PCnYJPk400I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 -----
 
@@ -151,7 +153,9 @@ Tactosy for Hands及びTactosy for Feetの2種類はまだデバイスを入手�
 
 ## VRCHaptics対応アバターセットアップ手順
 
-<iframe width="100%" height="auto" src="https://www.youtube.com/embed/R5YIj--9lyY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="iframe-responsive">
+<iframe width="832" height="468" src="https://www.youtube.com/embed/R5YIj--9lyY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 ### 1. 通常通りVRChatアバターを用意する
 
