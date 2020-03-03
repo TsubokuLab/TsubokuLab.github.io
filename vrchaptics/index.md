@@ -40,6 +40,9 @@ tagline: 触覚スーツ「bHaptics」をVRChatで動作させるアプリ
 
 ## 概要
 
+VRCHaptics ソフトウェア配布場所：https://www.pixiv.net/fanbox/creator/5179544/post/371411
+※pixivFANBOX支援者限定
+
 bHaptics社の販売する触覚スーツ([https://www.bhaptics.com/](https://www.bhaptics.com/))をVRChat等のソフトと連動して動作させるためのソフトウェアです。  
 VRChatアバターに設定するための各種PrefabとUnityエディター拡張スクリプトの専用アセット(UnityPackage)と共に使用します。
 
@@ -228,8 +231,34 @@ PostProcessing(Bloomエフェクト等)のかかっていないワールドで�
 以下をご了承の上ご利用下さい。
 
 * ウィンドウキャプチャを使用している為、CPUリソースを多く消費します。  
-  スペックが不足していたりVRChatの高負荷なワールド・人の多い場所ではVRの動作に影響が出る可能性があります。
-
+  
+VRChatもVRCHapticsも1番目のCPUのスレッドに負荷が集中するので、重く感じる場合は以下のように使用するCPUのプロセッサを変更することで改善する場合があります。
+  
+  * VRCHaptics.exeのショートカットを作成して、**パスの前に**
+  
+    ```
+    C:\Windows\System32\cmd.exe /C start "" /affinity 8000 (VRCHaptics.exeへのパス)
+    ```
+  
+    のように追加してショートカットから起動します。
+  
+    /affinityの8000という数字は16進数で使用するプロセッサを指定しています。
+    8000は32768の16進数で、16番目のプロセッサのみを使用する事を意味します。
+    ![CPU_affinity_02](images\CPU_affinity_02.png)
+  
+    ビット演算のように、使用したいプロセッサの数字を足していって最後に合計の数字を16進数に変換したものを/affinityの引数として渡してやればOKです。
+    ![CPU_affinity_01](images\CPU_affinity_01.png)
+  
+    16番目のプロセッサだけを使う場合は「8000」
+  
+    8番目のプロセッサだけを使う場合は「80」
+  
+    3・4番目のプロセッサを使いたい場合は4+8=12(10進数) → 「C」(16進数)というような風に指定します。
+  
+    1番目のプロセッサを使用しない設定にすると軽くなると思います。
+    CPUのプロセッサ数はタスクマネージャー > パフォーマンス > CPU の論理プロセッサ数で確認出来ます。
+    ![CPU_affinity_03](images\CPU_affinity_03.png)
+  
 * 画面上にタッチ情報を表示するため、VRChatの**StreamCamera**との併用ができません。(画面が上書きされてしまう為)
 
 * **PostProcessing（主にBloomやColorGrading)が有効**のワールドでは誤動作する場合があります。（判定用テクスチャの色が変化してしまうため）
@@ -246,8 +275,6 @@ PostProcessing(Bloomエフェクト等)のかかっていないワールドで�
 
 * HTC VIVE & SteamVRでのテストしか行えていない為、それ以外の環境では不具合が出る可能性があります。  
   不具合があった場合はご報告頂けると嬉しいです。
-
-
 
 ## 利用規約
 
@@ -267,3 +294,4 @@ VRCHaptics.exeには @hecomi様 の **uWindowCapture** を使用させて頂い�
 
 * UnityWearChangeSupporter (MIT)
   https://neon-izm.booth.pm/items/1273588
+
