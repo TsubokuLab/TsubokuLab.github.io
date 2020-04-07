@@ -2,7 +2,7 @@
 
 layout: default  
 title: VRCHaptics  
-tagline: 触覚スーツ「bHaptics」をVRChatで動作させるアプリ
+tagline: 触覚スーツ「bHaptics」をVRChatで動作させるアプリ</br><a href="http://translate.google.com/translate?hl=ja&sl=auto&tl=en&u=http%3A%2F%2Fgithub.teruaki-tsubokura.com%2Fvrchaptics%2F"> English</a>
 
 ---
 
