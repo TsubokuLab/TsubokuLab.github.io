@@ -1,7 +1,7 @@
 ---
 layout: default
 title: TsubokuLab Assets
-tagline: "メディアアーティスト坪倉輝明のVRChat向け制作物まとめ</br><a href="http://translate.google.com/translate?hl=ja&sl=auto&tl=en&u=http%3A%2F%2Fgithub.teruaki-tsubokura.com%2F" style="color:white;text-decoration:underline;">English(Google Translate)</a>"
+tagline: "メディアアーティスト坪倉輝明のVRChat向け制作物まとめ</br><a href='http://translate.google.com/translate?hl=ja&sl=auto&tl=en&u=http%3A%2F%2Fgithub.teruaki-tsubokura.com%2F' style='color:white;text-decoration:underline;'>English(Google Translate)</a>"
 author: Teruaki Tsubokura
 description: "メディアアーティスト坪倉輝明のVRChat向け制作物まとめ"
 image: http://github.teruaki-tsubokura.com/images/github_thumbnail.png
