@@ -59,7 +59,7 @@ VRChatアバターに設定するための各種PrefabとUnityエディター拡
 | Tactosy for Hands | グローブ(両手) | 未対応       |
 | Tactosy for Feet  | 両足           | 未対応       |
 
-Tactosy for Hands及びTactosy for Feetの2種類はまだデバイスを入手出来ていないので  現在は未対応。
+Tactosy for Hands及びTactosy for Feetの2種類は、**2020年6月現在、対応作業中**です。
 
 ## 仕組み
 
@@ -277,12 +277,61 @@ VRChatもVRCHapticsも1番目のCPUのスレッドに負荷が集中するので
 * HTC VIVE & SteamVRでのテストしか行えていない為、それ以外の環境では不具合が出る可能性があります。  
   不具合があった場合はご報告頂けると嬉しいです。
 
+## トラブルシューティング
+
+※実際にあった問い合わせを元に作成しています。
+
+### デバイスがConnectedにならない
+
+* bHaptics Playerアプリがインストールされているか確認する。
+* bHaptics Player上でデバイスのペアリングが完了しているか確認する。
+* bHapticsデバイスのバージョンと、VRCHapticsで使用しているbHaptics Pluginのバージョンの相性によって、接続状態が取得できない場合があるようです。
+  Connectedの表示にならなくても、bHaptics Playerアプリ上で接続状態になっていれば、内部的には接続状態なので動作には影響ありません。
+
+### デバイスがConnectedになっているが動作しない
+
+	* VRCHapticsアプリ上で、Powerが0以上になっているか確認する。
+	* VRCHapticsアプリ上でEnableチェックが入っている確認する。
+	* bHaptics PlayerのMaster Power Volume がMAXになっているか確認する。
+	* bHaptics PlayerのAudio To HapticモードがOffになっているか確認する。 
+
+![VRCHaptics_troubleshoot_01](C:\Users\tsubokura\Documents\Github\tsubokulab.github.io\vrchaptics\images\VRCHaptics_troubleshoot_01.png)
+
+### VRChat画面の左上の赤黒ヒットエリアが表示されない
+
+* VRChatが16:9の全画面表示で起動しているか確認。
+
+* VRCHaptics用にアバターセットアップが正常に完了しているか確認。
+
+* VRChat内でStreamCameraを使用していないか確認。
+
+* VRCHapticsHelperでアバターをセットアップすると、VRCHaptics_HeadJointが目線の0.3m前方に設定されます。
+  VRC_AvatarDescriptorで視点の設定をしていなかったり、アバターのScaleを変更している場合正しく目線の先に来ていない場合があります。
+  以下の画像を参考に、VRCHaptics_HeadJointの位置を目線の先に変更して下さい。
+
+  ![HeadJoint](C:\Users\tsubokura\Documents\Github\tsubokulab.github.io\vrchaptics\images\HeadJoint.png)
+
+## 既知の不具合
+
+* VRChatがUnity2018にアップデートした影響で、シェーダーキーワード256個制限関連の不具合が出る事がある。シェーダーを沢山使っているワールドや、人が沢山集まる場所での動作に影響が出る可能性。
+* アバターセットアップ用のVRCHapticsHelperが、Unity2018ではセットアップ時にエラーが出る。次回更新まではUnity2017を使用して下さい。
+* SteamVRのHMD解像度を変更すると、赤黒ヒットエリアのサイズも変わってしまいます。
+  現状はClipPositionの調整で対応して下さい。
+
 ## 利用規約
 
 * 個人利用に限り商用利用可能（法人利用はお問い合わせ下さい）
 * 中のデータを取り出せる形での再配布は不可(VRChatのアバターペデスタル等へは使用可能)
 * 改変可能
 * 本データの利用によって生じた損害等の一切の責任を負いかねます
+
+## VRCHaptics利用者コミュニティ
+
+有志のVRCHapticsユーザーが作ってくれたDiscordサーバーがあります。
+情報交換などはこちらへどうぞ。
+
+* 触覚スーツ愛好会
+  https://discord.gg/FHZ2nbF
 
 ## クレジット
 
