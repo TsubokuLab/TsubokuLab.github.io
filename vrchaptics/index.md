@@ -177,7 +177,7 @@ Hidden(可視化モデル無し)の方が触覚スーツの動作は安定しま
 | VRCHaptics_RightArm_visualized.prefab | 表示   | 右腕         |
 | VRCHaptics_Head_visualized.prefab     | 表示   | ゴーグル(頭) |
 
-
+  
 
 1. アバターのそれぞれの部位にPrefabを配置し、位置・角度・スケールを合わせます。  
    ![VRCHaptics_11](images\VRCHaptics_11.png)
@@ -201,7 +201,7 @@ Hidden(可視化モデル無し)の方が触覚スーツの動作は安定しま
    ![VRCHaptics_16](images\VRCHaptics_16.png)
 2. セットアップ対象のアバターを「アバター」欄にドラッグ＆ドロップする
 3. 先程シーンに配置したHidden or VisualizedのPrefabを「Vest」「LeftArm」「RightArm」「Head」欄にそれぞれドラッグ＆ドロップする  
-   ![VRCHaptics_17](images\VRCHaptics_17.png)
+   ![VRCHaptics_17](images\VRCHaptics_17.png)  
    ※触覚デバイスを持っていない箇所は空白のままでOK`
 4. 「セットアップ」ボタンを押下する
 5. セットアップ完了のポップアップが出れば完了。  
@@ -256,9 +256,10 @@ PostProcessing(Bloomエフェクト等)のかかっていないワールドで�
 
   のように追加してショートカットから起動します。  
   /affinityの8000という数字は16進数で使用するプロセッサを指定しています。  
-  8000は32768の16進数で、16番目のプロセッサのみを使用する事を意味します。![CPU_affinity_02](images\CPU_affinity_02.png)
+  8000は32768の16進数で、16番目のプロセッサのみを使用する事を意味します。  
+  ![CPU_affinity_02](images\CPU_affinity_02.png)  
   ビット演算のように、使用したいプロセッサの数字を足していって最後に合計の数字を16進数に変換したものを/affinityの引数として渡してやればOKです。  
-  Windowsの電卓アプリで「プログラマー」電卓で入力すると簡単です。![CPU_affinity_01](images\CPU_affinity_01.png)
+  Windowsの電卓アプリで「プログラマー」電卓で入力すると簡単です。  ![CPU_affinity_01](images\CPU_affinity_01.png)  
   16番目のプロセッサだけを使う場合は「8000」  
   8番目のプロセッサだけを使う場合は「80」  
   3・4番目のプロセッサを使いたい場合は4+8=12(10進数) → 「C」(16進数)というような風に指定します。  
