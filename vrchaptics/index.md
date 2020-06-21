@@ -40,11 +40,11 @@ tagline: 触覚スーツ「bHaptics」をVRChatで動作させるアプリ</br><
 
 ## 概要
 
-**VRCHaptics ソフトウェア配布場所：https://www.pixiv.net/fanbox/creator/5179544/post/371411**
+**VRCHaptics ソフトウェア配布場所：[https://www.pixiv.net/fanbox/creator/5179544/post/371411](https://www.pixiv.net/fanbox/creator/5179544/post/371411)**
 ※VRCHapticsは現在クローズドテスト中です。pixivFANBOX 500円以上の支援者へ限定公開しています。
 
 bHaptics社の販売する触覚スーツ([https://www.bhaptics.com/](https://www.bhaptics.com/))をVRChat等のソフトと連動して動作させるためのソフトウェアです。  
-VRChatアバターに設定するための各種PrefabとUnityエディター拡張スクリプトの専用アセット(UnityPackage)と共に使用します。
+VRChatアバターに設定するための各種PrefabとUnityエディター拡張スクリプト等の専用アセット(UnityPackage)と共に使用します。
 
 ※使用するにはVRChatSDK及びUnityを使ったVRChatのアバターアップロードについての知識が必要です。
 ※正しく動作させるにはいくつか条件があります。[使用前の注意事項](#重要使用前の注意事項)をよくお読み下さい。
