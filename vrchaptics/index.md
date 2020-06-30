@@ -49,15 +49,19 @@ VRChatアバターに設定するための各種PrefabとUnityエディター拡
 ※使用するにはVRChatSDK及びUnityを使ったVRChatのアバターアップロードについての知識が必要です。
 ※正しく動作させるにはいくつか条件があります。[使用前の注意事項](#重要使用前の注意事項)をよくお読み下さい。
 
+<img src="images\aboutTactsuitImage.jpg" alt="aboutTactsuitImage" style="zoom:50%;" />  
+
+[https://www.bhaptics.com/tactsuit/](https://www.bhaptics.com/tactsuit/)  
+
 デバイス対応状況
 
-| デバイス名称      | 説明           | 対応／未対応 |
-| ----------------- | -------------- | ------------ |
-| Tactot            | 胴体           | 対応         |
-| Tactosy           | 両腕           | 対応         |
-| Tactal            | 頭             | 対応         |
-| Tactosy for Hands | グローブ(両手) | 未対応       |
-| Tactosy for Feet  | 両足           | 未対応       |
+| デバイス名称      | 略称                | 説明           | 対応／未対応 |
+| ----------------- | ------------------- | -------------- | ------------ |
+| Tactot            | Vest                | 胴体           | 対応         |
+| Tactosy for Arms  | ForearmL / ForearmR | 両腕           | 対応         |
+| Tactal            | Head                | 頭             | 対応         |
+| Tactosy for Hands | HandL / HandR       | グローブ(両手) | 未対応       |
+| Tactosy for Feet  | FootL / FootR       | 両足           | 未対応       |
 
 Tactosy for Hands及びTactosy for Feetの2種類は、**2020年6月現在、対応作業中**です。
 
@@ -142,8 +146,11 @@ Tactosy for Hands及びTactosy for Feetの2種類は、**2020年6月現在、対
    | W            | 切り出しサイズの横幅pixel数。          |
    | H            | 切り出しサイズの縦幅pixel数。          |
 
-   なお、右のテキストボックスの数値を直接入力しても変更可能。
-
+   なお、右のテキストボックスの数値を直接入力しても変更可能。  
+左上の赤黒ドットのレイアウトは以下のようになっています。  
+   
+   ![VRCHaptics_RedDots](images\VRCHaptics_RedDots.png)   
+   
 2. デフォルトの状態に戻すにはDefaultボタンを押下して下さい。  
    ![VRCHaptics_08](images\VRCHaptics_08.png)
 
@@ -242,8 +249,10 @@ PostProcessing(Bloomエフェクト等)のかかっていないワールドで�
 
 * デフォルト設定では**VRモード&フルスクリーン起動(16:9)**での動作を想定しています。  
   フルスクリーンでない場合は、Shiftキーを押しながらVRChatを起動し、Windowedのチェックを外して起動して下さい。  
-  また、デスクトップモードで使用する場合はClip Positionの範囲を調整してください。
+  ![VRCHaptics_20](images\VRCHaptics_20.png)　　
 
+  また、デスクトップモードで使用する場合はClip Positionの範囲を調整してください。
+  
 * ウィンドウキャプチャを使用している為、CPUリソースを多く消費します。  
 
   VRChatもVRCHapticsも1番目のCPUのスレッドに負荷が集中するので、重く感じる場合は以下のように使用するCPUのプロセッサを変更することで改善する場合があります。  
@@ -264,7 +273,7 @@ PostProcessing(Bloomエフェクト等)のかかっていないワールドで�
   8番目のプロセッサだけを使う場合は「80」  
   3・4番目のプロセッサを使いたい場合は4+8=12(10進数) → 「C」(16進数)というような風に指定します。  
   1番目のプロセッサを使用しない設定にすると軽くなると思います。  
-  CPUのプロセッサ数はタスクマネージャー > パフォーマンス > CPU の論理プロセッサ数で確認出来ます。
+  CPUのプロセッサ数はタスクマネージャー > パフォーマンス > CPU の論理プロセッサ数で確認出来ます。  
   ![CPU_affinity_03](images\CPU_affinity_03.png)
 
 * HTC VIVE & SteamVRでのテストしか行えていない為、それ以外の環境では不具合が出る可能性があります。  
@@ -276,9 +285,9 @@ PostProcessing(Bloomエフェクト等)のかかっていないワールドで�
 
 ### デバイスがConnectedにならない
 
-* bHaptics Playerアプリがインストールされているか確認する。
+* **[bHaptics Player](https://www.bhaptics.com/download)**アプリがインストールされているか確認する。
 * bHaptics Player上でデバイスのペアリングが完了しているか確認する。
-* bHapticsデバイスのバージョンと、VRCHapticsで使用しているbHaptics Pluginのバージョンの相性によって、接続状態が取得できない場合があるようです。
+* VRCHapticsで使用しているbHaptics Pluginのバージョンの不具合で、新しいbHapticsデバイス(Tactosy2系列)の接続状態が取得できない場合があるようです。
   Connectedの表示にならなくても、bHaptics Playerアプリ上で接続状態になっていれば、内部的には接続状態なので動作には影響ありません。
 
 ### デバイスがConnectedになっているが動作しない
@@ -288,7 +297,7 @@ PostProcessing(Bloomエフェクト等)のかかっていないワールドで�
 	* bHaptics PlayerのMaster Power Volume がMAXになっているか確認する。
 	* bHaptics PlayerのAudio To HapticモードがOffになっているか確認する。 
 
-![VRCHaptics_troubleshoot_01](C:\Users\tsubokura\Documents\Github\tsubokulab.github.io\vrchaptics\images\VRCHaptics_troubleshoot_01.png)
+![VRCHaptics_troubleshoot_01](images\VRCHaptics_troubleshoot_01.png)
 
 ### VRChat画面の左上の赤黒ヒットエリアが表示されない
 
@@ -302,7 +311,7 @@ PostProcessing(Bloomエフェクト等)のかかっていないワールドで�
   VRC_AvatarDescriptorで視点の設定をしていなかったり、アバターのScaleを変更している場合正しく目線の先に来ていない場合があります。
   以下の画像を参考に、VRCHaptics_HeadJointの位置を目線の先に変更して下さい。
 
-  ![HeadJoint](C:\Users\tsubokura\Documents\Github\tsubokulab.github.io\vrchaptics\images\HeadJoint.png)
+  ![HeadJoint](images\HeadJoint.png)
 
 ## 既知の不具合
 
@@ -310,6 +319,7 @@ PostProcessing(Bloomエフェクト等)のかかっていないワールドで�
 * アバターセットアップ用のVRCHapticsHelperが、Unity2018ではセットアップ時にエラーが出る。次回更新まではUnity2017を使用して下さい。
 * SteamVRのHMD解像度を変更すると、赤黒ヒットエリアのサイズも変わってしまいます。
   現状はClipPositionの調整で対応して下さい。
+* VRCHapticsで使用しているbHaptics Pluginのバージョンの不具合で、新しいbHapticsデバイス(Tactosy2系列)の接続状態が取得できない場合がある。(次回更新で修正予定)
 
 ## 利用規約
 
