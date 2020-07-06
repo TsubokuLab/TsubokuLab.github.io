@@ -292,10 +292,10 @@ PostProcessing(Bloomエフェクト等)のかかっていないワールドで�
 
 ### デバイスがConnectedになっているが動作しない
 
-	* VRCHapticsアプリ上で、Powerが0以上になっているか確認する。
-	* VRCHapticsアプリ上でEnableチェックが入っている確認する。
-	* bHaptics PlayerのMaster Power Volume がMAXになっているか確認する。
-	* bHaptics PlayerのAudio To HapticモードがOffになっているか確認する。 
+* VRCHapticsアプリ上で、Powerが0以上になっているか確認する。
+* VRCHapticsアプリ上でEnableチェックが入っている確認する。
+* bHaptics PlayerのMaster Power Volume がMAXになっているか確認する。
+* bHaptics PlayerのAudio To HapticモードがOffになっているか確認する。 
 
 ![VRCHaptics_troubleshoot_01](images\VRCHaptics_troubleshoot_01.png)
 
