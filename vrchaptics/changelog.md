@@ -1,12 +1,13 @@
 ---
 
 layout: default  
-title: VRCHaptics - Change Log  
-tagline: VRCHaptics 更新履歴</br><a href="http://translate.google.com/translate?hl=ja&sl=auto&tl=en&u=http%3A%2F%2Fgithub.teruaki-tsubokura.com%2Fvrchaptics%2Fchangelog" style="color:white;text-decoration:underline;">English(Google Translate)</a>
-
+title: VRCHaptics
+tagline: 更新履歴</br><a href="http://translate.google.com/translate?hl=ja&sl=auto&tl=en&u=http%3A%2F%2Fgithub.teruaki-tsubokura.com%2Fvrchaptics%2Fchangelog" style="color:white;text-decoration:underline;">English(Google Translate)</a>
 ---
 
-* [v0.2.0](#v0.2.0)
+# 更新履歴
+
+* [v0.2.0](#v020)
 
 -----
 
