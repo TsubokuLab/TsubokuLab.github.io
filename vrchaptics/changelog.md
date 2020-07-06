@@ -19,13 +19,6 @@ tagline: 更新履歴</br><a href="http://translate.google.com/translate?hl=ja&s
 
 * 対応デバイスに「Tactosy for Hands」「Tactosy for Feet」が追加されました。
 
-* VRChatが16:9の全画面表示で起動しているか確認。
-* VRCHaptics用にアバターセットアップが正常に完了しているか確認。
-* VRChat内でStreamCameraを使用していないか確認。
-* VRCHapticsHelperでアバターをセットアップすると、VRCHaptics_HeadJointが目線の0.3m前方に設定されます。
-  VRC_AvatarDescriptorで視点の設定をしていなかったり、アバターのScaleを変更している場合正しく目線の先に来ていない場合があります。
-  以下の画像を参考に、VRCHaptics_HeadJointの位置を目線の先に変更して下さい。
-
 #### 修正
 
 * 使用しているbHaptics Pluginのバージョンを更新(1.4.14)。  
@@ -37,14 +30,15 @@ tagline: 更新履歴</br><a href="http://translate.google.com/translate?hl=ja&s
 * 「Use Depth」チェックボックスを削除。  
   (開発当初に入れていた、タッチ深度に応じて振動強度を変える機能ですが、パーティクル等で動作しない為、一旦消します。)
 
-### VRCHaptics Helper(Unityアセット)
+### VRCHapticsHelper(Unityアセット)
 
 #### 追加
 
 * 接触判定エリアをローカル表示へ。
+* StreamCamera使用中も、自分がカメラ内に写っていればVRCHapticsのヒットエリアが表示されるようになりました。
 * 言語切替ボタンを追加(日本語・英語)
 * ドキュメントへのリンクを追加。
-* エラーチェック機能とエラーメッセージを追加。
+* アバターセットアップのエラーチェック機能とエラーメッセージを追加。
 * 触覚Prefab追加時に、3Dモデルのおおよその位置にObjectが移動されるように。
 
 #### 修正
@@ -57,7 +51,7 @@ tagline: 更新履歴</br><a href="http://translate.google.com/translate?hl=ja&s
 
 #### 削除
 
-* VRCHaptics_HeadJoint.prefabを削除
+* VRCHaptics_HeadJoint.prefabを削除（VRCHaptics_HeadConstraint.prefabに引き継ぎ）
 
 
 
