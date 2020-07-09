@@ -30,7 +30,7 @@ tagline: 更新履歴</br><a href="http://translate.google.com/translate?hl=ja&s
 * 「Use Depth」チェックボックスを削除。  
   (開発当初に入れていた、タッチ深度に応じて振動強度を変える機能ですが、パーティクル等で動作しない為、一旦消します。)
 
-### VRCHapticsHelper(Unityアセット)
+### VRCHaptics用Unityアセット (v0.1.0)
 
 #### 追加
 
@@ -48,6 +48,7 @@ tagline: 更新履歴</br><a href="http://translate.google.com/translate?hl=ja&s
 * VRChatのUnity2018対応に伴い、人が多く集まるワールド等でシェーダーキーワード256個制限関連の不具合が出る事があった為、タッチ判定用シェーダーをシェーダーキーワードを使わない方式へ更新。
 * SteamVRのHMD解像度を変更すると赤黒ヒットエリアの表示サイズが変わってしまっていた為、計算式を見直して表示サイズが変わらないように修正。  
   これにより、ほとんどの場合VRCHapticsのClipPositionはデフォルト設定のままで正しく動作するようになりました。
+* VRCHaptics-Unityというフォルダ名をVRCHapticsAssetsに変更。
 
 #### 削除
 
