@@ -40,7 +40,7 @@ tagline: 触覚スーツ「bHaptics」をVRChatで動作させるアプリ</br><
 
 ## 概要
 
-**VRCHaptics ソフトウェア配布場所：[https://www.pixiv.net/fanbox/creator/5179544/post/371411](https://www.pixiv.net/fanbox/creator/5179544/post/371411)**
+**VRCHaptics ソフトウェア配布場所：[https://tsubokulab.fanbox.cc/posts/1205829](https://tsubokulab.fanbox.cc/posts/1205829)**
 ※VRCHapticsは現在クローズドテスト中です。pixivFANBOX 500円以上の支援者へ限定公開しています。
 
 bHaptics社の販売する触覚スーツ([https://www.bhaptics.com/](https://www.bhaptics.com/))をVRChat等のソフトと連動して動作させるためのソフトウェアです。  
@@ -60,10 +60,10 @@ VRChatアバターに設定するための各種PrefabとUnityエディター拡
 | Tactot            | Vest                | 胴体           | 対応         |
 | Tactosy for Arms  | ForearmL / ForearmR | 両腕           | 対応         |
 | Tactal            | Head                | 頭             | 対応         |
-| Tactosy for Hands | HandL / HandR       | グローブ(両手) | 未対応       |
-| Tactosy for Feet  | FootL / FootR       | 両足           | 未対応       |
+| Tactosy for Hands | HandL / HandR       | グローブ(両手) | 対応         |
+| Tactosy for Feet  | FootL / FootR       | 両足           | 対応         |
 
-Tactosy for Hands及びTactosy for Feetの2種類は、**2020年6月現在、対応作業中**です。
+
 
 ## 仕組み
 
@@ -77,7 +77,7 @@ Tactosy for Hands及びTactosy for Feetの2種類は、**2020年6月現在、対
 
 - VRCHaptics.exe --- アプリ本体
 - VRCHaptics_settings.xml --- VRCHapicsの設定ファイル
-- VRCHaptics-VRChat.unitypackage --- VRChat用アセットUnityPackage
+- VRCHapticsAssets.unitypackage --- VRChat用アセットUnityPackage
 
 ## 使い方
 
@@ -149,7 +149,7 @@ Tactosy for Hands及びTactosy for Feetの2種類は、**2020年6月現在、対
    なお、右のテキストボックスの数値を直接入力しても変更可能。  
 左上の赤黒ドットのレイアウトは以下のようになっています。  
    
-   ![VRCHaptics_RedDots](images\VRCHaptics_RedDots.png)   
+   ![VRCHaptics_RedDots](images\VRCHaptics_RedDots_v0.2.0.png)   
    
 2. デフォルトの状態に戻すにはDefaultボタンを押下して下さい。  
    ![VRCHaptics_08](images\VRCHaptics_08.png)
@@ -161,58 +161,51 @@ Tactosy for Hands及びTactosy for Feetの2種類は、**2020年6月現在、対
 
 ## VRCHaptics対応アバターセットアップ手順
 
-<div class="iframe-responsive"><iframe width="832" height="468" src="https://www.youtube.com/embed/R5YIj--9lyY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="iframe"></iframe></div>
+<div class="iframe-responsive"><iframe width="832" height="468" src="https://www.youtube.com/embed/koXWyfhBztU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="iframe"></iframe></div>
 
 ### 1. 通常通りVRChatアバターを用意する
 
-### 2. VRCHaptics-VRChat.unitypackageをインポートする
+### 2. VRCHapticsAssets.unitypackageをインポートする
 
 ![VRCHaptics_09](images\VRCHaptics_09.png)
 
-### 3. 触覚スーツ用Prefabをアバターに合わせて配置していく  
+### 3. VRCHapticsHelperを使用して触覚デバイス用Prefabを追加  
 PrefabにはHidden(可視化モデル無し)とVisualized(可視化モデル有り)の2パターンがあります。  
 Hidden(可視化モデル無し)の方が触覚スーツの動作は安定しますが、他人から動作状況が見えないので他人にフィードバックを返したい場合にVisuallized(可視化モデル有り)を利用して下さい。
 
-| 名称                                  | モデル | 部位         |
-| ------------------------------------- | ------ | ------------ |
-| VRCHaptics_Vest_hidden.prefab         | 非表示 | ベスト(胴体) |
-| VRCHaptics_LeftArm_hidden.prefab      | 非表示 | 左腕         |
-| VRCHaptics_RightArm_hidden.prefab     | 非表示 | 右腕         |
-| VRCHaptics_Head_hidden.prefab         | 非表示 | ゴーグル(頭) |
-| VRCHaptics_Vest_visualized.prefab     | 表示   | ベスト(胴体) |
-| VRCHaptics_LeftArm_visualized.prefab  | 表示   | 左腕         |
-| VRCHaptics_RightArm_visualized.prefab | 表示   | 右腕         |
-| VRCHaptics_Head_visualized.prefab     | 表示   | ゴーグル(頭) |
+| 部位         | モデル | 名称                                   |
+| ------------ | ------ | -------------------------------------- |
+| ベスト(胴体) | 非表示 | VRCHaptics_Vest_hidden.prefab          |
+| 左腕         | 非表示 | VRCHaptics_LeftArm_hidden.prefab       |
+| 右腕         | 非表示 | VRCHaptics_RightArm_hidden.prefab      |
+| ゴーグル(頭) | 非表示 | VRCHaptics_Head_hidden.prefab          |
+| 左手         | 非表示 | VRCHaptics_LeftHand_hidden.prefab      |
+| 右手         | 非表示 | VRCHaptics_RightHand_hidden.prefab     |
+| 左足         | 非表示 | VRCHaptics_LeftFoot_hidden.prefab      |
+| 右足         | 非表示 | VRCHaptics_RightFoot_hidden.prefab     |
+| ベスト(胴体) | 表示   | VRCHaptics_Vest_visualized.prefab      |
+| 左腕         | 表示   | VRCHaptics_LeftArm_visualized.prefab   |
+| 右腕         | 表示   | VRCHaptics_RightArm_visualized.prefab  |
+| ゴーグル(頭) | 表示   | VRCHaptics_Head_visualized.prefab      |
+| 左手         | 表示   | VRCHaptics_LeftHand_visualized.prefab  |
+| 右手         | 表示   | VRCHaptics_RightHand_visualized.prefab |
+| 左足         | 表示   | VRCHaptics_LeftFoot_visualized.prefab  |
+| 右足         | 表示   | VRCHaptics_RightFoot_visualized.prefab |
 
   
-
-1. アバターのそれぞれの部位にPrefabを配置し、位置・角度・スケールを合わせます。  
-   ![VRCHaptics_11](images\VRCHaptics_11.png)
-   ![VRCHaptics_12](images\VRCHaptics_12.png)
-
-
-   必要に応じてArmature内のHips/Spine/Chestの位置・角度・スケールも調整する
-   ![VRCHaptics_13](images\VRCHaptics_13.png)
-
-   VestのBlendShape「breast」で胸のサイズを調整可能
-   ![VRCHaptics_14](images\VRCHaptics_14.png)
-   ![VRCHaptics_15](images\VRCHaptics_15.png)
-
-   同様に腕・頭の触覚デバイスも位置・角度・スケールを調整して配置
-   ![VRCHaptics_15-2](images\VRCHaptics_15-2.png)
-2. モデルのサイズを変更した場合、内包しているカメラのSizeもモデルに合わせて調整します。  
 
 ### 4. VRCHapticsHelperを使ってアバターをセットアップする
 
 1. Unityの上部メニューから `Tools/VRCHapticsHelper` を選択してウィンドウを開く  
-   ![VRCHaptics_16](images\VRCHaptics_16.png)
 2. セットアップ対象のアバターを「アバター」欄にドラッグ＆ドロップする
-3. 先程シーンに配置したHidden or VisualizedのPrefabを「Vest」「LeftArm」「RightArm」「Head」欄にそれぞれドラッグ＆ドロップする  
-   ![VRCHaptics_17](images\VRCHaptics_17.png)  
-   ※触覚デバイスを持っていない箇所は空白のままでOK`
-4. 「セットアップ」ボタンを押下する
-5. セットアップ完了のポップアップが出れば完了。  
-   ![VRCHaptics_19](images\VRCHaptics_19.png)`※エラーが出る場合は、エラーメッセージに従って修正後再度セットアップボタンを押す。`
+3. 各部位に対応するVisualizedボタン、またはHiddenボタンを押してPrefabを追加する  
+   ※触覚デバイスを持っていない箇所は空のままでOK
+4. アバターに合うように各Prefabの位置・角度・スケールを合わせます。  
+    ※VestのBlendShape「breast」で胸のサイズを調整可能
+      ![VRCHaptics_14](images\VRCHaptics_14.png)同様に腕・頭の触覚デバイスも位置・角度・スケールを調整して配置  
+   ![VRCHaptics_15-2](images\VRCHaptics_15-2.png)
+5. モデルのサイズを変更した場合、内包しているカメラのSizeもモデルに合わせて調整します。  
+6. モニター解像度を選択してHeadConstraintの「Setup」ボタンを押下する
 
 ### 5. アバターをVRChatにアップロードし、動作確認する
 
@@ -220,13 +213,23 @@ PostProcessing(Bloomエフェクト等)のかかっていないワールドで�
 
 ## デモワールド
 
-![DemoWorld_01.png](images/DemoWorld_01.png)
-
 アバターを作成していなくても、以下のワールドのデモアバターを利用して触覚デバイスの動作を確認できます。
+
+```※１つのペデスタルを利用するのは１人までとして下さい。ペデスタルやClone Avatar等で同じワールド内に同じアバターが複数存在すると、RenderTextureが共通になってしまい正しく動作しなくなります。```
+
+### VRCHaptics Demo World
+
+![DemoWorld_01.png](images/DemoWorld_01.png)
 
 [https://www.vrchat.net/home/world/wrld_e8df3120-6ea0-47ab-b30d-00b2a7a6d305](https://www.vrchat.net/home/world/wrld_e8df3120-6ea0-47ab-b30d-00b2a7a6d305)
 
-```※１つのペデスタルを利用するのは１人までとして下さい。ペデスタルやClone Avatar等で同じワールド内に同じアバターが複数存在すると、RenderTextureが共通になってしまい正しく動作しなくなります。```
+### Just Haptics
+
+![JustHaptics](images\JustHaptics.png)
+
+[https://www.vrchat.net/home/world/wrld_8c0dc87d-6c3e-490d-8004-4e2baa383a79](https://www.vrchat.net/home/world/wrld_8c0dc87d-6c3e-490d-8004-4e2baa383a79)
+
+
 
 ## 推奨動作環境
 * Windows10
@@ -301,7 +304,7 @@ PostProcessing(Bloomエフェクト等)のかかっていないワールドで�
 
 ### VRChat画面の左上の赤黒ヒットエリアが表示されない
 
-* VRChatが16:9の全画面表示で起動しているか確認。
+* VRChatがアバターセットアップ時に設定したモニター解像度で全画面起動しているか確認。
 
 * VRCHaptics用にアバターセットアップが正常に完了しているか確認。
 
@@ -312,14 +315,6 @@ PostProcessing(Bloomエフェクト等)のかかっていないワールドで�
   以下の画像を参考に、VRCHaptics_HeadJointの位置を目線の先に変更して下さい。
 
   ![HeadJoint](images\HeadJoint.png)
-
-## 既知の不具合
-
-* VRChatがUnity2018にアップデートした影響で、シェーダーキーワード256個制限関連の不具合が出る事がある。シェーダーを沢山使っているワールドや、人が沢山集まる場所での動作に影響が出る可能性。
-* アバターセットアップ用のVRCHapticsHelperが、Unity2018ではセットアップ時にエラーが出る。次回更新まではUnity2017を使用して下さい。
-* SteamVRのHMD解像度を変更すると、赤黒ヒットエリアのサイズも変わってしまいます。
-  現状はClipPositionの調整で対応して下さい。
-* VRCHapticsで使用しているbHaptics Pluginのバージョンの不具合で、新しいbHapticsデバイス(Tactosy2系列)の接続状態が取得できない場合がある。(次回更新で修正予定)
 
 ## 利用規約
 
@@ -334,17 +329,22 @@ PostProcessing(Bloomエフェクト等)のかかっていないワールドで�
 情報交換などはこちらへどうぞ。
 
 * 触覚スーツ愛好会
-  https://discord.gg/FHZ2nbF
+  [https://discord.gg/FHZ2nbF](https://discord.gg/FHZ2nbF)
 
 ## クレジット
 
 VRCHaptics.exeには @hecomi様 の **uWindowCapture** を使用させて頂いています。
 
 * uWindowCapture (MIT)
-  https://github.com/hecomi/uWindowCapture
+  [https://github.com/hecomi/uWindowCapture](https://github.com/hecomi/uWindowCapture)
 
 また、アバターセットアップ用のUnityエディタ拡張機能の開発には @izm様 の **UnityWearChangeSupporter** を参考にさせて頂きました。
 
 * UnityWearChangeSupporter (MIT)
-  https://neon-izm.booth.pm/items/1273588
+  [https://neon-izm.booth.pm/items/1273588](https://neon-izm.booth.pm/items/1273588)
+
+赤黒のヒットエリアを触覚スーツ使用者のみローカル表示させる機構に、元怒さん([@gend_VR](https://twitter.com/gend_VR))のEmoteSwitch内に含まれるLocalSystemを利用させて頂いています。
+
+* EmoteSwitch V3.4
+  [https://gend-vrchat.booth.pm/items/1242826](https://gend-vrchat.booth.pm/items/1242826)
 
