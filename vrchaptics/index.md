@@ -34,20 +34,30 @@ tagline: 触覚スーツ「bHaptics」をVRChatで動作させるアプリ</br><
 * [推奨動作環境](#推奨動作環境)
 * [【重要】使用前の注意事項](#重要使用前の注意事項)
 * [利用規約](#利用規約)
+* [VRCHaptics利用者コミュニティ](#VRCHaptics利用者コミュニティ)
 * [クレジット](#クレジット)
 
 -----
 
 ## 概要
 
-**VRCHaptics ソフトウェア配布場所：[https://tsubokulab.fanbox.cc/posts/1205829](https://tsubokulab.fanbox.cc/posts/1205829)**
-※VRCHapticsは現在クローズドテスト中です。pixivFANBOX 500円以上の支援者へ限定公開しています。
-
 bHaptics社の販売する触覚スーツ([https://www.bhaptics.com/](https://www.bhaptics.com/))をVRChat等のソフトと連動して動作させるためのソフトウェアです。  
 VRChatアバターに設定するための各種PrefabとUnityエディター拡張スクリプト等の専用アセット(UnityPackage)と共に使用します。
 
 ※使用するにはVRChatSDK及びUnityを使ったVRChatのアバターアップロードについての知識が必要です。
 ※正しく動作させるにはいくつか条件があります。[使用前の注意事項](#重要使用前の注意事項)をよくお読み下さい。
+
+
+
+**Download：[https://tsubokulab.fanbox.cc/posts/1205829](https://tsubokulab.fanbox.cc/posts/1205829)**
+※VRCHapticsは現在クローズドテスト中です。pixivFANBOX 500円以上の支援者へ限定公開しています。
+
+
+
+**Updates：[更新履歴](https://github.teruaki-tsubokura.com/vrchaptics/changelog)**
+2020/07/10 --- v0.2.0
+
+
 
 <img src="images\aboutTactsuitImage.jpg" alt="aboutTactsuitImage" style="zoom:50%;" />  
 
@@ -290,8 +300,6 @@ PostProcessing(Bloomエフェクト等)のかかっていないワールドで�
 
 * **[bHaptics Player](https://www.bhaptics.com/download)**アプリがインストールされているか確認する。
 * bHaptics Player上でデバイスのペアリングが完了しているか確認する。
-* VRCHapticsで使用しているbHaptics Pluginのバージョンの不具合で、新しいbHapticsデバイス(Tactosy2系列)の接続状態が取得できない場合があるようです。
-  Connectedの表示にならなくても、bHaptics Playerアプリ上で接続状態になっていれば、内部的には接続状態なので動作には影響ありません。
 
 ### デバイスがConnectedになっているが動作しない
 
@@ -304,17 +312,10 @@ PostProcessing(Bloomエフェクト等)のかかっていないワールドで�
 
 ### VRChat画面の左上の赤黒ヒットエリアが表示されない
 
-* VRChatがアバターセットアップ時に設定したモニター解像度で全画面起動しているか確認。
-
 * VRCHaptics用にアバターセットアップが正常に完了しているか確認。
-
-* VRChat内でStreamCameraを使用していないか確認。
-
-* VRCHapticsHelperでアバターをセットアップすると、VRCHaptics_HeadJointが目線の0.3m前方に設定されます。
-  VRC_AvatarDescriptorで視点の設定をしていなかったり、アバターのScaleを変更している場合正しく目線の先に来ていない場合があります。
-  以下の画像を参考に、VRCHaptics_HeadJointの位置を目線の先に変更して下さい。
-
-  ![HeadJoint](images\HeadJoint.png)
+* VRChatがアバターセットアップ時に設定したモニター解像度で全画面起動しているか確認。
+* VRCHapticsHelperでアバターをセットアップすると、VRCHaptics_HeadConstraintが目線の0.5m前方に設定されます。
+  StreamCameraを使用している時は、その付近が撮影できているかご確認下さい。
 
 ## 利用規約
 
