@@ -26,8 +26,8 @@ tagline: 触覚スーツ「bHaptics」をVRChatで動作させるアプリ</br><
   * [8. アプリケーションを終了する](#8-アプリケーションを終了する)
 * [VRCHaptics対応アバターセットアップ手順](#vrchaptics対応アバターセットアップ手順)
   * [1. 通常通りVRChatアバターを用意する](#1-通常通りvrchatアバターを用意する)
-  * [2. VRCHaptics-VRChat.unitypackageをインポートする](#2-vrchaptics-vrchatunitypackageをインポートする)
-  * [3. 触覚スーツ用Prefabをアバターに合わせて配置していく](#3-触覚スーツ用prefabをアバターに合わせて配置していく)
+  * [2. VRCHapticsAssets.unitypackageをインポートする](#2-vrchapticsassetsunitypackageをインポートする)
+  * [3. VRCHapticsHelperを使用して触覚デバイス用Prefabを追加](#3-VRCHapticsHelperを使用して触覚デバイス用Prefabを追加)
   * [4. VRCHapticsHelperを使ってアバターをセットアップする](#4-vrchapticshelperを使ってアバターをセットアップする)
   * [5. アバターをVRChatにアップロードし、動作確認する](#5-アバターをvrchatにアップロードし動作確認する)
 * [デモワールド](#デモワールド)
@@ -177,7 +177,7 @@ VRChatアバターに設定するための各種PrefabとUnityエディター拡
 
 ### 2. VRCHapticsAssets.unitypackageをインポートする
 
-![VRCHaptics_09](images\VRCHaptics_09.png)
+![VRCHaptics_09](images\VRCHaptics_import.png)
 
 ### 3. VRCHapticsHelperを使用して触覚デバイス用Prefabを追加  
 PrefabにはHidden(可視化モデル無し)とVisualized(可視化モデル有り)の2パターンがあります。  
