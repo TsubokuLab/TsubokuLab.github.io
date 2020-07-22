@@ -49,7 +49,7 @@ VRChatアバターに設定するための各種PrefabとUnityエディター拡
 
 
 
-**Download：[https://tsubokulab.fanbox.cc/posts/1205829](https://tsubokulab.fanbox.cc/posts/1205829)**
+**Download：[https://tsubokulab.fanbox.cc/posts/1205829](https://tsubokulab.fanbox.cc/posts/1205829)**  
 ※VRCHapticsは現在クローズドテスト中です。pixivFANBOX 500円以上の支援者へ限定公開しています。
 
 
@@ -266,7 +266,7 @@ PostProcessing(Bloomエフェクト等)のかかっていないワールドで�
 
   また、デスクトップモードで使用する場合はClip Positionの範囲を調整してください。
   
-* ウィンドウキャプチャを使用している為、CPUリソースを多く消費します。  
+* 【オプション】ウィンドウキャプチャを使用している為、CPUリソースを多く消費します。  
 
   VRChatもVRCHapticsも1番目のCPUのスレッドに負荷が集中するので、重く感じる場合は以下のように使用するCPUのプロセッサを変更することで改善する場合があります。  
 
