@@ -44,7 +44,7 @@ tagline: 触覚スーツ「bHaptics」をVRChatで動作させるアプリ</br><
 bHaptics社の販売する触覚スーツ([https://www.bhaptics.com/](https://www.bhaptics.com/))をVRChat等のソフトと連動して動作させるためのソフトウェアです。  
 VRChatアバターに設定するための各種PrefabとUnityエディター拡張スクリプト等の専用アセット(UnityPackage)と共に使用します。
 
-※使用するにはVRChatSDK及びUnityを使ったVRChatのアバターアップロードについての知識が必要です。
+※使用するにはVRChatSDK及びUnityを使ったVRChatのアバターアップロードについての知識が必要です。  
 ※正しく動作させるにはいくつか条件があります。[使用前の注意事項](#重要使用前の注意事項)をよくお読み下さい。
 
 
@@ -329,23 +329,23 @@ PostProcessing(Bloomエフェクト等)のかかっていないワールドで�
 有志のVRCHapticsユーザーが作ってくれたDiscordサーバーがあります。
 情報交換などはこちらへどうぞ。
 
-* 触覚スーツ愛好会
+* 触覚スーツ愛好会  
   [https://discord.gg/FHZ2nbF](https://discord.gg/FHZ2nbF)
 
 ## クレジット
 
 VRCHaptics.exeには @hecomi様 の **uWindowCapture** を使用させて頂いています。
 
-* uWindowCapture (MIT)
+* uWindowCapture (MIT)  
   [https://github.com/hecomi/uWindowCapture](https://github.com/hecomi/uWindowCapture)
 
 また、アバターセットアップ用のUnityエディタ拡張機能の開発には @izm様 の **UnityWearChangeSupporter** を参考にさせて頂きました。
 
-* UnityWearChangeSupporter (MIT)
+* UnityWearChangeSupporter (MIT)  
   [https://neon-izm.booth.pm/items/1273588](https://neon-izm.booth.pm/items/1273588)
 
 赤黒のヒットエリアを触覚スーツ使用者のみローカル表示させる機構に、元怒さん([@gend_VR](https://twitter.com/gend_VR))のEmoteSwitch内に含まれるLocalSystemを利用させて頂いています。
 
-* EmoteSwitch V3.4
+* EmoteSwitch V3.4  
   [https://gend-vrchat.booth.pm/items/1242826](https://gend-vrchat.booth.pm/items/1242826)
 
