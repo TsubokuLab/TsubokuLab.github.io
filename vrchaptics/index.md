@@ -54,7 +54,7 @@ VRChatアバターに設定するための各種PrefabとUnityエディター拡
 
 
 
-**Updates：[更新履歴](https://github.teruaki-tsubokura.com/vrchaptics/changelog)**
+**Updates：[更新履歴](https://github.teruaki-tsubokura.com/vrchaptics/changelog)**  
 2020/07/10 --- v0.2.0
 
 
