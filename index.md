@@ -12,7 +12,9 @@ image: http://github.teruaki-tsubokura.com/images/github_thumbnail.png
 pixivFANBOXにて、開発中のアプリやVRChat用アセット等を支援者向けに公開しています。  
 [https://www.pixiv.net/fanbox/creator/5179544](https://www.pixiv.net/fanbox/creator/5179544)
 
-<img src="images/fanbox.jpg" width="70%">
+<img src="images/FANBOX_pr.jpg" width="80%">
+
+<img src="images/booth2020.png" width="100%">
 
 # ■ VRCTools
 
@@ -112,5 +114,4 @@ Boothにて無料配布中→[https://tsubokulab.booth.pm/items/1226043](https:/
 ## Virtual TV Studio 720p/1080p
 
 <div class="iframe-responsive"><iframe width="832" height="468" src="https://www.youtube.com/embed/JjjP75W3LtA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-
 
