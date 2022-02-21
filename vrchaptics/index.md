@@ -45,7 +45,7 @@ image: http://github.teruaki-tsubokura.com/vrchaptics/images/github_thumbnail.pn
 bHaptics社の販売する触覚スーツ([https://www.bhaptics.com/](https://www.bhaptics.com/))をVRChat等のソフトと連動して動作させるためのソフトウェアです。  
 VRChatアバターに設定するための各種PrefabとUnityエディター拡張スクリプト等の専用アセット(UnityPackage)と共に使用します。
 
-※現在は**VRCSDK2、Unity2018**でのみ動作します。
+※現在は**VRCSDK2、Unity2018**でのみ動作します。  
 ※使用するにはVRChatSDK及びUnityを使ったVRChatのアバターアップロードについての知識が必要です。  
 ※正しく動作させるにはいくつか条件があります。[使用前の注意事項](#重要使用前の注意事項)をよくお読み下さい。
 
