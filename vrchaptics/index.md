@@ -4,7 +4,7 @@ layout: default
 title: VRCHaptics  
 tagline: 触覚スーツ「bHaptics」をVRChatで動作させるアプリ</br><a href="http://translate.google.com/translate?hl=ja&sl=auto&tl=en&u=http%3A%2F%2Fgithub.teruaki-tsubokura.com%2Fvrchaptics%2F" style="color:white;text-decoration:underline;">English(Google Translate)</a>
 description: "触覚スーツ「bHaptics」をVRChatで動作させるアプリ"
-image: http://github.teruaki-tsubokura.com/vrchaptics/images/github_thumbnail.png
+image: http://github.teruaki-tsubokura.com/vrchaptics/images/VRCHaptics_system.png
 ---
 
 <div class="iframe-responsive"><iframe width="832" height="468" src="https://www.youtube.com/embed/PCnYJPk400I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="iframe"></iframe></div>
