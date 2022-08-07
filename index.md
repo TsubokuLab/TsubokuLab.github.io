@@ -41,7 +41,7 @@ pixivFANBOXにて、開発中のアプリやVRChat用アセット等を支援者
 * [【3Dモデル】駐輪場セット / Bicycle Storage Pack](https://tsubokulab.booth.pm/items/2442375)  
   <img src="images\booth\BicycleStorage_pr_01.png" width="20%">
 * [【3Dモデル】掲示板 / Bulletin Board](https://tsubokulab.booth.pm/items/2442369)  
-  <img src="images\booth\BulletinBoard_PR_01.png" width="20%">
+  <img src="images\booth\BulletinBoard_pr_01.png" width="20%">
 * [シャペロンシェーダー / Chaperone Shader](https://tsubokulab.booth.pm/items/2442352)  
   <img src="images\booth\ChaperoneShader_pr_01.png" width="20%">
 * [【3Dモデル】看板 / Billboard Lightbox](https://tsubokulab.booth.pm/items/2248765)  
