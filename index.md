@@ -128,6 +128,13 @@ YouTubeLiveコメントでマウスやキーボード操作を行うソフトウ
 
 # ■ VRChat上の制作物など
 
+## [キティちゃんのポップコーンマシーンVRミニゲーム](https://youtube.com/shorts/T44u_ME-5BM?si=mYmGzs7B0Vovhwwr)  
+
+> 公開期間：2024年2月19日～3月17日
+> クライアント：株式会社サンリオ
+
+<iframe width="468" height="832" src="https://www.youtube.com/embed/T44u_ME-5BM?si=eyb7-AGmBWWW8Hqc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## [ポチャッコのぱくぱく大作戦 -Share the ice cream love-](https://v-fes.sanrio.co.jp/floors#pochacco)  
 
 > 開催期間：2024年2月19日～3月25日
