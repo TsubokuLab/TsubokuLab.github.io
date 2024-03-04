@@ -26,6 +26,10 @@ pixivFANBOXにて、開発中のアプリやVRChat用アセット等を支援者
 
 <div class="iframe-responsive"><iframe width="832" height="468" src="https://www.youtube.com/embed/rL_T5agBevw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
+## [【VRChat】ワールド音響調整アセット / AudioReverbFilterSettings【UdonProps】](https://tsubokulab.booth.pm/items/4941668)
+
+<div class="iframe-responsive"><img src="images\booth\AudioReverbFilterSettings_thumb.png" width="45%"><img src="images\booth\AudioReverbFilterSettings_01.png" width="45%"></div>
+
 ## [ふんわりホバーボード / Hoverboard](https://tsubokulab.booth.pm/items/3749085)
 
 <div class="iframe-responsive"><iframe width="832" height="468" src="https://www.youtube.com/embed/7a-fmy5sGIE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
@@ -130,28 +134,28 @@ YouTubeLiveコメントでマウスやキーボード操作を行うソフトウ
 
 ## [キティちゃんのポップコーンマシーンVRミニゲーム](https://youtube.com/shorts/T44u_ME-5BM?si=mYmGzs7B0Vovhwwr)  
 
-> 公開期間：2024年2月19日～3月17日
+> 公開期間：2024年2月19日～3月17日  
 > クライアント：株式会社サンリオ
 
 <iframe width="468" height="832" src="https://www.youtube.com/embed/T44u_ME-5BM?si=eyb7-AGmBWWW8Hqc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## [ポチャッコのぱくぱく大作戦 -Share the ice cream love-](https://v-fes.sanrio.co.jp/floors#pochacco)  
 
-> 開催期間：2024年2月19日～3月25日
+> 開催期間：2024年2月19日～3月25日  
 > クライアント：株式会社サンリオ
 
 <div class="iframe-responsive"><iframe width="832" height="468" src="https://www.youtube.com/embed/H_wzNtaDqBg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 ## [Virtual Fashion Collection ”Voyage”](https://www.youtube.com/watch?v=dQUpnPTsX_8&t=3266s)  
 
-> Virtual Fashion Collection ”Voyage” 2023 Winter
-> 開催日：2023年12月23日
+> Virtual Fashion Collection ”Voyage” 2023 Winter  
+> 開催日：2023年12月23日  
 > クライアント：株式会社RiRi　協賛：株式会社ビームス、株式会社ポリゴンテーラー、株式会社往来
 
 <div class="iframe-responsive"><iframe width="832" height="468" src="https://www.youtube.com/embed/dQUpnPTsX_8?si=Ny8XJZBtywgistnl&amp;start=2171" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
-> Virtual Fashion Collection ”Voyage” 2023 Spring/Summer
-> 開催日：2023年5月27日
+> Virtual Fashion Collection ”Voyage” 2023 Spring/Summer  
+> 開催日：2023年5月27日  
 > クライアント：株式会社RiRi　協賛：株式会社往来
 
 <div class="iframe-responsive"><iframe width="832" height="468" src="https://www.youtube.com/embed/-Dn2hKsBpv4?si=l3z7MENjLZDKkQdI&amp;start=1168" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
