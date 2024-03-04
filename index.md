@@ -124,15 +124,32 @@ YouTubeLiveコメントでマウスやキーボード操作を行うソフトウ
 
 <div class="iframe-responsive"><iframe width="832" height="468" src="https://www.youtube.com/embed/9RjUWkKC1iQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
-## VideoMixerSystem
-VRChatワールドで使えるカメラ＆ビデオミキサーのセット。  
-VRChat内の撮影スタジオ「[Virtual TV Studio 720p](https://vrchat.com/home/world/wrld_5779f827-6b4b-456b-a8c5-612074f8de8d)」及び「[Virtual TV Studio 1080p](https://vrchat.com/home/world/wrld_876856a1-1dc4-4a52-b540-6803a9a3c1e6)」内でご使用頂けます。
-
-<div class="iframe-responsive"><iframe width="832" height="468" src="https://www.youtube.com/embed/JjjP75W3LtA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-
 
 
 # ■ VRChat上の制作物など
+
+## [ポチャッコのぱくぱく大作戦 -Share the ice cream love-](https://v-fes.sanrio.co.jp/floors#pochacco)  
+
+> 開催期間：2024年2月19日～3月25日
+> クライアント：株式会社サンリオ
+
+<div class="iframe-responsive"><iframe width="832" height="468" src="https://www.youtube.com/embed/H_wzNtaDqBg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+## [Virtual Fashion Collection ”Voyage”](https://www.youtube.com/watch?v=dQUpnPTsX_8&t=3266s)  
+
+> Virtual Fashion Collection ”Voyage” 2023 Winter
+> 開催日：2023年12月23日
+> クライアント：株式会社RiRi　協賛：株式会社ビームス、株式会社ポリゴンテーラー、株式会社往来
+
+<div class="iframe-responsive"><iframe width="832" height="468" src="https://www.youtube.com/embed/dQUpnPTsX_8?si=Ny8XJZBtywgistnl&amp;start=2171" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+> Virtual Fashion Collection ”Voyage” 2023 Spring/Summer
+> 開催日：2023年5月27日
+> クライアント：株式会社RiRi　協賛：株式会社往来
+
+<div class="iframe-responsive"><iframe width="832" height="468" src="https://www.youtube.com/embed/-Dn2hKsBpv4?si=l3z7MENjLZDKkQdI&amp;start=1168" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+
 
 ## [VERTEX˸ VRCBattleRoyale](https://vrchat.com/home/world/wrld_3c3ccab6-8a26-44ef-979f-af8037ebd7a2)
 
@@ -159,6 +176,9 @@ VRChat内の撮影スタジオ「[Virtual TV Studio 720p](https://vrchat.com/hom
 <div class="iframe-responsive"><iframe width="832" height="468" src="https://www.youtube.com/embed/Gz6y0cxHz_0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 ## [Virtual TV Studio 720p/1080p](https://vrchat.com/home/world/wrld_876856a1-1dc4-4a52-b540-6803a9a3c1e6)
+
+VRChatワールドで使えるカメラ＆ビデオミキサーのセット。  
+VRChat内の撮影スタジオ「[Virtual TV Studio 720p](https://vrchat.com/home/world/wrld_5779f827-6b4b-456b-a8c5-612074f8de8d)」及び「[Virtual TV Studio 1080p](https://vrchat.com/home/world/wrld_876856a1-1dc4-4a52-b540-6803a9a3c1e6)」内でご使用頂けます。
 
 <div class="iframe-responsive"><iframe width="832" height="468" src="https://www.youtube.com/embed/JjjP75W3LtA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
