@@ -38,44 +38,14 @@ pixivFANBOXにて、開発中のアプリやVRChat用アセット等を支援者
 
 <div class="iframe-responsive"><iframe width="832" height="468" src="https://www.youtube.com/embed/ex-KE_2OyXo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
-* [【3Dモデル】室外機 / Outdoor Unit](https://tsubokulab.booth.pm/items/2558511)  
-  <img src="images\booth\Shitsugaiki_pr_01.png" width="20%">
-* [【3Dモデル】ゴミ捨て場 / Trash Enclosure](https://tsubokulab.booth.pm/items/2442378)  
-  <img src="images\booth\TrashEnclosure_pr_01.png" width="20%">
-* [【3Dモデル】駐輪場セット / Bicycle Storage Pack](https://tsubokulab.booth.pm/items/2442375)  
-  <img src="images\booth\BicycleStorage_pr_01.png" width="20%">
-* [【3Dモデル】掲示板 / Bulletin Board](https://tsubokulab.booth.pm/items/2442369)  
-  <img src="images\booth\BulletinBoard_pr_01.png" width="20%">
-* [シャペロンシェーダー / Chaperone Shader](https://tsubokulab.booth.pm/items/2442352)  
-  <img src="images\booth\ChaperoneShader_pr_01.png" width="20%">
-* [【3Dモデル】看板 / Billboard Lightbox](https://tsubokulab.booth.pm/items/2248765)  
-  <img src="images\booth\BillboardLightbox_PR_01.png" width="20%">
-* [【3Dモデル】段ボール箱 / Cardboard Box](https://tsubokulab.booth.pm/items/2242943)  
-  <img src="images\booth\CardBoard_PR_01.png" width="20%">
-* [【3Dモデル】業務用エアコン / Air Conditioner](
-  https://tsubokulab.booth.pm/items/2242886)  
-  <img src="images\booth\AirConditioner_PR_01.png" width="20%">
-* [【3Dモデル】ビールセット / Beer Set](
-  https://tsubokulab.booth.pm/items/2242817)  
-  <img src="images\booth\BeerSet_PR_01.png" width="20%">
-* [【3Dモデル】昔のパソコン / Old PC](https://tsubokulab.booth.pm/items/2242671)  
-  <img src="images\booth\OldPC_PR_01.png" width="20%">
-* [【3Dモデル】ファイルキャビネット / File Cabinet](https://tsubokulab.booth.pm/items/2242347)  
-  <img src="images\booth\FileCabinet_PR_01.png" width="20%">
-* [【3Dモデル】A4額縁 / A4 Frame](https://tsubokulab.booth.pm/items/1932886)  
-  <img src="images\booth\A4Frame_booth_thumb.png" width="20%">
-* [【3Dモデル】金庫 / Safebox](https://tsubokulab.booth.pm/items/1932820)  
-  <img src="images\booth\Safebox_booth_thumb.png" width="20%">
-* [【3Dモデル】蛍光灯 / Bar Light](https://tsubokulab.booth.pm/items/1932727)  
-  <img src="images\booth\BarLight_booth_thumb.png" width="20%">
-* [【3Dモデル】やかん / Japanese Kettle](https://tsubokulab.booth.pm/items/1932615)  
-  <img src="images\booth\Yakan_booth_thumb.png" width="20%">
-* [【3Dモデル】台所 / Japanese Retro Kitchen](https://tsubokulab.booth.pm/items/1932436)  
-  <img src="images\booth\RetoroKitchen_booth_thumb.png" width="20%">
-* [【3Dモデル】事務机セット / Office Desk Kit](https://tsubokulab.booth.pm/items/1932381)  
-  <img src="images\booth\OfficeDesk_booth_thumb.png" width="20%">
-* [【3Dモデル】ツールキャビネット](https://tsubokulab.booth.pm/items/1876270)  
-  <img src="images\booth\ToolCabinet_pr_01.png" width="20%">
+## 小物3Dモデル
+
+[<img src="images\booth\Shitsugaiki_pr_01.png" width="20%">](https://tsubokulab.booth.pm/items/2558511)[<img src="images\booth\TrashEnclosure_pr_01.png" width="20%">](https://tsubokulab.booth.pm/items/2442378)[<img src="images\booth\BicycleStorage_pr_01.png" width="20%">](https://tsubokulab.booth.pm/items/2442375)[<img src="images\booth\BulletinBoard_pr_01.png" width="20%">](https://tsubokulab.booth.pm/items/2442369)
+[<img src="images\booth\ChaperoneShader_pr_01.png" width="20%">](https://tsubokulab.booth.pm/items/2442352)[<img src="images\booth\BillboardLightbox_PR_01.png" width="20%">](https://tsubokulab.booth.pm/items/2248765)[<img src="images\booth\CardBoard_PR_01.png" width="20%">](https://tsubokulab.booth.pm/items/2242943)[<img src="images\booth\AirConditioner_PR_01.png" width="20%">](https://tsubokulab.booth.pm/items/2242886)
+[<img src="images\booth\BeerSet_PR_01.png" width="20%">](https://tsubokulab.booth.pm/items/2242817)[<img src="images\booth\OldPC_PR_01.png" width="20%">](https://tsubokulab.booth.pm/items/2242671)[<img src="images\booth\FileCabinet_PR_01.png" width="20%">](https://tsubokulab.booth.pm/items/2242347)[<img src="images\booth\A4Frame_booth_thumb.png" width="20%">](https://tsubokulab.booth.pm/items/1932886)
+[<img src="images\booth\Safebox_booth_thumb.png" width="20%">](https://tsubokulab.booth.pm/items/1932820)[<img src="images\booth\BarLight_booth_thumb.png" width="20%">](https://tsubokulab.booth.pm/items/1932727)[<img src="images\booth\Yakan_booth_thumb.png" width="20%">](https://tsubokulab.booth.pm/items/1932615)[<img src="images\booth\RetoroKitchen_booth_thumb.png" width="20%">](https://tsubokulab.booth.pm/items/1932436)
+[<img src="images\booth\OfficeDesk_booth_thumb.png" width="20%">](https://tsubokulab.booth.pm/items/1932381)[<img src="images\booth\ToolCabinet_pr_01.png" width="20%">](https://tsubokulab.booth.pm/items/1876270)
+
 
 ## [ジョイントドアPrefabs](https://booth.pm/ja/items/1226460)
 
@@ -193,3 +163,11 @@ VRChat内の撮影スタジオ「[Virtual TV Studio 720p](https://vrchat.com/hom
 
 <div class="iframe-responsive"><iframe width="832" height="468" src="https://www.youtube.com/embed/JjjP75W3LtA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
+# その他
+
+## [setSoundDeviceByName](https://github.com/TsubokuLab/setSoundDeviceByName)
+
+タスクバーのアイコンをワンクリックでWindowsの音声出力先を変更できるツール。
+ショートカットキーも設定できるので、スピーカーとヘッドセットを行き来する方などに便利です。
+
+<img src="images\tools\setSoundDeviceByName.gif" width="40%">
