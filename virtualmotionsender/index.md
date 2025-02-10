@@ -7,11 +7,12 @@ description: "SteamVRのトラッカー位置やコントローラー入力を�
 image: http://github.teruaki-tsubokura.com/virtualmotionsender/images/thumbnail.png
 ---
 
+![VMS_icon_256px](images/VMS_icon_256px.png)
+
 ![VirtualMotionSender_01](images/VirtualMotionSender_01.png)
 
------
 
-![VMS_icon_256px.png](images/VMS_icon_256px.png)
+-----
 
 [TOC]
 
