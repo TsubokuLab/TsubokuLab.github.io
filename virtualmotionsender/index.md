@@ -2,112 +2,92 @@
 
 layout: default  
 title: Virtual Motion Sender  
-tagline: SteamVRのトラッカー・コントローラーの位置や入力を別PCに複製転送するアプリ</br><a href="http://translate.google.com/translate?hl=ja&sl=auto&tl=en&u=http%3A%2F%2Fgithub.teruaki-tsubokura.com%2Fvirtualmotionsender%2F" style="color:white;text-decoration:underline;">English(Google Translate)</a>
-description: "SteamVRのトラッカー・コントローラーの位置や入力を別PCに複製転送するアプリ"
+tagline: SteamVRのトラッカー位置やコントローラー入力を複数PCに転送するアプリ</br><a href="http://translate.google.com/translate?hl=ja&sl=auto&tl=en&u=http%3A%2F%2Fgithub.teruaki-tsubokura.com%2Fvirtualmotionsender%2F" style="color:white;text-decoration:underline;">English(Google Translate)</a>
+description: "SteamVRのトラッカー位置やコントローラー入力を複数PCに転送するアプリ"
 image: http://github.teruaki-tsubokura.com/virtualmotionsender/images/thumbnail.png
 ---
 
-<div class="iframe-responsive"><iframe width="832" height="468" src="https://www.youtube.com/embed/PCnYJPk400I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="iframe"></iframe></div>
+![VirtualMotionSender_01](images/VirtualMotionSender_01.png)
 
 -----
 
-![icon256px.png](images/icon256px.png)
+![VMS_icon_256px.png](images/VMS_icon_256px.png)
 
-* [概要](#概要)
-* [仕組み](#仕組み)
-* [内容物](#内容物)
-* [使い方](#使い方)
-  * [1. デバイスの接続](#1-デバイスの接続)
-  * [2. アプリの起動](#2-アプリの起動)
-  * [3. キャプチャアプリケーションを選択](#3-キャプチャアプリケーションを選択)
-  * [4. 設定するデバイスの選択](#4-設定するデバイスの選択)
-  * [5. デバイスの振動を有効にする](#5-デバイスの振動を有効にする)
-  * [6. 振動強度を変更](#6-振動強度を変更)
-  * [7. アプリのClip位置を調節する](#7-アプリのClip位置を調節する)
-  * [8. アプリケーションを終了する](#8-アプリケーションを終了する)
-* [VRCHaptics対応アバターセットアップ手順](#vrchaptics対応アバターセットアップ手順)
-  * [1. 通常通りVRChatアバターを用意する](#1-通常通りvrchatアバターを用意する)
-  * [2. VRCHapticsAssets.unitypackageをインポートする](#2-vrchapticsassetsunitypackageをインポートする)
-  * [3. VRCHapticsHelperを使用して触覚デバイス用Prefabを追加](#3-VRCHapticsHelperを使用して触覚デバイス用Prefabを追加)
-  * [4. VRCHapticsHelperを使ってアバターをセットアップする](#4-vrchapticshelperを使ってアバターをセットアップする)
-  * [5. アバターをVRChatにアップロードし、動作確認する](#5-アバターをvrchatにアップロードし動作確認する)
-* [デモワールド](#デモワールド)
-* [推奨動作環境](#推奨動作環境)
-* [【重要】使用前の注意事項](#重要使用前の注意事項)
-* [利用規約](#利用規約)
-* [VRCHaptics利用者コミュニティ](#VRCHaptics利用者コミュニティ)
-* [クレジット](#クレジット)
+[TOC]
 
 -----
 
 ## 概要
 
-SteamVRのトラッカー・コントローラーの位置や入力を別PCに複製転送するアプリ
+SteamVRのトラッカー位置やコントローラー入力を複数PCに転送するアプリ
 
 
 
-
-**Download：[https://tsubokulab.fanbox.cc/posts/1205829](https://tsubokulab.fanbox.cc/posts/1205829)**  
-※VRCHapticsは現在クローズドテスト中です。pixivFANBOX 500円以上の支援者へ限定公開しています。
+**Download：（準備中）**  
+※VirtualMotionSenderは現在FANBOX支援者限定でβ公開中です。
 
 **Updates：[更新履歴](https://github.teruaki-tsubokura.com/virtualmotionsender/changelog)**  
 2025/02/06 --- v0.0.1 公開
+
+
 
 
 ## 仕組み
 
 ![VRCHaptics_system.png](images/VRCHaptics_system.png)
 
-1. 触覚ベストやアームデバイスに接近したオブジェクトをVRChat上のアバターカメラで撮影し、RenderTextureを画面上の固定位置に表示
-2. そのRenderTextureをVRCHapticsアプリで画面キャプチャー
-3. 色情報→振動に変換してbHapticsデバイスを制御
+1. SteamVRのオーバーレイアプリでトラッカー位置やコントローラー入力を取得し、同じローカルネット内の複数のPCにOSC信号で送信する。
+1. 受信側ではOSC信号を受信し「Virtual Motion Tracker」の機能を利用して仮想コントローラーとしてトラッカーの位置やコントローラー入力を再現する。
 
-## 内容物
 
-- VirtualMotionSender.exe --- アプリ本体
 
 ## 使い方
 
-### 1. デバイスの接続
+**`送信側PC`**と**`受信側PC`**の両方のパソコンに[SteamVR](https://store.steampowered.com/app/250820/SteamVR/)がインストールされている前提で話を進めます。
 
-1. **bHaptics公式サイト**から**[bHaptics Player](https://www.bhaptics.com/download)**アプリをインストールし起動
+#### ■ 受信側PC（遠隔操作される側）
 
-2. **歯車マーク**をクリックして設定画面を表示する  
-   ![bHapticsPlayer_05](images\bHapticsPlayer_05.png)
+1. Virtual Motion Trackerのインストールと初期設定  
+   https://gpsnmeajp.github.io/VirtualMotionTrackerDocument/setup/
+   
+2. 更に**Enable Null Driver (Virtual HMD)** をクリックして仮想HMDを有効化  
+   <img src="images/VirtualMotionTracker_EnableNullDriver.png" width="60%">
+   
+3. SteamVRを起動して待機させておく
 
-3. デバイスの電源ボタンを押していき、**Scanned Devices**に表示されたら**Pair**ボタンを押下してペアリングを完了させる。  
-   ![bHapticsPlayer_01](images\bHapticsPlayer_01.png)
+#### ■ 送信側PC（VR操作する側）
 
-4. ペアリングが完了するとデバイスのアイコンに色が着く  
-   ![bHapticsPlayer_03](images\bHapticsPlayer_03.png)
+1. VirtualMotionSenderアプリをダウンロードしてZipファイルを展開する
 
-5. もし腕デバイス(Tactosy)が2台とも右手に設定されたりした場合は、下部の**Device Position**で変更する。  
-   ![bHapticsPlayer_02](images\bHapticsPlayer_02.png)
+2. **VirtualMotionSender.exe**を起動  
+   ![VirtualMotionSender_Folder](images/VirtualMotionSender_Folder.png)
 
-これでデバイスの準備は完了です。  
+3. ファイアウォールのセキュリティ警告ウィンドウが出るので、「プライベートネットワーク」にチェックを入れて「アクセスを許可する」ボタンを押す。
+   ※パブリックネットワークで使用する場合は両方のチェックを入れて下さい。
+   ![VirtualMotionSender_Firewall](D:\Downloads\VirtualMotionSender_Firewall.png)
 
-### 2. アプリの起動
+4. 送信先リストに送信先PCを追加する  
+   ![VirtualMotionSender_ScreenInfo](images/VirtualMotionSender_ScreenInfo.png)
 
-1. **VRCHaptics.exe**を起動  
-   ![VRCHaptics_01](images\VRCHaptics_01.png)
+   1. Target IPのテキスト入力欄に送信先IPアドレスを入力して「Add」ボタンを押すと追加できる。
 
-### 3. キャプチャアプリケーションを選択
+   2. 送信先リストからアドレスを削除したい場合は、IPアドレスの右の「✕」印をクリックする。
 
-起動後、場合によってはキャプチャするアプリケーションにVRChatが選択されていない事があります。
-その場合は以下の手順でVRChatを選択して下さい。
+      ```
+      送信先PCのIPアドレスの調べるには、スタート＞Windowsシステムツール＞コマンドプロンプト を開き、ipconfigと入力すると「192.168.xxx.xxx」のような形で表示されます。
+      ```
 
-1. 上部のマウスカーソルを合わせると「Change Application」と表示される赤枠の部分でマウスを左クリック  
-   ![VRCHaptics_02](images\VRCHaptics_02.png)
+5. 「Connect」ボタンを押す
 
-2. 起動中のアプリケーション一覧が表示されるので、一覧から起動中のVRChatを選択する。  
-   ![VRCHaptics_03](images\VRCHaptics_03.png)
+   * 全ての送信先に対し、SteamVRのトラッキングデバイスの位置や角度情報と左右のコントローラーデバイスの入力信号が送信開始されます。（現在動作確認済みなのはValve Indexコントローラーのみ）
+   * 再度押すことで送信を停止します。
 
 ## 推奨動作環境
 * Windows10
 * GPU: Nvidia GeForce GTX1060 以上
-* CPU: Intel Core i7 以上
+* CPU: Intel Core i5 以上
 
-## 【重要】使用前の注意事項
+
 
 
 ## 利用規約
@@ -118,19 +98,16 @@ SteamVRのトラッカー・コントローラーの位置や入力を別PCに�
 * 迷惑行為や宗教・政治活動への利用は不可
 * 本データの利用によって生じた損害等の一切の責任を負いかねます
 
-## VRCHaptics利用者コミュニティ
 
-有志のVRCHapticsユーザーが作ってくれたDiscordサーバーがあります。
-情報交換などはこちらへどうぞ。
-
-* 触覚スーツ愛好会  
-  [https://discord.gg/FHZ2nbF](https://discord.gg/FHZ2nbF)
 
 ## クレジット
 
-当アプリの受信PCの仮想トラッカードライバーには、@gpsnmeajp様 の **Virtual Motion Tracker** を使用させて頂いています。
+当アプリの受信側PCの仮想トラッカードライバーには、[gpsnmeajp](https://github.com/gpsnmeajp)様の **Virtual Motion Tracker** を使用させて頂いています。
 
 * Virtual Motion Tracker (MITライセンス)  
   [https://gpsnmeajp.github.io/VirtualMotionTrackerDocument/](https://gpsnmeajp.github.io/VirtualMotionTrackerDocument/)
 
+OSC送信機能には、[hecomi](https://github.com/hecomi)様の **uOSC** を使用させて頂いています。
 
+* uOSC (MITライセンス)  
+  [https://github.com/hecomi/uOSC](https://github.com/hecomi/uOSC)
