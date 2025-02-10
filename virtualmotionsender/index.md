@@ -1,16 +1,17 @@
 ---
 layout: default  
-title: Virtual Motion Sender  
+title: Virtual Motion Sender | SteamVRのトラッカーやコントローラー入力を複数PCに転送するアプリ  
 tagline: SteamVRのトラッカー位置やコントローラー入力を複数PCに転送するアプリ</br><a href="http://translate.google.com/translate?hl=ja&sl=auto&tl=en&u=http%3A%2F%2Fgithub.teruaki-tsubokura.com%2Fvirtualmotionsender%2F" style="color:white;text-decoration:underline;">English(Google Translate)</a>
 description: "SteamVRのトラッカー位置やコントローラー入力を複数PCに転送するアプリ"
-image: http://github.teruaki-tsubokura.com/virtualmotionsender/images/VirtualMotionSender_ScreenInfo.png
+image: http://github.teruaki-tsubokura.com/virtualmotionsender/images/VirtualMotionSender_thumbnail.png
 ---
 
-<img src="images/VMS_icon_256px.png" alt="VMS_icon_256px" />
+<img src="virtualmotionsender/images/VMS_icon_256px.png" width="180px"><img src="virtualmotionsender/images/VirtualMotionSender_01.png" width="60%">
+
 - Table of Content
 {:toc}
 
----
+-----
 
 ## 概要
 
