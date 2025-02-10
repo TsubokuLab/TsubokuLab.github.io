@@ -27,16 +27,16 @@ SteamVRのトラッカー位置やコントローラー入力を複数PCに転�
 ※VirtualMotionSenderは現在FANBOX支援者限定でβ公開中です。
 
 **Updates：[更新履歴](https://github.teruaki-tsubokura.com/virtualmotionsender/changelog)**  
-2025/02/06 --- v0.0.1 公開
+2025/02/11 --- v0.0.1 公開
 
 
 
 
 ## 仕組み
 
-<img src="images/VirtualMotionSender_System.png" alt="VirtualMotionSender_System" style="zoom: 67%;" />
+<img src="images/VirtualMotionSender_System.png" alt="VirtualMotionSender_System" style="zoom: 80%;" />
 
-1. SteamVRのオーバーレイアプリでトラッカー位置やコントローラー入力を取得し、同じローカルネット内の複数のPCにOSC信号で送信する。
+1. SteamVRのオーバーレイアプリでトラッカー位置やコントローラー入力を取得し、同じローカルネット内の複数のPCにOSC信号で送信する。（ポート番号：39570）
 1. 受信側ではOSC信号を受信し「Virtual Motion Tracker」の機能を利用して仮想コントローラーとしてトラッカーの位置やコントローラー入力を再現する。
 
 
