@@ -28,6 +28,8 @@ SteamVRのトラッカー位置やコントローラー入力を複数PCに転�
 2025/02/11 --- v0.0.1 公開
 
 
+[toc]
+
 
 
 ## 仕組み
@@ -37,6 +39,8 @@ SteamVRのトラッカー位置やコントローラー入力を複数PCに転�
 1. SteamVRのオーバーレイアプリでトラッカー位置やコントローラー入力を取得し、同じローカルネット内の複数のPCにOSC信号で送信する。（ポート番号：39570）
 1. 受信側ではOSC信号を受信し「Virtual Motion Tracker」の機能を利用して仮想コントローラーとしてトラッカーの位置やコントローラー入力を再現する。
 
+
+[toc]
 
 
 ## 使い方
@@ -109,3 +113,6 @@ OSC送信機能には、[hecomi](https://github.com/hecomi)様の **uOSC** を�
 
 * uOSC (MITライセンス)  
   [https://github.com/hecomi/uOSC](https://github.com/hecomi/uOSC)
+
+
+[toc]
