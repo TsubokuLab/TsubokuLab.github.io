@@ -12,7 +12,7 @@ image: http://github.teruaki-tsubokura.com/virtualmotionsender/images/thumbnail.
 -----
 
 
-[TOC]
+[toc]
 
 
 -----
