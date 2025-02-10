@@ -7,6 +7,8 @@ image: http://github.teruaki-tsubokura.com/virtualmotionsender/images/VirtualMot
 ---
 
 <img src="images/VMS_icon_256px.png" alt="VMS_icon_256px" />
+- Table of Content
+{:toc}
 
 ---
 
@@ -22,21 +24,13 @@ SteamVRのトラッカー位置やコントローラー入力を複数PCに転�
 **Updates：[更新履歴](https://github.teruaki-tsubokura.com/virtualmotionsender/changelog)**  
 2025/02/11 --- v0.0.1 公開
 
-- Table of Content
-{:toc}
-
-
-
-[toc]
-
-
 
 ## 仕組み
 
 <a href ="images/VirtualMotionSender_System.png"><img src="images/VirtualMotionSender_System.png" alt="VirtualMotionSender_System" style="zoom: 80%;" /></a>
 
-1. SteamVRのオーバーレイアプリでトラッカー位置やコントローラー入力を取得し、同じローカルネット内の複数のPCにOSC信号で送信する。（ポート番号：39570）
-1. 受信側ではOSC信号を受信し「Virtual Motion Tracker」の機能を利用して仮想コントローラーとしてトラッカーの位置やコントローラー入力を再現する。
+1. SteamVRのオーバーレイアプリでトラッカー位置やコントローラー入力を取得し、同じローカルネット内の複数のPCにOSC信号で送信する。**（ポート番号：39570）**
+2. 受信側ではOSC信号を受信し「[Virtual Motion Tracker](https://gpsnmeajp.github.io/VirtualMotionTrackerDocument/)」の機能を利用して仮想コントローラーとしてトラッカーの位置やコントローラー入力を再現する。
 
 
 
