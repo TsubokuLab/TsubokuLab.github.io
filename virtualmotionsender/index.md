@@ -44,7 +44,7 @@ SteamVRのトラッカー位置やコントローラー入力を複数PCに転�
 #### ■ 受信側PC（遠隔操作される側）
 
 1. Virtual Motion Trackerのインストールと初期設定  
-   https://gpsnmeajp.github.io/VirtualMotionTrackerDocument/setup/
+   [https://gpsnmeajp.github.io/VirtualMotionTrackerDocument/setup/](https://gpsnmeajp.github.io/VirtualMotionTrackerDocument/setup/)
    
 2. 更に**Enable Null Driver (Virtual HMD)** をクリックして仮想HMDを有効化  
    <img src="images/VirtualMotionTracker_EnableNullDriver.png" width="60%">
