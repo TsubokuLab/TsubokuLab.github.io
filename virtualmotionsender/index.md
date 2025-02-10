@@ -58,7 +58,7 @@ SteamVRのトラッカー位置やコントローラー入力を複数PCに転�
 
 3. ファイアウォールのセキュリティ警告ウィンドウが出るので、「プライベートネットワーク」にチェックを入れて「アクセスを許可する」ボタンを押す。
    ※パブリックネットワークで使用する場合は両方のチェックを入れて下さい。
-   ![VirtualMotionSender_Firewall](D:\Downloads\VirtualMotionSender_Firewall.png)
+   ![VirtualMotionSender_Firewall](images\VirtualMotionSender_Firewall.png)
 
 4. 送信先リストに送信先PCを追加する  
    ![VirtualMotionSender_ScreenInfo](images/VirtualMotionSender_ScreenInfo.png)
