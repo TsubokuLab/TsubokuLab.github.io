@@ -14,26 +14,52 @@ image: http://github.teruaki-tsubokura.com/virtualmotionsender/images/VirtualMot
 -----
 
 ## 概要
-
-SteamVRのトラッカー位置やコントローラー入力を複数PCに転送するアプリ
-
-
-
-**Download：（準備中）**  
-※VirtualMotionSenderは現在FANBOX支援者限定でβ公開中です。
-
-**Updates：[更新履歴](https://github.teruaki-tsubokura.com/virtualmotionsender/changelog)**  
-2025/02/11 --- v0.0.1 公開
-
-
-## 仕組み
+SteamVRのトラッカー位置やコントローラー入力を複数PCに転送するアプリ  
 
 <a href ="images/VirtualMotionSender_System.png"><img src="images/VirtualMotionSender_System.png" alt="VirtualMotionSender_System" style="zoom: 80%;" /></a>
+
+#### 仕組み
 
 1. SteamVRのオーバーレイアプリでトラッカー位置やコントローラー入力を取得し、同じローカルネット内の複数のPCにOSC信号で送信する。**（ポート番号：39570）**
 2. 受信側ではOSC信号を受信し「[Virtual Motion Tracker](https://gpsnmeajp.github.io/VirtualMotionTrackerDocument/)」の機能を利用して仮想コントローラーとしてトラッカーの位置やコントローラー入力を再現する。
 
 
+
+## ダウンロード
+[https://tsubokulab.fanbox.cc/posts/9372391](https://drive.google.com/file/d/1Q4mVx-51tkmW-Pg2000L6oQXK9MyODZK/view?usp=sharing)
+※VirtualMotionSenderは現在FANBOX支援者限定でβ公開中です。
+
+#### 更新履歴
+2025/02/12 --- v0.0.1 公開
+
+
+
+## 動作環境
+
+#### 推奨PCスペック
+
+* Windows10
+* GPU: Nvidia GeForce GTX1060 以上
+* CPU: Intel Core i5 以上
+
+#### 動作確認済み機器
+
+* Valve Index（開発に使用した機器）
+  * [Index HMD](https://plaza.komodo.jp/collections/valve-index)
+  * [Indexコントローラー](https://plaza.komodo.jp/collections/valve-index)
+* HTC VIVE Pro
+  * [VIVE Pro HMD](https://www.vive.com/jp/)
+  * [VIVE Pro コントローラー(2018)](https://www.vive.com/jp/)
+  * [VIVEトラッカー(3.0)](https://www.vive.com/jp/)
+
+* Meta Quest3
+  * [Quest3 HMD (SteamLink)](https://a.r10.to/hFNgio)
+  * [Quest3コントローラー (SteamLink)](https://a.r10.to/hFNgio)
+
+* Tundra Labs
+  * [Tundraトラッカー](https://market.intofree.world/products/tundra-tracker-bundle)
+
+```※Indexコントローラー以外のコントローラーでは、ボタンやトラックパッドの有無に合わせて入力バインドを調整して頂く必要がある場合があります。```
 
 ## 使い方
 
@@ -67,6 +93,7 @@ SteamVRのトラッカー位置やコントローラー入力を複数PCに転�
 
    2. 送信先リストからアドレスを削除したい場合は、IPアドレスの右の「✕」印をクリックする。
 
+      * IPアドレスの調べ方
       ```
       送信先PCのIPアドレスの調べるには、スタート＞Windowsシステムツール＞コマンドプロンプト を開き、ipconfigと入力すると「192.168.xxx.xxx」のような形で表示されます。
       ```
@@ -75,13 +102,6 @@ SteamVRのトラッカー位置やコントローラー入力を複数PCに転�
 
    * 全ての送信先に対し、SteamVRのトラッキングデバイスの位置や角度情報と左右のコントローラーデバイスの入力信号が送信開始されます。（現在動作確認済みなのはValve Indexコントローラーのみ）
    * 再度押すことで送信を停止します。
-
-
-
-## 推奨動作環境
-* Windows10
-* GPU: Nvidia GeForce GTX1060 以上
-* CPU: Intel Core i5 以上
 
 
 
