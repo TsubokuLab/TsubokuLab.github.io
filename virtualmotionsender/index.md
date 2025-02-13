@@ -6,7 +6,7 @@ description: "SteamVRのトラッカー位置やコントローラー入力を�
 image: http://github.teruaki-tsubokura.com/virtualmotionsender/images/VirtualMotionSender_thumbnail.png
 ---
 
-<img src="images/VMS_icon_256px.png" width="200px"> <img src="images/VirtualMotionSender_01.png" width="60%">
+<a href ="images/VirtualMotionSender_thumbnail.png"><img src="images/VirtualMotionSender_thumbnail.png" alt="VirtualMotionSender_thumbnail" style="zoom: 60%;" />
 
 - Table of Content
 {:toc}
