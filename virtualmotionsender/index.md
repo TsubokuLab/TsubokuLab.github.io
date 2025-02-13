@@ -19,11 +19,13 @@ SteamVRのトラッカー位置やコントローラー入力を複数PCに転�
 
 #### 使用例
 
+<a href ="images/VirtualMotionSender_System.png"><img src="images/VirtualMotionSender_Example.png" alt="VirtualMotionSender_Example" style="zoom: 35%;" /></a>
+
 * VRChatにVRで入りながら、別のVRゲームをプレイしている様子を配信する。
 * VRChatイベント等で複数インスタンスに同時に存在しながらのダンス等パフォーマンスを行う。
 * VTuber用アプリ等のSteamVRを使ったシステムで、負荷分散の為にトラッキング用PCと描画用PCを分ける。
 
-<a href ="images/VirtualMotionSender_System.png"><img src="images/VirtualMotionSender_System.png" alt="VirtualMotionSender_System" style="zoom: 80%;" /></a>
+<a href ="images/VirtualMotionSender_System.png"><img src="images/VirtualMotionSender_System.png" alt="VirtualMotionSender_System" style="zoom: 60%;" /></a>
 
 #### 仕組み
 
@@ -34,7 +36,7 @@ SteamVRのトラッカー位置やコントローラー入力を複数PCに転�
 
 ## ダウンロード
 [https://tsubokulab.fanbox.cc/posts/9372391](https://tsubokulab.fanbox.cc/posts/9372391)  
-※VirtualMotionSenderは現在FANBOX支援者限定でβ公開中です。
+※現在、FANBOX支援者限定でβ公開中です。
 
 
 
