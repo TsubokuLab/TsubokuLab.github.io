@@ -14,7 +14,14 @@ image: http://github.teruaki-tsubokura.com/virtualmotionsender/images/VirtualMot
 -----
 
 ## 概要
-SteamVRのトラッカー位置やコントローラー入力を複数PCに転送するアプリ  
+SteamVRのトラッカー位置やコントローラー入力を複数PCに転送するアプリ。  
+性質上、配信活動をするVTuberさんやパフォーマーさん向けですが、VRChat等での日常使い等、アイディア次第でいろんな用途に使えます。
+
+#### 使用例
+
+* VRChatにVRで入りながら、別のVRゲームをプレイしている様子を配信する。
+* VRChatイベント等で複数インスタンスに同時に存在しながらのダンス等パフォーマンスを行う。
+* VTuber用アプリ等のSteamVRを使ったシステムで、負荷分散の為にトラッキング用PCと描画用PCを分ける。
 
 <a href ="images/VirtualMotionSender_System.png"><img src="images/VirtualMotionSender_System.png" alt="VirtualMotionSender_System" style="zoom: 80%;" /></a>
 
@@ -26,11 +33,11 @@ SteamVRのトラッカー位置やコントローラー入力を複数PCに転�
 
 
 ## ダウンロード
-[https://tsubokulab.fanbox.cc/posts/9372391](https://drive.google.com/file/d/1Q4mVx-51tkmW-Pg2000L6oQXK9MyODZK/view?usp=sharing)
+[https://tsubokulab.fanbox.cc/posts/9372391](https://tsubokulab.fanbox.cc/posts/9372391)
 ※VirtualMotionSenderは現在FANBOX支援者限定でβ公開中です。
 
 #### 更新履歴
-2025/02/12 --- v0.0.1 公開
+2025/02/13 --- v0.0.1 公開
 
 
 
