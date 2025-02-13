@@ -33,21 +33,10 @@ SteamVRのトラッカー位置やコントローラー入力を複数PCに転�
 
 
 ## ダウンロード
-[https://tsubokulab.fanbox.cc/posts/9372391](https://tsubokulab.fanbox.cc/posts/9372391)
+[https://tsubokulab.fanbox.cc/posts/9372391](https://tsubokulab.fanbox.cc/posts/9372391)  
 ※VirtualMotionSenderは現在FANBOX支援者限定でβ公開中です。
 
-#### 更新履歴
-2025/02/13 --- v0.0.1 公開
 
-
-
-## 動作環境
-
-#### 推奨PCスペック
-
-* Windows10
-* GPU: Nvidia GeForce GTX1060 以上
-* CPU: Intel Core i5 以上
 
 #### 動作確認済み機器
 
