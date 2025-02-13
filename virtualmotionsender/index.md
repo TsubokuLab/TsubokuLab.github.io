@@ -25,9 +25,11 @@ SteamVRのトラッカー位置やコントローラー入力を複数PCに転�
 * VRChatイベント等で複数インスタンスに同時に存在しながらのダンス等パフォーマンスを行う。
 * VTuber用アプリ等のSteamVRを使ったシステムで、負荷分散の為にトラッキング用PCと描画用PCを分ける。
 
-<a href ="images/VirtualMotionSender_System.png"><img src="images/VirtualMotionSender_System.png" alt="VirtualMotionSender_System" style="zoom: 60%;" /></a>
+などなど…
 
 #### 仕組み
+
+<a href ="images/VirtualMotionSender_System.png"><img src="images/VirtualMotionSender_System.png" alt="VirtualMotionSender_System" style="zoom: 60%;" /></a>
 
 1. SteamVRのオーバーレイアプリでトラッカー位置やコントローラー入力を取得し、同じローカルネット内の複数のPCにOSC信号で送信する。**（ポート番号：39570）**
 2. 受信側ではOSC信号を受信し「[Virtual Motion Tracker](https://gpsnmeajp.github.io/VirtualMotionTrackerDocument/)」の機能を利用して仮想コントローラーとしてトラッカーの位置やコントローラー入力を再現する。
