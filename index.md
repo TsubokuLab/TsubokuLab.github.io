@@ -84,7 +84,7 @@ pixivFANBOX支援者の方は無料でダウンロード頂けます→[https://
 <img src="virtualmotionsender/images/VMS_icon_256px.png" width="180px"> <img src="virtualmotionsender/images/VirtualMotionSender_01.png" width="60%">
 
 SteamVRのトラッカー・コントローラーの位置や入力を別PCに複製転送するアプリ  
-pixivFANBOXにて公開中→ (準備中)
+pixivFANBOXにて公開中→ [https://tsubokulab.fanbox.cc/posts/9372391](https://tsubokulab.fanbox.cc/posts/9372391)
 
 
 
