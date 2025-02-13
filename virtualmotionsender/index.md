@@ -105,6 +105,12 @@ SteamVRのトラッカー位置やコントローラー入力を複数PCに転�
 
 
 
+ボタンやスティック・トラックパッドの入力は**[Controller Input Settings]**のトグルボタンをOFFにすることで入力を送信しないようにできます。  
+システムボタン(System)に関しては、触れたかどうか（Touch）は送信できますが、押下（Click）は送信できませんでした（SteamVRかVirtual Motion Trackerの仕様？）  
+リモートPC側でSteamVRのダッシュボードを開く操作はできないのでご注意下さい。
+
+
+
 
 ## 利用規約
 
