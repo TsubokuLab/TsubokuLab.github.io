@@ -71,7 +71,11 @@ SteamVRのトラッカー位置やコントローラー入力を複数PCに転�
    [https://gpsnmeajp.github.io/VirtualMotionTrackerDocument/setup/](https://gpsnmeajp.github.io/VirtualMotionTrackerDocument/setup/)
    
 2. 更に**Enable Null Driver (Virtual HMD)** をクリックして仮想HMDを有効化  
-   <img src="images/VirtualMotionTracker_EnableNullDriver.png" width="60%">
+   <img src="images/VirtualMotionTracker_EnableNullDriver.png" width="60%">  
+   
+   **※このPCで再度HMDを接続しての通常のVRを使用する場合は、「Disable Null Driver (Virtual HMD)」を押して仮想HMDドライバを一度アンインストールして下さい。**
+   
+   
    
 3. SteamVRを起動して待機させておく
 
