@@ -1,0 +1,462 @@
+/* テーブルヘッダー内のレイアウト調整 */
+#tax-table-header th div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* テーブル全体を包むコンテナ */
+.table-outer-container {
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-top: 15px;
+    /* overflow: hiddenを削除してツールチップが表示されるようにする */
+    position: relative;
+}
+
+/* 基本スタイル */
+:root {
+    --primary-color: #4a6fa5;
+    --secondary-color: #6b8cbc;
+    --accent-color: #ff9e3d;
+    --text-color: #333;
+    --light-bg: #f8f9fa;
+    --card-bg: #fff;
+    --border-color: #e0e0e0;
+    
+    /* 税金の色 */
+    --income-tax-color: #e74c3c;
+    --residence-tax-color: #3498db;
+    --health-insurance-color: #f39c12;
+    --pension-color: #16a085;
+    --consumption-tax-color: #9b59b6;
+    --take-home-color: #27ae60;
+}
+
+/* 現在の所得を示す線 */
+.current-income-line {
+    stroke: var(--accent-color);
+    stroke-width: 2;
+    stroke-dasharray: 5, 5;
+}
+
+.current-income-label {
+    fill: var(--accent-color);
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.current-income-marker {
+    fill: var(--accent-color);
+    stroke: white;
+    stroke-width: 2;
+    r: 6;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ヘッダースタイル */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header .subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* カードスタイル */
+.card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.card h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+/* 説明セクション */
+.description {
+    margin-bottom: 30px;
+}
+
+.note {
+    background-color: rgba(255, 158, 61, 0.1);
+    border-left: 4px solid var(--accent-color);
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+
+.note i {
+    color: var(--accent-color);
+    margin-right: 8px;
+}
+
+/* コントロールセクション */
+.control-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.control-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.control-item label {
+    flex: 1;
+    font-weight: bold;
+}
+
+.control-item input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    text-align: right;
+}
+
+.info-tooltip {
+    position: relative;
+    display: inline-block;
+    color: var(--primary-color);
+    z-index: 5000;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 250px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px;
+    position: absolute;
+    z-index: 5001;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    white-space: normal;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.info-tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+.control-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn.primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn.secondary {
+    background-color: #f1f1f1;
+    color: var(--text-color);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn.primary:hover {
+    background-color: var(--secondary-color);
+}
+
+.btn.secondary:hover {
+    background-color: #e0e0e0;
+}
+
+/* 結果セクション */
+.chart-container {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* テーブルスタイル */
+.table-container {
+    overflow-x: auto;
+    max-height: 400px; /* 縦スクロール用の高さ制限 */
+    overflow-y: auto;
+    border-top: none;
+    margin-top: 0;
+}
+
+/* ヘッダー固定部分 */
+.table-header-fixed {
+    overflow: visible;
+    width: 100%;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--primary-color);
+    position: relative;
+    z-index: 10;
+}
+
+/* 共通テーブルスタイル */
+.tax-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: right;
+    margin: 0;
+    table-layout: auto; /* 内容に合わせて列幅を調整 */
+}
+
+/* テーブルのツールチップ */
+.table-tooltip {
+    position: relative;
+    display: inline-block;
+    color: var(--primary-color);
+    margin-left: 5px;
+    font-size: 0.8rem;
+    z-index: 5000;
+    vertical-align: middle;
+}
+
+.table-tooltip .tooltip-text {
+    visibility: hidden;
+    width: 250px;
+    max-width: 300px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px;
+    position: absolute;
+    z-index: 9999;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-weight: normal;
+    font-size: 0.8rem;
+    white-space: normal;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    line-height: 1.5;
+}
+
+.table-tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* 表ヘッダーのスタイル調整 */
+thead th {
+    background-color: var(--primary-color);
+    color: white;
+    position: sticky;
+    top: 0;
+    padding: 12px 6px; /* パディングを調整 */
+    font-size: 0.85rem;
+    vertical-align: middle; /* テキストを中央揃え */
+    line-height: 1.3;
+    text-align: center; /* テキストを中央揃え */
+    white-space: normal; /* 改行を許可 */
+    height: auto; /* 高さを自動調整 */
+    display: table-cell; /* 標準のテーブルセルとして表示 */
+    z-index: 1;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: right;
+    margin: 0;
+    table-layout: auto; /* 内容に合わせて列幅を調整 */
+}
+
+th, td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+thead th {
+    background-color: var(--primary-color);
+    color: white;
+    position: sticky;
+    top: 0;
+}
+
+tbody tr:hover {
+    background-color: rgba(107, 140, 188, 0.1);
+}
+
+/* 内訳のビジュアル表示 */
+.select-container {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.select-container label {
+    font-weight: bold;
+}
+
+.select-container select {
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.breakdown-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.breakdown-chart {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.breakdown-details {
+    flex: 1;
+    min-width: 300px;
+}
+
+.breakdown-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.color-box {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 3px;
+}
+
+.income-tax-color {
+    background-color: var(--income-tax-color);
+}
+
+.residence-tax-color {
+    background-color: var(--residence-tax-color);
+}
+
+.health-insurance-color {
+    background-color: var(--health-insurance-color);
+}
+
+.pension-color {
+    background-color: var(--pension-color);
+}
+
+.consumption-tax-color {
+    background-color: var(--consumption-tax-color);
+}
+
+.income-color {
+    background-color: var(--take-home-color);
+}
+
+.breakdown-label {
+    flex: 1;
+    font-weight: bold;
+}
+
+.breakdown-value {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.breakdown-total {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 2px dashed var(--border-color);
+    display: flex;
+}
+
+/* フッター */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .control-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .breakdown-container {
+        flex-direction: column;
+    }
+}

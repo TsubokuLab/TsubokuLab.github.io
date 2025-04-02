@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人事業主のための税負担シミュレーター</title>
+    
+    <!-- OGP（Open Graph Protocol）設定 -->
+    <meta property="og:title" content="個人事業主のための税負担シミュレーター" />
+    <meta property="og:description" content="所得に応じた所得税、住民税、健康保険料、年金保険料、消費税などを計算し、実質税負担率と手取り額をグラフで確認できます。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://github.teruaki-tsubokura.com/claude/tax-calculator/" />
+    <meta property="og:image" content="https://github.teruaki-tsubokura.com/claude/tax-calculator/images/thumb.png" />
+    <meta property="og:site_name" content="個人事業主のための税負担シミュレーター" />
+    <meta property="og:locale" content="ja_JP" />
+    
+    <!-- Twitter Card設定 -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="個人事業主のための税負担シミュレーター" />
+    <meta name="twitter:description" content="所得に応じた所得税、住民税、健康保険料、年金保険料、消費税などを計算し、実質税負担率と手取り額をグラフで確認できます。" />
+    <meta name="twitter:image" content="https://github.teruaki-tsubokura.com/claude/tax-calculator/images/thumb.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* テーブルのツールチップ用インラインスタイル */
+        .table-tooltip {
+            position: relative;
+            display: inline-block;
+            color: #fff;
+            font-size: 0.8rem;
+            z-index: 9000; /* 最前面に表示 */
+            margin-left: 5px;
+            vertical-align: middle; /* 縦方向の位置調整 */
+        }
+        
+        /* ヘッダー内のラベルとアイコンの配置 */
+        #tax-table th span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .table-tooltip .tooltip-text {
+            visibility: hidden;
+            width: 250px;
+            max-width: 300px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 9999;
+            bottom: 130%;
+            left: 50%;
+            margin-bottom: 1em; /* 1em分上に位置を移動 */
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-weight: normal;
+            font-size: 0.8rem;
+            white-space: normal;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            line-height: 1.5;
+        }
+
+        .table-tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        /* 表のヘッダースタイル修正 */
+        #tax-table th {
+            text-align: center !important;
+            padding: 12px 6px !important;
+            white-space: normal !important; /* 改行を許可 */
+            font-size: 0.85rem !important;
+            vertical-align: middle !important;
+            position: relative !important; /* ツールチップの基準位置 */
+            height: auto !important; /* 高さを自動調整 */
+        }
+        
+        /* 表の幅の修正 */
+        #tax-table {
+            width: 100% !important;
+            table-layout: auto !important; /* 内容に合わせて列幅を調整 */
+            margin: 0 !important; /* マージンをリセット */
+            border-collapse: collapse !important;
+        }
+        
+        /* 全体のスクロールの修正 */
+        .table-container {
+            overflow-x: auto !important;
+            max-height: 400px !important;
+            overflow-y: auto !important;
+            width: 100% !important; /* 幅を100%に設定 */
+            padding: 0 !important; /* パディングをリセット */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-calculator"></i> 個人事業主のための税負担シミュレーター</h1>
+            <p class="subtitle">収入に応じた税金と手取り額を詳細なグラフで確認</p>
+        </header>
+
+        <section class="description">
+            <div class="card">
+                <h2><i class="fas fa-info-circle"></i> このツールについて</h2>
+                <p>このシミュレーターでは、個人事業主の方が年間の収入から実際に支払う税金と手元に残る金額を計算し、視覚的に確認できます。</p>
+                <p>各種控除額はデフォルト値が設定されていますが、ご自身の状況に合わせて変更することもできます。</p>
+                <div class="note">
+                    <p><i class="fas fa-exclamation-triangle"></i> 注意：このシミュレーターは参考用です。実際の税額計算は税理士にご相談ください。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="controls">
+            <div class="card">
+                <h2><i class="fas fa-sliders-h"></i> 控除額の設定</h2>
+                <div class="control-grid">
+                    <div class="control-item">
+                        <label for="current-income">所得（収入-経費）</label>
+                        <input type="number" id="current-income" value="5000000" min="0">
+                        <div class="info-tooltip">
+                            <i class="fas fa-question-circle"></i>
+                            <span class="tooltip-text">年間の収入から経費を引いた金額（事業所得）</span>
+                        </div>
+                    </div>
+
+                    <div class="control-item">
+                        <label for="basic-deduction">基礎控除</label>
+                        <input type="number" id="basic-deduction" value="480000" min="0">
+                        <div class="info-tooltip">
+                            <i class="fas fa-question-circle"></i>
+                            <span class="tooltip-text">すべての納税者に適用される基本的な控除（現在は48万円）</span>
+                        </div>
+                    </div>
+                    <div class="control-item">
+                        <label for="blue-deduction">青色申告控除</label>
+                        <input type="number" id="blue-deduction" value="650000" min="0">
+                        <div class="info-tooltip">
+                            <i class="fas fa-question-circle"></i>
+                            <span class="tooltip-text">青色申告を行う場合の特別控除（e-Tax利用で最大65万円）</span>
+                        </div>
+                    </div>
+                    <div class="control-item">
+                        <label for="age-select">年齢区分</label>
+                        <select id="age-select">
+                            <option value="under40">40歳未満</option>
+                            <option value="40to64">40〜64歳</option>
+                            <option value="over64">65歳以上</option>
+                        </select>
+                        <div class="info-tooltip">
+                            <i class="fas fa-question-circle"></i>
+                            <span class="tooltip-text">保険料は年齢区分によって異なります</span>
+                        </div>
+                    </div>
+                    <div class="control-item">
+                        <label for="health-insurance-type">健康保険の種類</label>
+                        <select id="health-insurance-type">
+                            <option value="kokuho">国民健康保険</option>
+                            <option value="bunbi">文芸美術国民健康保険</option>
+                            <option value="kyokai">協会けんぽ</option>
+                        </select>
+                        <div class="info-tooltip">
+                            <i class="fas fa-question-circle"></i>
+                            <span class="tooltip-text">加入している健康保険の種類を選択してください</span>
+                        </div>
+                    </div>
+                    <div class="control-item">
+                        <label for="health-insurance">健康保険料</label>
+                        <input type="number" id="health-insurance" value="297600" min="0">
+                        <div class="info-tooltip">
+                            <i class="fas fa-question-circle"></i>
+                            <span class="tooltip-text">選択した健康保険の年間保険料（控除対象）</span>
+                        </div>
+                    </div>
+                    <div class="control-item">
+                        <label for="pension">国民年金</label>
+                        <input type="number" id="pension" value="210120" min="0">
+                        <div class="info-tooltip">
+                            <i class="fas fa-question-circle"></i>
+                            <span class="tooltip-text">国民年金保険料（令和7年度は月額17,510円、年間210,120円）</span>
+                        </div>
+                    </div>
+                    <div class="control-item">
+                        <label for="small-business">小規模企業共済</label>
+                        <input type="number" id="small-business" value="840000" min="0">
+                        <div class="info-tooltip">
+                            <i class="fas fa-question-circle"></i>
+                            <span class="tooltip-text">小規模企業共済への掛金（全額所得控除の対象）</span>
+                        </div>
+                    </div>
+                    <div class="control-item">
+                        <label for="family-salary">専従者給与</label>
+                        <input type="number" id="family-salary" value="0" min="0">
+                        <div class="info-tooltip">
+                            <i class="fas fa-question-circle"></i>
+                            <span class="tooltip-text">青色申告の場合の家族従業員への給与（経費として計上、必要な場合のみ設定）</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-actions">
+                    <button id="calculate-btn" class="btn primary"><i class="fas fa-sync-alt"></i> 再計算する</button>
+                    <button id="reset-btn" class="btn secondary"><i class="fas fa-undo"></i> 初期値に戻す</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="results">
+            <div class="card">
+                <h2><i class="fas fa-chart-line"></i> 税負担率グラフ</h2>
+                <div class="chart-container">
+                    <svg id="tax-chart" width="100%" height="400"></svg>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><i class="fas fa-table"></i> 税負担シミュレーション結果</h2>
+                <div class="table-outer-container">
+                    <div class="table-header-fixed">
+                    <table id="tax-table-header" class="tax-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <div style="display: flex; align-items: center; justify-content: center; position: relative;">
+                                        <span>所得</span>
+                                        <div class="table-tooltip"><i class="fas fa-question-circle"></i><span class="tooltip-text">年間の収入から経費を引いた金額</span></div>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div style="display: flex; align-items: center; justify-content: center; position: relative;">
+                                        <span>控除後所得</span>
+                                        <div class="table-tooltip"><i class="fas fa-question-circle"></i><span class="tooltip-text">所得から各種控除額を引いた計算上の所得</span></div>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div style="display: flex; align-items: center; justify-content: center; position: relative;">
+                                        <span>所得税</span>
+                                        <div class="table-tooltip"><i class="fas fa-question-circle"></i><span class="tooltip-text">納付する所得税額。控除後所得額に納税率を掛け、控除額を引いた金額</span></div>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div style="display: flex; align-items: center; justify-content: center; position: relative;">
+                                        <span>住民税</span>
+                                        <div class="table-tooltip"><i class="fas fa-question-circle"></i><span class="tooltip-text">地方税。控除後所得額・10％で計算</span></div>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div style="display: flex; align-items: center; justify-content: center; position: relative;">
+                                        <span>健康保険料</span>
+                                        <div class="table-tooltip"><i class="fas fa-question-circle"></i><span class="tooltip-text">選択した保険と年齢区分により、所得に基づいて計算</span></div>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div style="display: flex; align-items: center; justify-content: center; position: relative;">
+                                        <span>年金保険料</span>
+                                        <div class="table-tooltip"><i class="fas fa-question-circle"></i><span class="tooltip-text">令和7年度は月額17,510円（年間210,120円）</span></div>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div style="display: flex; align-items: center; justify-content: center; position: relative;">
+                                        <span>消費税</span>
+                                        <div class="table-tooltip"><i class="fas fa-question-circle"></i><span class="tooltip-text">所得金額の10％を予測消費税額として計算</span></div>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div style="display: flex; align-items: center; justify-content: center; position: relative;">
+                                        <span>税合計</span>
+                                        <div class="table-tooltip"><i class="fas fa-question-circle"></i><span class="tooltip-text">所得税、住民税、健康保険料、年金保険料、消費税の合計額</span></div>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div style="display: flex; align-items: center; justify-content: center; position: relative;">
+                                        <span>手取り</span>
+                                        <div class="table-tooltip"><i class="fas fa-question-circle"></i><span class="tooltip-text">所得から税合計を引いた実質手取り額</span></div>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div style="display: flex; align-items: center; justify-content: center; position: relative;">
+                                        <span>実質負担率</span>
+                                        <div class="table-tooltip"><i class="fas fa-question-circle"></i><span class="tooltip-text">税合計÷所得額×100で計算される実質的な負担率</span></div>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                    </div>
+                    <div class="table-container" style="margin-top: 0;">
+                        <table id="tax-table" class="tax-table">
+                            <thead style="visibility: hidden; position: absolute;">
+                                <tr>
+                                    <th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- JavaScriptで動的に生成 -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="visual-breakdown">
+            <div class="card">
+                <h2><i class="fas fa-search-dollar"></i> 税金の内訳（選択した所得）</h2>
+                <div class="select-container">
+                    <label for="income-select">所得額を選択:</label>
+                    <select id="income-select">
+                        <option value="1000000">100万円</option>
+                        <option value="2000000">200万円</option>
+                        <option value="3000000">300万円</option>
+                        <option value="4000000">400万円</option>
+                        <option value="5000000">500万円</option>
+                        <option value="6000000">600万円</option>
+                        <option value="7000000">700万円</option>
+                        <option value="8000000">800万円</option>
+                        <option value="9000000">900万円</option>
+                        <option value="10000000">1,000万円</option>
+                        <option value="12000000">1,200万円</option>
+                        <option value="14000000">1,400万円</option>
+                        <option value="16000000">1,600万円</option>
+                        <option value="18000000">1,800万円</option>
+                        <option value="20000000">2,000万円</option>
+                        <option value="25000000">2,500万円</option>
+                        <option value="30000000">3,000万円</option>
+                        <option value="35000000">3,500万円</option>
+                        <option value="40000000">4,000万円</option>
+                        <option value="45000000">4,500万円</option>
+                        <option value="50000000">5,000万円</option>
+                        <option value="55000000">5,500万円</option>
+                        <option value="60000000">6,000万円</option>
+                    </select>
+                </div>
+                <div class="breakdown-container">
+                    <div class="breakdown-chart">
+                        <svg id="pie-chart" width="300" height="300"></svg>
+                    </div>
+                    <div class="breakdown-details">
+                        <div class="breakdown-item">
+                            <div class="color-box income-color"></div>
+                            <span class="breakdown-label">手取り:</span>
+                            <span id="take-home-amount" class="breakdown-value">¥0</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="color-box income-tax-color"></div>
+                            <span class="breakdown-label">所得税:</span>
+                            <span id="income-tax-amount" class="breakdown-value">¥0</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="color-box residence-tax-color"></div>
+                            <span class="breakdown-label">住民税:</span>
+                            <span id="residence-tax-amount" class="breakdown-value">¥0</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="color-box health-insurance-color"></div>
+                            <span class="breakdown-label">健康保険料:</span>
+                            <span id="health-insurance-amount" class="breakdown-value">¥0</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="color-box pension-color"></div>
+                            <span class="breakdown-label">年金保険料:</span>
+                            <span id="pension-amount" class="breakdown-value">¥0</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="color-box consumption-tax-color"></div>
+                            <span class="breakdown-label">消費税:</span>
+                            <span id="consumption-tax-amount" class="breakdown-value">¥0</span>
+                        </div>
+                        <div class="breakdown-total">
+                            <span class="breakdown-label">実質税負担率:</span>
+                            <span id="tax-rate-value" class="breakdown-value">0%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2025 個人事業主のための税負担シミュレーター | このツールは参考用です。実際の税額計算は税理士にご相談ください。</p>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <script src="js/simple-charts.js"></script>
+    <script src="js/simple-script.js"></script>
+</body>
+</html>
