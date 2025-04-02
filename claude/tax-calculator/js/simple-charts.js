@@ -49,6 +49,20 @@ window.TaxSimpleChart = (function() {
             // データのソート
             const taxResults = [...taxResultsArray].sort((a, b) => a.income - b.income);
             
+            // ツールチップ・ポップアップの作成
+            const tooltip = d3.select('body').append('div')
+                .attr('class', 'tax-tooltip')
+                .style('position', 'absolute')
+                .style('visibility', 'hidden')
+                .style('background-color', 'rgba(255, 255, 255, 0.95)')
+                .style('border', '1px solid #ccc')
+                .style('border-radius', '6px')
+                .style('padding', '10px')
+                .style('box-shadow', '0 4px 8px rgba(0,0,0,0.2)')
+                .style('font-size', '12px')
+                .style('max-width', '240px')
+                .style('z-index', 1000);
+                
             // グラフ描画エリア
             const chart = svg.append('g')
                 .attr('transform', `translate(${margin.left},${margin.top})`);
@@ -58,7 +72,7 @@ window.TaxSimpleChart = (function() {
                 .domain([0, d3.max(taxResults, d => d.income)])
                 .range([0, innerWidth]);
                 
-            // 表示する目盛り値を設定（100万円と500万円を追加）
+            // 表示する目盛り値を設定
             const xTicks = [1000000, 5000000, 10000000, 20000000, 30000000, 40000000, 50000000, 60000000];
             
             // Y軸の設定 (0-70%)
@@ -101,6 +115,7 @@ window.TaxSimpleChart = (function() {
             
             // X軸ラベル
             chart.append('text')
+                .attr('class', 'x-axis-label')
                 .attr('x', innerWidth / 2)
                 .attr('y', innerHeight + 40)
                 .attr('text-anchor', 'middle')
@@ -108,13 +123,14 @@ window.TaxSimpleChart = (function() {
             
             // Y軸ラベル
             chart.append('text')
+                .attr('class', 'y-axis-label')
                 .attr('transform', 'rotate(-90)')
                 .attr('x', -innerHeight / 2)
                 .attr('y', -40)
                 .attr('text-anchor', 'middle')
                 .text('実質税負担率（%）');
             
-            // 折れ線の描画
+            // 折れ線グラフの描画
             const line = d3.line()
                 .x(d => xScale(d.income))
                 .y(d => yScale(parseFloat(d.taxRate)))
@@ -127,7 +143,141 @@ window.TaxSimpleChart = (function() {
                 .attr('stroke-width', 3)
                 .attr('d', line);
             
-            // データポイントの描画とパーセント数値表示
+            // マウス位置の追跡用変数
+            let lastMouseX = null;
+            
+            // 縦線の表示を更新する関数
+            function updateVerticalLine(mouseX) {
+                if (mouseX !== null) {
+                    lastMouseX = mouseX; // 最後の位置を記録
+                    verticalLine
+                        .attr('x1', mouseX)
+                        .attr('x2', mouseX)
+                        .style('opacity', 0.6);
+                }
+            }
+            
+            // グラフエリア全体にマウスイベントをリッスン
+            svg.on('mousemove', function(event) {
+                // SVGの位置を考慣してグラフエリア内の座標を計算
+                const svgRect = svg.node().getBoundingClientRect();
+                const mouseX = d3.pointer(event)[0] - margin.left;
+                
+                // グラフエリア内の場合のみ更新
+                if (mouseX >= 0 && mouseX <= innerWidth) {
+                    updateVerticalLine(mouseX);
+                }
+            });
+            
+            // インタラクティブな横線を追加するためのオーバーレイ
+            const overlay = chart.append('rect')
+                .attr('class', 'overlay')
+                .attr('width', innerWidth)
+                .attr('height', innerHeight)
+                .attr('fill', 'none')
+                .style('pointer-events', 'all')
+                .style('cursor', 'crosshair')
+                .on('mousemove', function(event) {
+                    const [mouseX] = d3.pointer(event);
+                    updateVerticalLine(mouseX);
+                })
+                .on('mouseout', function() {
+                    // マウスがグラフから出ても、縦線を非表示にしない
+                    // 最後の位置を保持
+                });
+                
+            // 縦線表示用の線
+            const verticalLine = chart.append('line')
+                .attr('class', 'mouse-line')
+                .attr('y1', 0)
+                .attr('y2', innerHeight)
+                .attr('stroke', '#666')
+                .attr('stroke-width', 1)
+                .attr('stroke-dasharray', '3,3')
+                .style('opacity', 0);
+            
+            // ツールチップ表示のための共通関数
+            function showTooltip(event, d) {
+                // ポイントを大きくする
+                d3.select(this).attr('r', 8);
+                
+                // 所得額をフォーマット
+                const formatMoney = val => '\u00A5' + val.toLocaleString();
+                
+                // 各項目の色と数値をHTMLで整形
+                const tooltipContent = `
+                <div style="font-weight: bold; font-size: 14px; margin-bottom: 5px;">所得: ${formatMoney(d.income)}</div>
+                <div style="font-size: 12px; margin-bottom: 5px;">内訳</div>
+                <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                    <div style="width: 12px; height: 12px; background-color: ${colors.takeHome}; margin-right: 8px;"></div>
+                    <div style="flex: 1;">手取り:</div>
+                    <div style="font-weight: bold;">${formatMoney(d.takeHome)}</div>
+                </div>
+                <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                    <div style="width: 12px; height: 12px; background-color: ${colors.incomeTax}; margin-right: 8px;"></div>
+                    <div style="flex: 1;">所得税:</div>
+                    <div style="font-weight: bold;">${formatMoney(d.incomeTax)}</div>
+                </div>
+                <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                    <div style="width: 12px; height: 12px; background-color: ${colors.residenceTax}; margin-right: 8px;"></div>
+                    <div style="flex: 1;">住民税:</div>
+                    <div style="font-weight: bold;">${formatMoney(d.residenceTax)}</div>
+                </div>
+                <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                    <div style="width: 12px; height: 12px; background-color: ${colors.healthInsurance}; margin-right: 8px;"></div>
+                    <div style="flex: 1;">健康保険料:</div>
+                    <div style="font-weight: bold;">${formatMoney(d.healthInsurance)}</div>
+                </div>
+                <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                    <div style="width: 12px; height: 12px; background-color: ${colors.pension}; margin-right: 8px;"></div>
+                    <div style="flex: 1;">年金保険料:</div>
+                    <div style="font-weight: bold;">${formatMoney(d.pension)}</div>
+                </div>
+                <div style="display: flex; align-items: center; margin-bottom: 3px;">
+                    <div style="width: 12px; height: 12px; background-color: ${colors.consumptionTax}; margin-right: 8px;"></div>
+                    <div style="flex: 1;">消費税:</div>
+                    <div style="font-weight: bold;">${formatMoney(d.consumptionTax)}</div>
+                </div>
+                <div style="margin-top: 8px; padding-top: 5px; border-top: 1px solid #eee; font-weight: bold;">実質税負担率: ${d.taxRate}%</div>
+                `;
+                
+                // ツールチップに内容を設定して表示
+                tooltip.html(tooltipContent)
+                    .style('visibility', 'visible')
+                    .style('left', `${event.pageX + 15}px`)
+                    .style('top', `${event.pageY - 20}px`);
+                    
+                // パーセント表示の一時的な表示（ホバー時のみ）
+                chart.append('text')
+                    .attr('class', 'hover-percent-label')
+                    .attr('x', xScale(d.income))
+                    .attr('y', yScale(parseFloat(d.taxRate)) - 10)
+                    .attr('text-anchor', 'middle')
+                    .attr('font-size', '11px')
+                    .attr('font-weight', 'bold')
+                    .attr('fill', d.income === currentIncome ? colors.currentMarker : '#333')
+                    .text(`${d.taxRate}%`);
+            }
+            
+            // ツールチップを非表示にする共通関数
+            function hideTooltip() {
+                // ポイントを元の大きさに戻す
+                d3.select(this).attr('r', d => d.income === currentIncome ? 6 : 4);
+                // ツールチップを非表示に
+                tooltip.style('visibility', 'hidden');
+                // ホバー時のパーセント表示を削除
+                chart.selectAll('.hover-percent-label').remove();
+                
+                // ツールチップ表示中も最後のマウス位置を保持する
+                if (lastMouseX !== null) {
+                    verticalLine
+                        .attr('x1', lastMouseX)
+                        .attr('x2', lastMouseX)
+                        .style('opacity', 0.6);
+                }
+            }
+            
+            // 通常のデータポイント
             chart.selectAll('.data-point')
                 .data(taxResults)
                 .enter()
@@ -136,30 +286,18 @@ window.TaxSimpleChart = (function() {
                 .attr('cx', d => xScale(d.income))
                 .attr('cy', d => yScale(parseFloat(d.taxRate)))
                 .attr('r', 4)
-                .attr('fill', colors.point);
-                
-            // 全てのデータポイントにパーセント値を表示
-            // 角度を計算して位置をスマートに調整
-            chart.selectAll('.percent-label')
-                .data(taxResults)
-                .enter()
-                .append('text')
-                .attr('class', 'percent-label')
-                .attr('x', d => xScale(d.income))
-                .attr('y', d => yScale(parseFloat(d.taxRate)) - 8) // データポイントの上に配置
-                .attr('text-anchor', 'middle')
-                .attr('font-size', '10px')
-                .attr('font-weight', d => d.income === currentIncome ? 'bold' : 'normal')
-                .attr('fill', d => d.income === currentIncome ? colors.currentMarker : '#333')
-                .text(d => `${d.taxRate}%`)
-                .style('opacity', d => {
-                    // 100万円、200万円、500万円、1000万円、2000万円、現在の所得のみ表示
-                    const million = d.income / 10000;
-                    return (million === 100 || million === 200 || million === 500 || 
-                            million === 1000 || million === 2000 || d.income === currentIncome) ? 1 : 0;
+                .attr('fill', colors.point)
+                // マウスイベント
+                .on('mouseover', showTooltip)
+                .on('mouseout', hideTooltip)
+                .on('mousemove', function(event) {
+                    // マウス移動時にツールチップを追従
+                    tooltip
+                        .style('left', `${event.pageX + 15}px`)
+                        .style('top', `${event.pageY - 20}px`);
                 });
             
-            // 現在の所得のマーカー
+            // 現在の所得のマーカーを描画
             if (currentIncome) {
                 const currentData = taxResults.find(d => d.income === currentIncome);
                 if (currentData) {
@@ -167,6 +305,7 @@ window.TaxSimpleChart = (function() {
                     
                     // 垂直線
                     chart.append('line')
+                        .attr('class', 'current-income-line')
                         .attr('x1', xScale(currentIncome))
                         .attr('y1', 0)
                         .attr('x2', xScale(currentIncome))
@@ -175,12 +314,22 @@ window.TaxSimpleChart = (function() {
                         .attr('stroke-width', 2)
                         .attr('stroke-dasharray', '5,5');
                     
-                    // マーカー
+                    // 現在の所得マーカー（特別なポイント）
                     chart.append('circle')
+                        .datum(currentData) // データを設定
+                        .attr('class', 'current-marker')
                         .attr('cx', xScale(currentIncome))
                         .attr('cy', yScale(currentTaxRate))
                         .attr('r', 6)
-                        .attr('fill', colors.currentMarker);
+                        .attr('fill', colors.currentMarker)
+                        // 現在所得のマーカーにもツールチップ機能を追加
+                        .on('mouseover', showTooltip)
+                        .on('mouseout', hideTooltip)
+                        .on('mousemove', function(event) {
+                            tooltip
+                                .style('left', `${event.pageX + 15}px`)
+                                .style('top', `${event.pageY - 20}px`);
+                        });
                     
                     // プロット上のラベルに背景付きポップアップスタイルを適用
                     // 背景ボックスを先に描画
@@ -268,7 +417,7 @@ window.TaxSimpleChart = (function() {
             // パラメータを取得する関数
             // 円の内側、円周近くに配置するための位置計算
             function getPositionInPie(d) {
-                // arc.centroid から半径の75%位置に調整
+                // arc.centroid から半径の70%位置に調整
                 const centroid = arc.centroid(d);
                 const midAngle = Math.atan2(centroid[1], centroid[0]);
                 const x = Math.cos(midAngle) * (radius * 0.7); // 半径の70%位置
