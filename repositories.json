@@ -1,22 +1,54 @@
 {
   "repositories": [
     {
-      "name": "プロジェクト名1",
-      "repo": "リポジトリ名1",
-      "description": "プロジェクトの簡単な説明",
-      "url": "https://tsubokulab.github.io/リポジトリ名1/",
-      "thumbnail": "images/thumbnails/repo1.jpg",
-      "tags": ["Unity", "WebGL", "C#"],
-      "date": "2024-05-08"
+      "name": "TsubokuLab.github.io",
+      "repo": "TsubokuLab.github.io",
+      "description": "このサイト",
+      "url": "https://tsubokulab.github.io/",
+      "thumbnail": "",
+      "tags": [],
+      "date": "2025-05-08"
     },
     {
-      "name": "プロジェクト名2",
-      "repo": "リポジトリ名2",
-      "description": "プロジェクトの簡単な説明",
-      "url": "https://tsubokulab.github.io/リポジトリ名2/",
-      "thumbnail": "images/thumbnails/repo2.jpg",
-      "tags": ["Three.js", "WebGL", "JavaScript"],
-      "date": "2024-04-15"
+      "name": "魔法陣ジェネレーター",
+      "repo": "MagicCircleGenerator",
+      "description": "ブラウザ上で美しい魔法陣を作成できるオンラインツール。円、図形、線を自由に配置し、SVG、PNG、ノーマルマップとしてエクスポート可能。",
+      "url": "https://tsubokulab.github.io/MagicCircleGenerator/",
+      "thumbnail": "img/thumbnail.png",
+      "tags": [
+        "generator",
+        "tools",
+        "develop",
+        "texture"
+      ],
+      "date": "2025-05-08"
+    },
+    {
+      "name": "TsubokuLab Assets",
+      "repo": "TsubokuLabPages",
+      "description": "メディアアーティスト坪倉輝明のVRChat向け制作物まとめページ",
+      "url": "https://github.teruaki-tsubokura.com/",
+      "thumbnail": "images/github_thumbnail.png",
+      "tags": [],
+      "date": "2025-05-08"
+    },
+    {
+      "name": "Teruaki Tsubokura Portfolio Site",
+      "repo": "Claude-PortfolioSite",
+      "description": "Claude AI + MCPでポートフォリオサイトを作ってみたやつ",
+      "url": "https://tsubokulab.github.io/Claude-PortfolioSite/",
+      "thumbnail": "images/ogp.png",
+      "tags": [],
+      "date": "2025-05-08"
+    },
+    {
+      "name": "超すごいメディアアート展",
+      "repo": "Claude-MediaArt",
+      "description": "Claude AIに作品の企画を考えさせて、生成AIでイメージを作成したメディアアート作品の紹介ページ",
+      "url": "https://tsubokulab.github.io/Claude-MediaArt/",
+      "thumbnail": "images/ogp.jpg",
+      "tags": [],
+      "date": "2025-05-08"
     }
   ]
 }

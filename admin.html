@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>リポジトリ管理 - TsubokuLab</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome アイコン -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* 管理ページ用のスタイル追加 */
         .admin-panel {
@@ -83,6 +85,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         
         .btn {
@@ -92,6 +96,9 @@
             cursor: pointer;
             font-weight: 500;
             transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
         
         .btn-primary {
@@ -107,6 +114,11 @@
         .btn-danger {
             background-color: var(--accent-color);
             color: white;
+        }
+        
+        .btn-icon {
+            padding: 8px 12px;
+            border-radius: 4px;
         }
         
         .btn:hover {
@@ -125,6 +137,7 @@
             border: 1px solid #ddd;
             border-radius: 4px;
             margin-bottom: 10px;
+            position: relative;
         }
         
         .repo-item-info {
@@ -141,6 +154,32 @@
             gap: 10px;
         }
         
+        .repo-order-actions {
+            display: flex;
+            flex-direction: column;
+            margin-right: 10px;
+        }
+        
+        .order-btn {
+            background: none;
+            border: none;
+            color: #6c757d;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 0;
+            margin: 2px 0;
+            transition: color 0.2s;
+        }
+        
+        .order-btn:hover {
+            color: var(--primary-color);
+        }
+        
+        .order-btn:disabled {
+            color: #ccc;
+            cursor: not-allowed;
+        }
+        
         .json-output {
             margin-top: 30px;
             background-color: #f5f5f5;
@@ -148,11 +187,20 @@
             border-radius: 4px;
             max-height: 300px;
             overflow-y: auto;
+            position: relative;
         }
         
         .json-output pre {
             margin: 0;
             white-space: pre-wrap;
+        }
+        
+        .json-actions {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 5px;
         }
         
         .message {
@@ -172,6 +220,33 @@
             background-color: #f8d7da;
             color: #721c24;
             border: 1px solid #f5c6cb;
+        }
+        
+        .drop-zone {
+            border: 2px dashed #ccc;
+            border-radius: 5px;
+            padding: 25px;
+            text-align: center;
+            margin: 20px 0;
+            transition: border-color 0.3s;
+        }
+        
+        .drop-zone.active {
+            border-color: var(--primary-color);
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        
+        .json-export-section {
+            margin-top: 40px;
+        }
+        
+        .json-export-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         
         @keyframes fadeIn {
@@ -255,8 +330,12 @@
                     
                     <div class="actions full-width">
                         <input type="hidden" id="edit-index" value="-1">
-                        <button type="button" id="btn-clear" class="btn btn-secondary">クリア</button>
-                        <button type="submit" id="btn-save" class="btn btn-primary">保存</button>
+                        <button type="button" id="btn-clear" class="btn btn-secondary">
+                            <i class="fas fa-eraser"></i> クリア
+                        </button>
+                        <button type="submit" id="btn-save" class="btn btn-primary">
+                            <i class="fas fa-save"></i> 保存
+                        </button>
                     </div>
                 </form>
                 
@@ -264,13 +343,33 @@
                     <!-- リポジトリ一覧がここに表示される -->
                 </div>
                 
-                <div class="actions">
-                    <button type="button" id="btn-export" class="btn btn-primary">JSONエクスポート</button>
-                    <button type="button" id="btn-import" class="btn btn-secondary">JSONインポート</button>
+                <!-- ドラッグ&ドロップエリア -->
+                <div id="drop-zone" class="drop-zone">
+                    <p><i class="fas fa-file-import fa-2x"></i></p>
+                    <p>JSONファイルをドラッグ&ドロップするか、クリックして選択してください</p>
+                    <input type="file" id="file-input" accept=".json" style="display: none;">
+                    <button type="button" id="file-select-btn" class="btn btn-secondary">
+                        <i class="fas fa-folder-open"></i> ファイルを選択
+                    </button>
                 </div>
                 
-                <div class="json-output" id="json-output" style="display: none;">
-                    <pre id="json-content"></pre>
+                <!-- JSON出力セクション -->
+                <div class="json-export-section">
+                    <div class="json-export-title">
+                        <span>JSONデータ</span>
+                        <div>
+                            <button type="button" id="btn-copy" class="btn btn-icon btn-secondary" title="JSONをコピー">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                            <button type="button" id="btn-download" class="btn btn-primary">
+                                <i class="fas fa-download"></i> ダウンロード
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="json-output" id="json-output">
+                        <pre id="json-content"></pre>
+                    </div>
                 </div>
             </div>
         </div>
@@ -297,11 +396,14 @@
         const btnClear = document.getElementById('btn-clear');
         const btnSave = document.getElementById('btn-save');
         const repoList = document.getElementById('repo-list');
-        const btnExport = document.getElementById('btn-export');
-        const btnImport = document.getElementById('btn-import');
         const jsonOutput = document.getElementById('json-output');
         const jsonContent = document.getElementById('json-content');
         const messageContainer = document.getElementById('message-container');
+        const btnCopy = document.getElementById('btn-copy');
+        const btnDownload = document.getElementById('btn-download');
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const fileSelectBtn = document.getElementById('file-select-btn');
 
         // データ
         let repositories = [];
@@ -340,11 +442,38 @@
             // クリアボタンのイベント
             btnClear.addEventListener('click', clearForm);
             
-            // エクスポートボタンのイベント
-            btnExport.addEventListener('click', exportToJson);
+            // JSONコピーボタンのイベント
+            btnCopy.addEventListener('click', copyJsonToClipboard);
             
-            // インポートボタンのイベント
-            btnImport.addEventListener('click', importFromJson);
+            // JSONダウンロードボタンのイベント
+            btnDownload.addEventListener('click', downloadJsonFile);
+            
+            // ファイル選択ボタンのイベント
+            fileSelectBtn.addEventListener('click', () => {
+                fileInput.click();
+            });
+            
+            // ファイル入力の変更イベント
+            fileInput.addEventListener('change', handleFileSelect);
+            
+            // ドラッグ&ドロップイベント
+            dropZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                dropZone.classList.add('active');
+            });
+            
+            dropZone.addEventListener('dragleave', () => {
+                dropZone.classList.remove('active');
+            });
+            
+            dropZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                dropZone.classList.remove('active');
+                
+                if (e.dataTransfer.files.length) {
+                    handleFileImport(e.dataTransfer.files[0]);
+                }
+            });
         });
 
         // リポジトリデータを読み込む関数
@@ -356,6 +485,7 @@
                 try {
                     repositories = JSON.parse(storedData);
                     renderRepositoryList();
+                    updateJsonDisplay();
                 } catch (error) {
                     showMessage('保存されたデータの読み込みに失敗しました。', 'error');
                 }
@@ -366,6 +496,7 @@
                     .then(data => {
                         repositories = data.repositories || [];
                         renderRepositoryList();
+                        updateJsonDisplay();
                         
                         // ローカルストレージに保存
                         localStorage.setItem('tsubokulab-repositories', JSON.stringify(repositories));
@@ -390,6 +521,27 @@
                 const repoItem = document.createElement('div');
                 repoItem.classList.add('repo-item');
                 
+                // 順序変更ボタン
+                const orderActions = document.createElement('div');
+                orderActions.classList.add('repo-order-actions');
+                
+                const upBtn = document.createElement('button');
+                upBtn.classList.add('order-btn');
+                upBtn.innerHTML = '<i class="fas fa-chevron-up"></i>';
+                upBtn.title = '上に移動';
+                upBtn.disabled = index === 0;
+                upBtn.addEventListener('click', () => moveRepository(index, index - 1));
+                
+                const downBtn = document.createElement('button');
+                downBtn.classList.add('order-btn');
+                downBtn.innerHTML = '<i class="fas fa-chevron-down"></i>';
+                downBtn.title = '下に移動';
+                downBtn.disabled = index === repositories.length - 1;
+                downBtn.addEventListener('click', () => moveRepository(index, index + 1));
+                
+                orderActions.appendChild(upBtn);
+                orderActions.appendChild(downBtn);
+                
                 const repoInfo = document.createElement('div');
                 repoInfo.classList.add('repo-item-info');
                 
@@ -409,17 +561,18 @@
                 
                 const editBtn = document.createElement('button');
                 editBtn.classList.add('btn', 'btn-secondary');
-                editBtn.textContent = '編集';
+                editBtn.innerHTML = '<i class="fas fa-edit"></i> 編集';
                 editBtn.addEventListener('click', () => editRepository(index));
                 
                 const deleteBtn = document.createElement('button');
                 deleteBtn.classList.add('btn', 'btn-danger');
-                deleteBtn.textContent = '削除';
+                deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i> 削除';
                 deleteBtn.addEventListener('click', () => deleteRepository(index));
                 
                 repoActions.appendChild(editBtn);
                 repoActions.appendChild(deleteBtn);
                 
+                repoItem.appendChild(orderActions);
                 repoItem.appendChild(repoInfo);
                 repoItem.appendChild(repoActions);
                 
@@ -465,13 +618,36 @@
             }
             
             // ローカルストレージに保存
-            localStorage.setItem('tsubokulab-repositories', JSON.stringify(repositories));
+            saveRepositoriesToLocalStorage();
             
             // リポジトリ一覧を更新
             renderRepositoryList();
             
+            // JSONプレビューを更新
+            updateJsonDisplay();
+            
             // フォームをクリア
             clearForm();
+        }
+
+        // リポジトリの順序を変更する関数
+        function moveRepository(fromIndex, toIndex) {
+            if (toIndex < 0 || toIndex >= repositories.length) return;
+            
+            // リポジトリの順序を変更
+            const repo = repositories.splice(fromIndex, 1)[0];
+            repositories.splice(toIndex, 0, repo);
+            
+            // リポジトリ一覧を更新
+            renderRepositoryList();
+            
+            // ローカルストレージに保存
+            saveRepositoriesToLocalStorage();
+            
+            // JSONプレビューを更新
+            updateJsonDisplay();
+            
+            showMessage(`リポジトリの順序を変更しました。`, 'success');
         }
 
         // リポジトリを編集する関数
@@ -497,7 +673,7 @@
             editIndexInput.value = index;
             
             // 保存ボタンのテキストを変更
-            btnSave.textContent = '更新';
+            btnSave.innerHTML = '<i class="fas fa-save"></i> 更新';
             
             // フォームにスクロール
             repoForm.scrollIntoView({ behavior: 'smooth' });
@@ -509,10 +685,13 @@
                 repositories.splice(index, 1);
                 
                 // ローカルストレージに保存
-                localStorage.setItem('tsubokulab-repositories', JSON.stringify(repositories));
+                saveRepositoriesToLocalStorage();
                 
                 // リポジトリ一覧を更新
                 renderRepositoryList();
+                
+                // JSONプレビューを更新
+                updateJsonDisplay();
                 
                 showMessage('リポジトリが削除されました。', 'success');
             }
@@ -530,7 +709,7 @@
             editIndexInput.value = -1;
             
             // 保存ボタンのテキストをリセット
-            btnSave.textContent = '保存';
+            btnSave.innerHTML = '<i class="fas fa-save"></i> 保存';
             
             // 現在の日付を設定
             const today = new Date();
@@ -567,84 +746,114 @@
             tagContainer.appendChild(tag);
         }
 
-        // JSONをエクスポートする関数
-        function exportToJson() {
+        // JSONディスプレイを更新する関数
+        function updateJsonDisplay() {
+            const data = {
+                repositories: repositories
+            };
+            
+            const jsonString = JSON.stringify(data, null, 2);
+            jsonContent.textContent = jsonString;
+        }
+
+        // JSONをクリップボードにコピーする関数
+        function copyJsonToClipboard() {
             const data = {
                 repositories: repositories
             };
             
             const jsonString = JSON.stringify(data, null, 2);
             
-            // 表示
-            jsonContent.textContent = jsonString;
-            jsonOutput.style.display = 'block';
+            // クリップボードにコピー
+            navigator.clipboard.writeText(jsonString)
+                .then(() => {
+                    showMessage('JSONがクリップボードにコピーされました。', 'success');
+                })
+                .catch(err => {
+                    console.error('コピーに失敗しました:', err);
+                    showMessage('コピーに失敗しました。', 'error');
+                });
+        }
+
+        // JSONファイルをダウンロードする関数
+        function downloadJsonFile() {
+            const data = {
+                repositories: repositories
+            };
             
-            // JSONファイルのダウンロードリンクを作成
+            const jsonString = JSON.stringify(data, null, 2);
             const blob = new Blob([jsonString], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
             
             const a = document.createElement('a');
             a.href = url;
             a.download = 'repositories.json';
-            a.textContent = 'JSONファイルをダウンロード';
-            a.className = 'btn btn-primary';
-            a.style.display = 'block';
-            a.style.marginTop = '15px';
+            a.style.display = 'none';
             
-            jsonOutput.appendChild(a);
+            document.body.appendChild(a);
+            a.click();
             
-            // スクロール
-            jsonOutput.scrollIntoView({ behavior: 'smooth' });
+            // クリーンアップ
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 100);
+            
+            showMessage('JSONファイルがダウンロードされました。', 'success');
         }
 
-        // JSONをインポートする関数
-        function importFromJson() {
-            // テキストエリアを作成
-            const textArea = document.createElement('textarea');
-            textArea.rows = 10;
-            textArea.style.width = '100%';
-            textArea.style.marginBottom = '15px';
-            textArea.placeholder = 'JSONデータを貼り付けてください...';
+        // ファイル選択イベント
+        function handleFileSelect(e) {
+            const file = e.target.files[0];
+            if (file) {
+                handleFileImport(file);
+            }
             
-            const importBtn = document.createElement('button');
-            importBtn.textContent = 'インポート';
-            importBtn.className = 'btn btn-primary';
+            // 入力をリセット（同じファイルを選択できるように）
+            fileInput.value = '';
+        }
+
+        // ファイルインポート処理
+        function handleFileImport(file) {
+            if (!file || file.type !== 'application/json') {
+                showMessage('JSONファイルを選択してください。', 'error');
+                return;
+            }
             
-            // 既存の要素をクリア
-            jsonContent.innerHTML = '';
-            jsonOutput.style.display = 'block';
+            const reader = new FileReader();
             
-            jsonContent.appendChild(textArea);
-            jsonContent.appendChild(importBtn);
-            
-            // スクロール
-            jsonOutput.scrollIntoView({ behavior: 'smooth' });
-            
-            // インポートボタンのイベントリスナー
-            importBtn.addEventListener('click', () => {
+            reader.onload = (e) => {
                 try {
-                    const data = JSON.parse(textArea.value);
+                    const data = JSON.parse(e.target.result);
                     
                     if (Array.isArray(data.repositories)) {
                         repositories = data.repositories;
                         
                         // ローカルストレージに保存
-                        localStorage.setItem('tsubokulab-repositories', JSON.stringify(repositories));
+                        saveRepositoriesToLocalStorage();
                         
                         // リポジトリ一覧を更新
                         renderRepositoryList();
                         
-                        showMessage('リポジトリデータがインポートされました。', 'success');
+                        // JSONプレビューを更新
+                        updateJsonDisplay();
                         
-                        // JSONエリアをクリア
-                        jsonOutput.style.display = 'none';
+                        showMessage('リポジトリデータがインポートされました。', 'success');
                     } else {
                         showMessage('正しいJSONフォーマットではありません。', 'error');
                     }
                 } catch (error) {
+                    console.error('JSONのパースに失敗しました:', error);
                     showMessage('JSONのパースに失敗しました。', 'error');
                 }
-            });
+            };
+            
+            reader.readAsText(file);
+        }
+
+        // ローカルストレージに保存する関数
+        function saveRepositoriesToLocalStorage() {
+            localStorage.setItem('tsubokulab-repositories', JSON.stringify(repositories));
         }
 
         // メッセージを表示する関数
