@@ -102,6 +102,17 @@ header .container {
     font-weight: 700;
 }
 
+.site-title-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: opacity 0.2s ease;
+}
+
+.site-title-link:hover {
+    opacity: 0.8;
+}
+
 .logo {
     width: 180px;
     height: 40px;
@@ -147,24 +158,27 @@ nav a:hover::after, nav a.active::after {
 
 /* ヒーローセクション */
 .hero {
-    padding: 100px 0 80px;
+    padding: 60px 0 40px;
     position: relative;
     overflow: hidden;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .hero-title {
-    font-size: 3rem;
-    margin-bottom: 20px;
+    font-size: 2.4rem;
+    margin-bottom: 15px;
     font-weight: 700;
     color: var(--text-color);
     animation: fadeInUp 1s;
 }
 
 .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: var(--light-text);
-    margin-bottom: 40px;
-    max-width: 600px;
+    margin-bottom: 0;
+    max-width: 800px;
+    margin: 0 auto;
     animation: fadeInUp 1s 0.2s backwards;
 }
 
@@ -389,11 +403,11 @@ footer .container {
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
     .hero-title {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
     
     .hero-subtitle {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
     
     .projects-grid {
