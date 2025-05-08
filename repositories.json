@@ -19,7 +19,8 @@
       "url": "https://github.teruaki-tsubokura.com/claude/simulator/",
       "thumbnail": "https://github.teruaki-tsubokura.com/claude/simulator/images/thumbnail.png",
       "tags": [
-        "Web"
+        "Web",
+        "Tool"
       ],
       "date": "2025-03-23"
     },
@@ -30,7 +31,8 @@
       "url": "https://github.teruaki-tsubokura.com/claude/tax-calculator/",
       "thumbnail": "https://github.teruaki-tsubokura.com/claude/tax-calculator/images/thumb.png",
       "tags": [
-        "Web"
+        "Web",
+        "Tool"
       ],
       "date": "2025-04-02"
     },
@@ -43,7 +45,7 @@
       "tags": [
         "Web"
       ],
-      "date": "2025-03-29"
+      "date": "2025-05-08"
     },
     {
       "name": "TsubokuLab Assets",
@@ -54,7 +56,7 @@
       "tags": [
         "Web"
       ],
-      "date": "2022-04-01"
+      "date": "2025-05-08"
     },
     {
       "name": "超すごいメディアアート展",
@@ -65,7 +67,7 @@
       "tags": [
         "Web"
       ],
-      "date": "2025-04-01"
+      "date": "2025-05-08"
     }
   ]
 }
