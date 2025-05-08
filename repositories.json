@@ -14,7 +14,7 @@
       "repo": "MagicCircleGenerator",
       "description": "ブラウザ上で美しい魔法陣を作成できるオンラインツール。円、図形、線を自由に配置し、SVG、PNG、ノーマルマップとしてエクスポート可能。",
       "url": "https://tsubokulab.github.io/MagicCircleGenerator/",
-      "thumbnail": "img/thumbnail.png",
+      "thumbnail": "https://tsubokulab.github.io/MagicCircleGenerator/img/thumbnail.png",
       "tags": [
         "generator",
         "tools",
@@ -28,7 +28,7 @@
       "repo": "TsubokuLabPages",
       "description": "メディアアーティスト坪倉輝明のVRChat向け制作物まとめページ",
       "url": "https://github.teruaki-tsubokura.com/",
-      "thumbnail": "images/github_thumbnail.png",
+      "thumbnail": "https://github.teruaki-tsubokura.com/images/github_thumbnail.png",
       "tags": [],
       "date": "2025-05-08"
     },
@@ -37,7 +37,7 @@
       "repo": "Claude-PortfolioSite",
       "description": "Claude AI + MCPでポートフォリオサイトを作ってみたやつ",
       "url": "https://tsubokulab.github.io/Claude-PortfolioSite/",
-      "thumbnail": "images/ogp.png",
+      "thumbnail": "https://tsubokulab.github.io/Claude-PortfolioSite/images/ogp.png",
       "tags": [],
       "date": "2025-05-08"
     },
@@ -46,7 +46,7 @@
       "repo": "Claude-MediaArt",
       "description": "Claude AIに作品の企画を考えさせて、生成AIでイメージを作成したメディアアート作品の紹介ページ",
       "url": "https://tsubokulab.github.io/Claude-MediaArt/",
-      "thumbnail": "images/ogp.jpg",
+      "thumbnail": "https://tsubokulab.github.io/Claude-MediaArt/images/ogp.jpg",
       "tags": [],
       "date": "2025-05-08"
     }
