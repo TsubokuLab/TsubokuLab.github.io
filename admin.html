@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>リポジトリ管理 - TsubokuLab</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 管理ページ用のスタイル追加 */
+        .admin-panel {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .admin-title {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .repo-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input, 
+        .form-group textarea, 
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .tag {
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .tag-remove {
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .full-width {
+            grid-column: span 2;
+        }
+        
+        .actions {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        .btn-danger {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .btn:hover {
+            opacity: 0.9;
+        }
+        
+        .repo-list {
+            margin-top: 40px;
+        }
+        
+        .repo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .repo-item-info {
+            flex: 1;
+        }
+        
+        .repo-item-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .repo-item-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .json-output {
+            margin-top: 30px;
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 4px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .json-output pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+        
+        .message {
+            padding: 10px 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            animation: fadeIn 0.3s;
+        }
+        
+        .message-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .message-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            .repo-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .full-width {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="site-title">
+                <svg class="logo" viewBox="0 0 200 50">
+                    <text x="10" y="35" font-family="Poppins" font-weight="700" font-size="30">TsubokuLab</text>
+                </svg>
+            </h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="#" class="active">管理</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="admin-panel">
+                <h2 class="admin-title">リポジトリ管理</h2>
+                
+                <div id="message-container"></div>
+                
+                <form id="repo-form" class="repo-form">
+                    <div class="form-group">
+                        <label for="name">プロジェクト名</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="repo">リポジトリ名</label>
+                        <input type="text" id="repo" required>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="description">概要</label>
+                        <textarea id="description" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="url">GitHub Pages URL</label>
+                        <input type="url" id="url" placeholder="https://tsubokulab.github.io/repo-name/">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="thumbnail">サムネイル画像パス</label>
+                        <input type="text" id="thumbnail" placeholder="images/thumbnails/example.jpg">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="date">公開日</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="tag-input">タグ</label>
+                        <div class="tag-input-container">
+                            <input type="text" id="tag-input" placeholder="タグを入力して Enter を押す">
+                            <div class="tag-container" id="tag-container"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="actions full-width">
+                        <input type="hidden" id="edit-index" value="-1">
+                        <button type="button" id="btn-clear" class="btn btn-secondary">クリア</button>
+                        <button type="submit" id="btn-save" class="btn btn-primary">保存</button>
+                    </div>
+                </form>
+                
+                <div class="repo-list" id="repo-list">
+                    <!-- リポジトリ一覧がここに表示される -->
+                </div>
+                
+                <div class="actions">
+                    <button type="button" id="btn-export" class="btn btn-primary">JSONエクスポート</button>
+                    <button type="button" id="btn-import" class="btn btn-secondary">JSONインポート</button>
+                </div>
+                
+                <div class="json-output" id="json-output" style="display: none;">
+                    <pre id="json-content"></pre>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 TsubokuLab. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // DOM要素
+        const repoForm = document.getElementById('repo-form');
+        const nameInput = document.getElementById('name');
+        const repoInput = document.getElementById('repo');
+        const descriptionInput = document.getElementById('description');
+        const urlInput = document.getElementById('url');
+        const thumbnailInput = document.getElementById('thumbnail');
+        const dateInput = document.getElementById('date');
+        const tagInput = document.getElementById('tag-input');
+        const tagContainer = document.getElementById('tag-container');
+        const editIndexInput = document.getElementById('edit-index');
+        const btnClear = document.getElementById('btn-clear');
+        const btnSave = document.getElementById('btn-save');
+        const repoList = document.getElementById('repo-list');
+        const btnExport = document.getElementById('btn-export');
+        const btnImport = document.getElementById('btn-import');
+        const jsonOutput = document.getElementById('json-output');
+        const jsonContent = document.getElementById('json-content');
+        const messageContainer = document.getElementById('message-container');
+
+        // データ
+        let repositories = [];
+        let currentTags = [];
+
+        // ページ読み込み時の処理
+        document.addEventListener('DOMContentLoaded', () => {
+            // 現在の日付をデフォルトで設定
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            dateInput.value = `${year}-${month}-${day}`;
+            
+            // リポジトリデータの読み込み
+            loadRepositories();
+            
+            // タグ入力のイベントリスナー
+            tagInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const tag = tagInput.value.trim();
+                    if (tag && !currentTags.includes(tag)) {
+                        addTag(tag);
+                        tagInput.value = '';
+                    }
+                }
+            });
+            
+            // フォームの送信イベント
+            repoForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                saveRepository();
+            });
+            
+            // クリアボタンのイベント
+            btnClear.addEventListener('click', clearForm);
+            
+            // エクスポートボタンのイベント
+            btnExport.addEventListener('click', exportToJson);
+            
+            // インポートボタンのイベント
+            btnImport.addEventListener('click', importFromJson);
+        });
+
+        // リポジトリデータを読み込む関数
+        function loadRepositories() {
+            // ローカルストレージから読み込み
+            const storedData = localStorage.getItem('tsubokulab-repositories');
+            
+            if (storedData) {
+                try {
+                    repositories = JSON.parse(storedData);
+                    renderRepositoryList();
+                } catch (error) {
+                    showMessage('保存されたデータの読み込みに失敗しました。', 'error');
+                }
+            } else {
+                // ファイルから読み込み
+                fetch('repositories.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        repositories = data.repositories || [];
+                        renderRepositoryList();
+                        
+                        // ローカルストレージに保存
+                        localStorage.setItem('tsubokulab-repositories', JSON.stringify(repositories));
+                    })
+                    .catch(error => {
+                        console.error('リポジトリデータの読み込みに失敗しました:', error);
+                        showMessage('リポジトリデータの読み込みに失敗しました。', 'error');
+                    });
+            }
+        }
+
+        // リポジトリ一覧を表示する関数
+        function renderRepositoryList() {
+            repoList.innerHTML = '';
+            
+            if (repositories.length === 0) {
+                repoList.innerHTML = '<p>リポジトリがありません。</p>';
+                return;
+            }
+            
+            repositories.forEach((repo, index) => {
+                const repoItem = document.createElement('div');
+                repoItem.classList.add('repo-item');
+                
+                const repoInfo = document.createElement('div');
+                repoInfo.classList.add('repo-item-info');
+                
+                const repoName = document.createElement('div');
+                repoName.classList.add('repo-item-name');
+                repoName.textContent = repo.name;
+                
+                const repoDesc = document.createElement('div');
+                repoDesc.classList.add('repo-item-desc');
+                repoDesc.textContent = repo.description;
+                
+                repoInfo.appendChild(repoName);
+                repoInfo.appendChild(repoDesc);
+                
+                const repoActions = document.createElement('div');
+                repoActions.classList.add('repo-item-actions');
+                
+                const editBtn = document.createElement('button');
+                editBtn.classList.add('btn', 'btn-secondary');
+                editBtn.textContent = '編集';
+                editBtn.addEventListener('click', () => editRepository(index));
+                
+                const deleteBtn = document.createElement('button');
+                deleteBtn.classList.add('btn', 'btn-danger');
+                deleteBtn.textContent = '削除';
+                deleteBtn.addEventListener('click', () => deleteRepository(index));
+                
+                repoActions.appendChild(editBtn);
+                repoActions.appendChild(deleteBtn);
+                
+                repoItem.appendChild(repoInfo);
+                repoItem.appendChild(repoActions);
+                
+                repoList.appendChild(repoItem);
+            });
+        }
+
+        // リポジトリを保存する関数
+        function saveRepository() {
+            const name = nameInput.value.trim();
+            const repo = repoInput.value.trim();
+            const description = descriptionInput.value.trim();
+            const url = urlInput.value.trim();
+            const thumbnail = thumbnailInput.value.trim();
+            const date = dateInput.value;
+            
+            // バリデーション
+            if (!name || !repo || !description || !date) {
+                showMessage('必須項目を入力してください。', 'error');
+                return;
+            }
+            
+            const repoData = {
+                name,
+                repo,
+                description,
+                url: url || `https://tsubokulab.github.io/${repo}/`,
+                thumbnail: thumbnail || '',
+                tags: [...currentTags],
+                date
+            };
+            
+            const editIndex = parseInt(editIndexInput.value);
+            
+            if (editIndex >= 0 && editIndex < repositories.length) {
+                // 既存のリポジトリを更新
+                repositories[editIndex] = repoData;
+                showMessage('リポジトリが更新されました。', 'success');
+            } else {
+                // 新規リポジトリを追加
+                repositories.push(repoData);
+                showMessage('新しいリポジトリが追加されました。', 'success');
+            }
+            
+            // ローカルストレージに保存
+            localStorage.setItem('tsubokulab-repositories', JSON.stringify(repositories));
+            
+            // リポジトリ一覧を更新
+            renderRepositoryList();
+            
+            // フォームをクリア
+            clearForm();
+        }
+
+        // リポジトリを編集する関数
+        function editRepository(index) {
+            const repo = repositories[index];
+            
+            nameInput.value = repo.name;
+            repoInput.value = repo.repo;
+            descriptionInput.value = repo.description;
+            urlInput.value = repo.url;
+            thumbnailInput.value = repo.thumbnail || '';
+            dateInput.value = repo.date;
+            
+            // タグをクリアして再設定
+            currentTags = [];
+            tagContainer.innerHTML = '';
+            
+            repo.tags.forEach(tag => {
+                addTag(tag);
+            });
+            
+            // 編集インデックスを設定
+            editIndexInput.value = index;
+            
+            // 保存ボタンのテキストを変更
+            btnSave.textContent = '更新';
+            
+            // フォームにスクロール
+            repoForm.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // リポジトリを削除する関数
+        function deleteRepository(index) {
+            if (confirm('このリポジトリを削除してもよろしいですか？')) {
+                repositories.splice(index, 1);
+                
+                // ローカルストレージに保存
+                localStorage.setItem('tsubokulab-repositories', JSON.stringify(repositories));
+                
+                // リポジトリ一覧を更新
+                renderRepositoryList();
+                
+                showMessage('リポジトリが削除されました。', 'success');
+            }
+        }
+
+        // フォームをクリアする関数
+        function clearForm() {
+            repoForm.reset();
+            
+            // タグをクリア
+            currentTags = [];
+            tagContainer.innerHTML = '';
+            
+            // 編集インデックスをリセット
+            editIndexInput.value = -1;
+            
+            // 保存ボタンのテキストをリセット
+            btnSave.textContent = '保存';
+            
+            // 現在の日付を設定
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            dateInput.value = `${year}-${month}-${day}`;
+        }
+
+        // タグを追加する関数
+        function addTag(tagText) {
+            currentTags.push(tagText);
+            
+            const tag = document.createElement('div');
+            tag.classList.add('tag');
+            tag.innerHTML = `
+                ${tagText}
+                <span class="tag-remove" data-tag="${tagText}">×</span>
+            `;
+            
+            // 削除ボタンのイベントリスナー
+            const removeBtn = tag.querySelector('.tag-remove');
+            removeBtn.addEventListener('click', () => {
+                // タグを削除
+                const tagIndex = currentTags.indexOf(tagText);
+                if (tagIndex !== -1) {
+                    currentTags.splice(tagIndex, 1);
+                }
+                
+                // 要素を削除
+                tag.remove();
+            });
+            
+            tagContainer.appendChild(tag);
+        }
+
+        // JSONをエクスポートする関数
+        function exportToJson() {
+            const data = {
+                repositories: repositories
+            };
+            
+            const jsonString = JSON.stringify(data, null, 2);
+            
+            // 表示
+            jsonContent.textContent = jsonString;
+            jsonOutput.style.display = 'block';
+            
+            // JSONファイルのダウンロードリンクを作成
+            const blob = new Blob([jsonString], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'repositories.json';
+            a.textContent = 'JSONファイルをダウンロード';
+            a.className = 'btn btn-primary';
+            a.style.display = 'block';
+            a.style.marginTop = '15px';
+            
+            jsonOutput.appendChild(a);
+            
+            // スクロール
+            jsonOutput.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // JSONをインポートする関数
+        function importFromJson() {
+            // テキストエリアを作成
+            const textArea = document.createElement('textarea');
+            textArea.rows = 10;
+            textArea.style.width = '100%';
+            textArea.style.marginBottom = '15px';
+            textArea.placeholder = 'JSONデータを貼り付けてください...';
+            
+            const importBtn = document.createElement('button');
+            importBtn.textContent = 'インポート';
+            importBtn.className = 'btn btn-primary';
+            
+            // 既存の要素をクリア
+            jsonContent.innerHTML = '';
+            jsonOutput.style.display = 'block';
+            
+            jsonContent.appendChild(textArea);
+            jsonContent.appendChild(importBtn);
+            
+            // スクロール
+            jsonOutput.scrollIntoView({ behavior: 'smooth' });
+            
+            // インポートボタンのイベントリスナー
+            importBtn.addEventListener('click', () => {
+                try {
+                    const data = JSON.parse(textArea.value);
+                    
+                    if (Array.isArray(data.repositories)) {
+                        repositories = data.repositories;
+                        
+                        // ローカルストレージに保存
+                        localStorage.setItem('tsubokulab-repositories', JSON.stringify(repositories));
+                        
+                        // リポジトリ一覧を更新
+                        renderRepositoryList();
+                        
+                        showMessage('リポジトリデータがインポートされました。', 'success');
+                        
+                        // JSONエリアをクリア
+                        jsonOutput.style.display = 'none';
+                    } else {
+                        showMessage('正しいJSONフォーマットではありません。', 'error');
+                    }
+                } catch (error) {
+                    showMessage('JSONのパースに失敗しました。', 'error');
+                }
+            });
+        }
+
+        // メッセージを表示する関数
+        function showMessage(text, type) {
+            const message = document.createElement('div');
+            message.classList.add('message', `message-${type}`);
+            message.textContent = text;
+            
+            messageContainer.innerHTML = '';
+            messageContainer.appendChild(message);
+            
+            // 5秒後に消える
+            setTimeout(() => {
+                message.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
