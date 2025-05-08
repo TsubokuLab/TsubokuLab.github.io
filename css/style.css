@@ -158,11 +158,10 @@ nav a:hover::after, nav a.active::after {
 
 /* ヒーローセクション */
 .hero {
-    padding: 60px 0 40px;
+    padding: 50px 0 30px;
     position: relative;
     overflow: hidden;
     text-align: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .hero-title {
@@ -213,7 +212,7 @@ nav a:hover::after, nav a.active::after {
 
 /* プロジェクトセクション */
 .projects {
-    padding: 80px 0;
+    padding: 60px 0 80px;
     background-color: #fff;
 }
 

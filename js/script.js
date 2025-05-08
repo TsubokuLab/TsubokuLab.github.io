@@ -3,7 +3,6 @@ const loader = document.querySelector('.loader');
 const projectsContainer = document.getElementById('projects-container');
 const filterButtons = document.querySelectorAll('.filter-btn');
 const projectTemplate = document.getElementById('project-card-template');
-const heroParticles = document.querySelector('.particles');
 
 // リポジトリデータのキャッシュ
 let repositories = [];
@@ -12,8 +11,6 @@ let currentFilter = 'all';
 
 // ページ読み込み時の処理
 document.addEventListener('DOMContentLoaded', () => {
-    // パーティクルの生成
-    //generateParticles();
     
     // データの読み込み
     fetchRepositories();
@@ -145,45 +142,3 @@ function formatDate(dateString) {
     return `${year}年${month}月${day}日`;
 }
 
-// ヒーローセクションのパーティクルを生成する関数
-function generateParticles() {
-    const particleCount = 20;
-    
-    for (let i = 0; i < particleCount; i++) {
-        const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-        const x = Math.random() * 500;
-        const y = Math.random() * 200;
-        const radius = Math.random() * 4 + 2;
-        
-        circle.setAttribute("cx", x);
-        circle.setAttribute("cy", y);
-        circle.setAttribute("r", radius);
-        
-        // アニメーション用のCSS変数を設定
-        circle.style.setProperty('--tx', `${Math.random() * 20 - 10}px`);
-        circle.style.setProperty('--ty', `${Math.random() * 20 - 10}px`);
-        circle.style.setProperty('--duration', `${Math.random() * 3 + 3}s`);
-        
-        // CSSアニメーションを適用
-        circle.style.animation = `float var(--duration) ease-in-out infinite alternate`;
-        
-        heroParticles.appendChild(circle);
-    }
-}
-
-// パーティクルのフロートアニメーション
-const floatKeyframes = `
-@keyframes float {
-    0% {
-        transform: translate(0, 0);
-    }
-    100% {
-        transform: translate(var(--tx), var(--ty));
-    }
-}
-`;
-
-// スタイルタグにキーフレームを追加
-const style = document.createElement('style');
-style.textContent = floatKeyframes;
-document.head.appendChild(style);
