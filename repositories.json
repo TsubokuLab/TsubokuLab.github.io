@@ -13,39 +13,6 @@
       "date": "2025-05-08"
     },
     {
-      "name": "TsubokuLab Assets",
-      "repo": "TsubokuLabPages",
-      "description": "メディアアーティスト坪倉輝明のVRChat向け制作物まとめページ",
-      "url": "https://github.teruaki-tsubokura.com/",
-      "thumbnail": "https://github.teruaki-tsubokura.com/images/github_thumbnail.png",
-      "tags": [
-        "Web"
-      ],
-      "date": "2025-05-08"
-    },
-    {
-      "name": "Teruaki Tsubokura Portfolio Site",
-      "repo": "Claude-PortfolioSite",
-      "description": "Claude AI + MCPでポートフォリオサイトを作ってみたやつ",
-      "url": "https://tsubokulab.github.io/Claude-PortfolioSite/",
-      "thumbnail": "https://tsubokulab.github.io/Claude-PortfolioSite/images/ogp.png",
-      "tags": [
-        "Web"
-      ],
-      "date": "2025-05-08"
-    },
-    {
-      "name": "超すごいメディアアート展",
-      "repo": "Claude-MediaArt",
-      "description": "Claude AIに作品の企画を考えさせて、生成AIでイメージを作成したメディアアート作品の紹介ページ",
-      "url": "https://tsubokulab.github.io/Claude-MediaArt/",
-      "thumbnail": "https://tsubokulab.github.io/Claude-MediaArt/images/ogp.jpg",
-      "tags": [
-        "Web"
-      ],
-      "date": "2025-05-08"
-    },
-    {
       "name": "資産取り崩しシミュレーター",
       "repo": "simulator",
       "description": "資産運用・出口戦略計画ツール",
@@ -62,8 +29,43 @@
       "description": "所得に応じた所得税、住民税、健康保険料、年金保険料、消費税などを計算し、実質税負担率と手取り額をグラフで確認できます。",
       "url": "https://github.teruaki-tsubokura.com/claude/tax-calculator/",
       "thumbnail": "https://github.teruaki-tsubokura.com/claude/tax-calculator/images/thumb.png",
-      "tags": [],
+      "tags": [
+        "Web"
+      ],
       "date": "2025-04-02"
+    },
+    {
+      "name": "Teruaki Tsubokura Portfolio Site",
+      "repo": "Claude-PortfolioSite",
+      "description": "Claude AI + MCPでポートフォリオサイトを作ってみたやつ",
+      "url": "https://tsubokulab.github.io/Claude-PortfolioSite/",
+      "thumbnail": "https://tsubokulab.github.io/Claude-PortfolioSite/images/ogp.png",
+      "tags": [
+        "Web"
+      ],
+      "date": "2025-05-08"
+    },
+    {
+      "name": "TsubokuLab Assets",
+      "repo": "TsubokuLabPages",
+      "description": "メディアアーティスト坪倉輝明のVRChat向け制作物まとめページ",
+      "url": "https://github.teruaki-tsubokura.com/",
+      "thumbnail": "https://github.teruaki-tsubokura.com/images/github_thumbnail.png",
+      "tags": [
+        "Web"
+      ],
+      "date": "2025-05-08"
+    },
+    {
+      "name": "超すごいメディアアート展",
+      "repo": "Claude-MediaArt",
+      "description": "Claude AIに作品の企画を考えさせて、生成AIでイメージを作成したメディアアート作品の紹介ページ",
+      "url": "https://tsubokulab.github.io/Claude-MediaArt/",
+      "thumbnail": "https://tsubokulab.github.io/Claude-MediaArt/images/ogp.jpg",
+      "tags": [
+        "Web"
+      ],
+      "date": "2025-05-08"
     }
   ]
 }
