@@ -13,7 +13,7 @@ let currentFilter = 'all';
 // ページ読み込み時の処理
 document.addEventListener('DOMContentLoaded', () => {
     // パーティクルの生成
-    generateParticles();
+    //generateParticles();
     
     // データの読み込み
     fetchRepositories();
