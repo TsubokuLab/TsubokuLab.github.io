@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "gh-pages -d ."
+    "deploy": "gh-pages -d .",
+    "start": "http-server -o -p 8080"
   },
   "repository": {
     "type": "git",
