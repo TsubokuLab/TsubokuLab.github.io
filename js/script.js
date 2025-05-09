@@ -84,14 +84,12 @@ function renderProjects(projectsData) {
         const projectCard = document.importNode(projectTemplate.content, true);
         
         // 要素を取得
+        const card = projectCard.querySelector('.project-card');
         const title = projectCard.querySelector('.project-title');
         const description = projectCard.querySelector('.project-description');
         const thumbnail = projectCard.querySelector('.project-thumbnail img');
         const tagsContainer = projectCard.querySelector('.project-tags');
         const dateEl = projectCard.querySelector('.project-date');
-        const viewBtn = projectCard.querySelector('.view-btn');
-        const repoBtn = projectCard.querySelector('.repo-btn');
-        const card = projectCard.querySelector('.project-card');
         
         // データをセット
         title.textContent = project.name;
@@ -99,8 +97,7 @@ function renderProjects(projectsData) {
         thumbnail.src = project.thumbnail || 'images/placeholder.svg';
         thumbnail.alt = project.name;
         dateEl.textContent = formatDate(project.date);
-        viewBtn.href = project.url;
-        repoBtn.href = `https://github.com/TsubokuLab/${project.repo}`;
+        card.href = project.url;
         
         // タグの生成
         project.tags.forEach(tag => {
