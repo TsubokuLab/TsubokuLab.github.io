@@ -346,17 +346,26 @@ footer .container {
     flex-wrap: wrap;
     gap: 15px;
     justify-content: center;
+    margin-top: 10px;
 }
 
 .social-icon-link {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform var(--animation-speed);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 18px;
+    transition: transform var(--animation-speed), background-color var(--animation-speed);
+    text-decoration: none;
 }
 
 .social-icon-link:hover {
     transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .social-icon {
