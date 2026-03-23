@@ -4,80 +4,83 @@
 
 > **言語ポリシー:** このプロジェクトのオーナーは日本語話者です。AIアシスタントはすべての応答・コミット・ドキュメントを **日本語** で出力してください。
 
-## Project Overview
+---
 
-A static GitHub Pages portfolio site for TsubokuLab (Teruaki Tsubokura) that displays a list of published projects. The site is entirely static — no backend, no build compilation step, no frameworks. Content is driven by `repositories.json`.
+## プロジェクト概要
 
-Live site: https://tsubokulab.github.io/
+TsubokuLab（坪倉輝明）のプロジェクト一覧を表示するGitHub Pagesポートフォリオサイトです。
+バックエンドなし・ビルド工程なし・フレームワークなしの完全静的サイトで、表示コンテンツは `repositories.json` で管理します。
+
+公開URL: https://tsubokulab.github.io/
 
 ---
 
-## Repository Structure
+## ディレクトリ構造
 
 ```
 TsubokuLab.github.io/
-├── index.html          # Main portfolio page (public-facing)
-├── admin.html          # Admin UI for managing repositories.json
-├── repositories.json   # Project data (the "database")
+├── index.html          # 公開ポートフォリオページ
+├── admin.html          # repositories.json 管理用UIページ
+├── repositories.json   # プロジェクトデータ（DBに相当）
 ├── css/
-│   └── style.css       # All styles (~420 lines, CSS custom properties)
+│   └── style.css       # 全スタイル定義（約420行、CSS カスタムプロパティ使用）
 ├── js/
-│   └── script.js       # Frontend logic (~141 lines, vanilla JS)
+│   └── script.js       # フロントエンドロジック（約141行、バニラJS）
 ├── images/
-│   └── placeholder.svg # Fallback thumbnail
-├── package.json        # npm scripts only (no build pipeline)
+│   └── placeholder.svg # サムネイル未設定時のフォールバック画像
+├── package.json        # npmスクリプトのみ（ビルドパイプラインなし）
 ├── package-lock.json
-├── ads.txt             # Google AdSense config
-├── README.md           # Japanese documentation
-├── deployToGithub.bat  # Windows: runs `npm run deploy`
-├── setup-server.bat    # Windows: installs http-server
-└── start-server.bat    # Windows: runs `npm start`
+├── ads.txt             # Google AdSense設定
+├── README.md           # 日本語ドキュメント
+├── deployToGithub.bat  # Windows用: `npm run deploy` を実行
+├── setup-server.bat    # Windows用: http-server をインストール
+└── start-server.bat    # Windows用: `npm start` を実行
 ```
 
 ---
 
-## Technology Stack
+## 技術スタック
 
-- **HTML5 / CSS3 / Vanilla JavaScript (ES6+)** — no framework
-- **Google Fonts**: Noto Sans JP (Japanese text), Poppins (English text)
-- **Font Awesome 6.5.1** — icons, loaded from CDN
-- **Google Analytics**: gtag.js (ID: `G-TFTH0DVE14`)
+- **HTML5 / CSS3 / バニラJavaScript (ES6+)** — フレームワークなし
+- **Google Fonts**: Noto Sans JP（日本語）、Poppins（英語）
+- **Font Awesome 6.5.1** — アイコン（CDN読み込み）
+- **Google Analytics**: gtag.js（ID: `G-TFTH0DVE14`）
 - **Google AdSense**: `pub-6570897144346563`
-- **gh-pages** (`npm run deploy`) — only npm dependency, for deployment
+- **gh-pages** (`npm run deploy`) — デプロイ用の唯一のnpm依存パッケージ
 
 ---
 
-## Development Workflow
+## 開発ワークフロー
 
-### Local Development
+### ローカル開発
 
 ```bash
-npm install          # installs gh-pages + http-server devDep
-npm start            # starts http-server on http://localhost:8080
+npm install   # gh-pages と http-server をインストール
+npm start     # http://localhost:8080 でローカルサーバー起動
 ```
 
-Or use the Windows batch scripts:
-- `setup-server.bat` — install dependencies
-- `start-server.bat` — start local server
+Windowsの場合はバッチファイルを使用:
+- `setup-server.bat` — 依存パッケージのインストール
+- `start-server.bat` — ローカルサーバーの起動
 
-Access the admin interface at `http://localhost:8080/admin.html`.
+管理画面は `http://localhost:8080/admin.html` でアクセス可能。
 
-### Managing Projects
+### プロジェクトの追加・編集
 
-Projects are stored in `repositories.json`. The recommended workflow:
+プロジェクト情報は `repositories.json` で管理します。推奨フロー:
 
-1. Open `http://localhost:8080/admin.html`
-2. Add/edit/reorder projects using the GUI
-3. Click "ダウンロード" (Download) to export the updated `repositories.json`
-4. Replace the file in the project root
+1. `http://localhost:8080/admin.html` を開く
+2. GUIでプロジェクトの追加・編集・並び替えを行う
+3. 「ダウンロード」ボタンで更新済みの `repositories.json` をエクスポート
+4. プロジェクトルートのファイルを差し替える
 
-Alternatively, edit `repositories.json` directly. Each entry follows this schema:
+`repositories.json` を直接編集する場合のスキーマ:
 
 ```json
 {
-  "name": "Project Display Name",
-  "repo": "repository-name",
-  "description": "Short description of the project",
+  "name": "プロジェクト表示名",
+  "repo": "リポジトリ名",
+  "description": "プロジェクトの短い説明",
   "url": "https://example.github.io/project/",
   "thumbnail": "images/thumbnail.png",
   "tags": ["Web"],
@@ -85,31 +88,31 @@ Alternatively, edit `repositories.json` directly. Each entry follows this schema
 }
 ```
 
-Valid tag values: `"Web"`, `"Tool"`, `"Unity"`
+有効なタグ値: `"Web"`、`"Tool"`、`"Unity"`（大文字小文字を区別する）
 
-### Deployment
+### デプロイ
 
 ```bash
-npm run deploy       # pushes project root to gh-pages branch via gh-pages package
+npm run deploy   # gh-pages パッケージでプロジェクトルートを gh-pages ブランチへプッシュ
 ```
 
-Or run `deployToGithub.bat` on Windows. The site goes live at https://tsubokulab.github.io/ within minutes.
+Windowsの場合は `deployToGithub.bat` を実行。数分後に https://tsubokulab.github.io/ へ反映されます。
 
-> **Note:** There is no CI/CD pipeline. Deployment is always manual.
+> **注意:** CI/CDパイプラインはありません。デプロイは常に手動で行います。
 
 ---
 
-## Key Code Conventions
+## コード規約
 
 ### HTML
 
-- Language: Japanese (`lang="ja"`)
-- Project cards are generated from a `<template id="project-card-template">` in `index.html` — do not hardcode cards
-- All external assets (fonts, icons) load from CDN; no local copies
+- 言語設定: 日本語（`lang="ja"`）
+- プロジェクトカードは `index.html` 内の `<template id="project-card-template">` から生成する — HTMLに直接記述しない
+- フォント・アイコンなど外部アセットはすべてCDNから読み込む（ローカルコピーなし）
 
-### CSS (`css/style.css`)
+### CSS（`css/style.css`）
 
-CSS custom properties define the design system — always use variables, not hardcoded values:
+デザインシステムはCSSカスタムプロパティで定義されています。色などの値は必ず変数を使用し、直接値を記述しないこと:
 
 ```css
 --primary-color: #3498db
@@ -123,58 +126,58 @@ CSS custom properties define the design system — always use variables, not har
 --shadow: 0 4px 15px rgba(0, 0, 0, 0.1)
 ```
 
-- Responsive breakpoints: `768px` and `480px`
-- BEM-style class naming: `project-card`, `project-info`, `project-title`
-- Animations defined: `fadeInUp`, `rotate`, `dash`
+- レスポンシブブレークポイント: `768px` と `480px`
+- クラス命名はBEMスタイル: `project-card`、`project-info`、`project-title`
+- 定義済みアニメーション: `fadeInUp`、`rotate`、`dash`
 
-### JavaScript (`js/script.js`)
+### JavaScript（`js/script.js`）
 
-- Vanilla JS only — no jQuery, no frameworks
-- Entry point: `fetchRepositories()` fetches `repositories.json` on page load
-- `renderProjects(data)` uses the `<template>` element to clone and populate cards
-- `filterProjects(filter)` filters visible cards by tag
-- `formatDate(dateString)` converts `YYYY-MM-DD` → Japanese format (`YYYY年MM月DD日`)
-- No module system — all code is in a single script file
+- バニラJSのみ — jQueryやフレームワークは不使用
+- エントリーポイント: ページ読み込み時に `fetchRepositories()` が `repositories.json` を取得
+- `renderProjects(data)`: `<template>` 要素をクローンしてプロジェクトカードを生成
+- `filterProjects(filter)`: タグによるカードの表示フィルタリング
+- `formatDate(dateString)`: `YYYY-MM-DD` → 日本語形式（`YYYY年MM月DD日`）に変換
+- モジュールシステムなし — すべてのコードは1ファイルにまとめる
 
-### Data (`repositories.json`)
+### データ（`repositories.json`）
 
-- Plain JSON array, loaded client-side via `fetch()`
-- Date format: `YYYY-MM-DD`
-- Tags are case-sensitive strings; valid values are `Web`, `Tool`, `Unity`
-- `thumbnail` path is relative to the site root
-
----
-
-## What Not to Do
-
-- **Do not introduce a JavaScript framework or build step** — the site intentionally has no compilation
-- **Do not minify files** — source files are served directly
-- **Do not add a backend** — this is a static GitHub Pages site
-- **Do not modify `node_modules/`** — only `gh-pages` is a dependency and it's only used for deployment
-- **Do not hardcode project cards in HTML** — use `repositories.json` and the template system
-- **Do not push directly to `master` or `gh-pages`** — use `npm run deploy` for the gh-pages branch; feature work goes through the standard git workflow on feature branches
+- クライアントサイドで `fetch()` により読み込むプレーンなJSON配列
+- 日付フォーマット: `YYYY-MM-DD`
+- タグは大文字小文字を区別する文字列。有効値は `Web`、`Tool`、`Unity` のみ
+- `thumbnail` のパスはサイトルートからの相対パス
 
 ---
 
-## Branch Strategy
+## やってはいけないこと
 
-| Branch | Purpose |
-|--------|---------|
-| `master` | Main source branch |
-| `gh-pages` | Auto-generated by `npm run deploy`; do not edit manually |
-| `claude/*` | AI-assistant feature branches |
-
----
-
-## Internationalization Notes
-
-- The site is primarily Japanese
-- User-facing text (descriptions, headings) is in Japanese
-- Code comments may be in Japanese or English
-- Date formatting uses Japanese convention: `YYYY年MM月DD日`
+- **JavaScriptフレームワークやビルド手順を導入しない** — このサイトは意図的にビルド不要な構成にしている
+- **ファイルをminify（圧縮）しない** — ソースファイルをそのまま配信している
+- **バックエンドを追加しない** — 静的なGitHub Pagesサイトとして運用する
+- **`node_modules/` を変更しない** — `gh-pages` のみが依存パッケージでデプロイ専用
+- **プロジェクトカードをHTMLに直接記述しない** — `repositories.json` とテンプレートシステムを使う
+- **`master` や `gh-pages` ブランチへ直接プッシュしない** — `gh-pages` ブランチは `npm run deploy` が自動生成する。機能追加はフィーチャーブランチで行う
 
 ---
 
-## No Test Suite
+## ブランチ運用
 
-There are no automated tests. The `npm test` script is a placeholder that exits with an error. Manual testing is done via the local http-server.
+| ブランチ | 用途 |
+|--------|------|
+| `master` | メインのソースブランチ |
+| `gh-pages` | `npm run deploy` が自動生成。手動編集禁止 |
+| `claude/*` | AIアシスタント用の作業ブランチ |
+
+---
+
+## 国際化について
+
+- サイトのコンテンツは主に日本語
+- ユーザー向けテキスト（説明文・見出しなど）は日本語で記述
+- コードコメントは日本語・英語どちらも可
+- 日付表示は日本語形式: `YYYY年MM月DD日`
+
+---
+
+## テストについて
+
+自動テストはありません。`npm test` スクリプトはエラーで終了するプレースホルダーです。動作確認はローカルサーバーで目視確認してください。
