@@ -1,6 +1,8 @@
 # CLAUDE.md — TsubokuLab.github.io
 
-This file provides context for AI assistants working on this codebase.
+このファイルはAIアシスタントがこのコードベースで作業する際のコンテキストを提供します。
+
+> **言語ポリシー:** このプロジェクトのオーナーは日本語話者です。AIアシスタントはすべての応答・コミット・ドキュメントを **日本語** で出力してください。
 
 ## Project Overview
 
