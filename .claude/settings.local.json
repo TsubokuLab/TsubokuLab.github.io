@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/tsubokura/.claude/**)",
+      "Bash(curl -s \"https://api.github.com/repos/TsubokuLab/marriage-contract\")",
+      "Bash(python -m json.tool)",
+      "WebFetch(domain:tsubokulab.github.io)",
+      "Bash(curl -s \"https://raw.githubusercontent.com/TsubokuLab/marriage-contract/main/index.html\")",
+      "Bash(npm run:*)"
+    ]
+  }
+}
