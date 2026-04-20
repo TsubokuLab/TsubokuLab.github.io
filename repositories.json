@@ -1,6 +1,18 @@
 {
   "repositories": [
     {
+      "name": "婚前契約書ジェネレーター",
+      "repo": "marriage-contract",
+      "description": "質問に答えるだけで、お二人だけの婚前契約書ドラフトが作れます。",
+      "url": "https://tsubokulab.github.io/marriage-contract/",
+      "thumbnail": "https://tsubokulab.github.io/marriage-contract/og-image.svg",
+      "tags": [
+        "Tool",
+        "Web"
+      ],
+      "date": "2026-04-15"
+    },
+    {
       "name": "魔法陣ジェネレーター",
       "repo": "MagicCircleGenerator",
       "description": "ブラウザ上で美しい魔法陣を作成できるオンラインツール。円、図形、線を自由に配置し、SVG、PNG、ノーマルマップとしてエクスポート可能。",
