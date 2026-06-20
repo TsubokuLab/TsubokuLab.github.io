@@ -1,6 +1,18 @@
 {
   "repositories": [
     {
+      "name": "抵抗カラーコード変換",
+      "repo": "resistor-color-decoder",
+      "description": "抵抗の色（カラーバンド）から抵抗値を計算できるツール。バンドをクリックして色を選ぶだけで抵抗値・許容差・誤差範囲がわかります。LEDの電流制限抵抗も計算できます。",
+      "url": "https://tsubokulab.github.io/resistor-color-decoder/",
+      "thumbnail": "https://tsubokulab.github.io/resistor-color-decoder/assets/og-image.png",
+      "tags": [
+        "Tool",
+        "Web"
+      ],
+      "date": "2026-06-20"
+    },
+    {
       "name": "婚前契約書ジェネレーター",
       "repo": "marriage-contract",
       "description": "質問に答えるだけで、お二人だけの婚前契約書ドラフトが作れます。",
