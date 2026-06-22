@@ -1,0 +1,13 @@
+# 依存パッケージ（gh-pages デプロイ用。`npm install` で復元する）
+node_modules/
+
+# npm のログ・キャッシュ
+npm-debug.log*
+.npm/
+
+# ローカル環境設定（AIアシスタント等のローカル設定）
+.claude/settings.local.json
+
+# OS / エディタ
+.DS_Store
+Thumbs.db
