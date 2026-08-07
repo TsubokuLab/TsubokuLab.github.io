@@ -1,6 +1,28 @@
 {
   "repositories": [
     {
+      "name": "DiscordTepraBot",
+      "repo": "DiscordTepraBot",
+      "description": "Discordでメンションするだけで、ラベルプリンター「テプラ」からテキストやQRコードのラベルを印刷できるBot。テープ幅の指定やQRコード＋テキストの同時印刷にも対応しています。",
+      "url": "https://github.com/TsubokuLab/DiscordTepraBot",
+      "thumbnail": "images/thumbnails/discord-tepra-bot.jpg",
+      "tags": [
+        "Tool"
+      ],
+      "date": "2026-08-04"
+    },
+    {
+      "name": "PIR見守りモニター",
+      "repo": "PIR_AliveMonitoring",
+      "description": "M5StickC Plus＋人感センサ（PIR）で作る、独り暮らしのための見守りデバイス。一定時間動きが検出されないとスマホへ通知します。設定はQRコードを読み取ってブラウザから完結。",
+      "url": "https://github.com/TsubokuLab/PIR_AliveMonitoring",
+      "thumbnail": "images/thumbnails/pir-alive-monitoring.jpg",
+      "tags": [
+        "Tool"
+      ],
+      "date": "2026-07-13"
+    },
+    {
       "name": "抵抗カラーコード変換",
       "repo": "resistor-color-decoder",
       "description": "抵抗の色（カラーバンド）から抵抗値を計算できるツール。バンドをクリックして色を選ぶだけで抵抗値・許容差・誤差範囲がわかります。LEDの電流制限抵抗も計算できます。",
